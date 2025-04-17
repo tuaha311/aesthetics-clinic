@@ -1,0 +1,414 @@
+{% extends 'base.html' %}
+
+{% block title %}Our Treatments | Aesthetics Clinic{% endblock %}
+
+{% block content %}
+<section class="treatments-hero">
+    <div class="container">
+        <h1>Our Treatments</h1>
+        <p class="lead">Discover our range of advanced aesthetic treatments designed to enhance your natural beauty</p>
+    </div>
+</section>
+
+<section class="treatment-categories">
+    <div class="container">
+        <div class="category-nav">
+            <button class="category-btn active" data-category="all">All Treatments</button>
+            <button class="category-btn" data-category="facial">Facial</button>
+            <button class="category-btn" data-category="body">Body</button>
+            <button class="category-btn" data-category="skin">Skin</button>
+            <button class="category-btn" data-category="lip">Lip</button>
+            <button class="category-btn" data-category="botox">Botox</button>
+        </div>
+    </div>
+</section>
+
+<section class="treatments-list">
+    <div class="container">
+        <div class="treatments-grid">
+            <!-- Facial Treatments -->
+            <div class="treatment-item" data-category="facial">
+                <div class="treatment-image">
+                    <img src="/static/images/treatments/facial-fillers.jpg" alt="Facial Fillers">
+                </div>
+                <div class="treatment-details">
+                    <h3>Facial Fillers</h3>
+                    <p>Restore volume and reduce the appearance of fine lines with our premium dermal fillers.</p>
+                    <div class="treatment-meta">
+                        <span class="duration"><i class="fas fa-clock"></i> 30-45 min</span>
+                        <span class="price"><i class="fas fa-tag"></i> From £250</span>
+                    </div>
+                    <a href="/treatments/facial-fillers" class="btn-treatment">Learn More</a>
+                </div>
+            </div>
+            
+            <div class="treatment-item" data-category="facial">
+                <div class="treatment-image">
+                    <img src="/static/images/treatments/face-lift.jpg" alt="Non-Surgical Face Lift">
+                </div>
+                <div class="treatment-details">
+                    <h3>Non-Surgical Face Lift</h3>
+                    <p>Achieve a more youthful appearance without surgery using advanced thread lift techniques.</p>
+                    <div class="treatment-meta">
+                        <span class="duration"><i class="fas fa-clock"></i> 60 min</span>
+                        <span class="price"><i class="fas fa-tag"></i> From £450</span>
+                    </div>
+                    <a href="/treatments/non-surgical-face-lift" class="btn-treatment">Learn More</a>
+                </div>
+            </div>
+            
+            <!-- Body Treatments -->
+            <div class="treatment-item" data-category="body">
+                <div class="treatment-image">
+                    <img src="/static/images/treatments/body-contouring.jpg" alt="Body Contouring">
+                </div>
+                <div class="treatment-details">
+                    <h3>Body Contouring</h3>
+                    <p>Sculpt and define your body with our non-invasive body contouring treatments.</p>
+                    <div class="treatment-meta">
+                        <span class="duration"><i class="fas fa-clock"></i> 45-60 min</span>
+                        <span class="price"><i class="fas fa-tag"></i> From £350</span>
+                    </div>
+                    <a href="/treatments/body-contouring" class="btn-treatment">Learn More</a>
+                </div>
+            </div>
+            
+            <!-- Skin Treatments -->
+            <div class="treatment-item" data-category="skin">
+                <div class="treatment-image">
+                    <img src="/static/images/treatments/chemical-peel.jpg" alt="Chemical Peel">
+                </div>
+                <div class="treatment-details">
+                    <h3>Chemical Peel</h3>
+                    <p>Reveal fresher, younger-looking skin with our customized chemical peel treatments.</p>
+                    <div class="treatment-meta">
+                        <span class="duration"><i class="fas fa-clock"></i> 30 min</span>
+                        <span class="price"><i class="fas fa-tag"></i> From £120</span>
+                    </div>
+                    <a href="/treatments/chemical-peel" class="btn-treatment">Learn More</a>
+                </div>
+            </div>
+            
+            <!-- Lip Treatments -->
+            <div class="treatment-item" data-category="lip">
+                <div class="treatment-image">
+                    <img src="/static/images/treatments/lip-enhancement.jpg" alt="Lip Enhancement">
+                </div>
+                <div class="treatment-details">
+                    <h3>Lip Enhancement</h3>
+                    <p>Achieve fuller, more defined lips with our specialized lip filler treatments.</p>
+                    <div class="treatment-meta">
+                        <span class="duration"><i class="fas fa-clock"></i> 30 min</span>
+                        <span class="price"><i class="fas fa-tag"></i> From £200</span>
+                    </div>
+                    <a href="/treatments/lip-enhancement" class="btn-treatment">Learn More</a>
+                </div>
+            </div>
+            
+            <!-- Botox Treatments -->
+            <div class="treatment-item" data-category="botox">
+                <div class="treatment-image">
+                    <img src="/static/images/treatments/botox.jpg" alt="Botox">
+                </div>
+                <div class="treatment-details">
+                    <h3>Anti-Wrinkle Injections</h3>
+                    <p>Reduce fine lines and wrinkles with our premium botox treatments.</p>
+                    <div class="treatment-meta">
+                        <span class="duration"><i class="fas fa-clock"></i> 20-30 min</span>
+                        <span class="price"><i class="fas fa-tag"></i> From £180</span>
+                    </div>
+                    <a href="/treatments/anti-wrinkle-injections" class="btn-treatment">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="treatment-process">
+    <div class="container">
+        <h2>Our Treatment Process</h2>
+        <div class="process-steps">
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <h3>Consultation</h3>
+                <p>Begin with a thorough consultation to understand your needs and develop a personalized treatment plan.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">2</div>
+                <h3>Treatment</h3>
+                <p>Experience our advanced aesthetic procedures performed by our expert clinicians.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">3</div>
+                <h3>Aftercare</h3>
+                <p>Receive comprehensive aftercare advice and follow-up support to ensure optimal results.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="book-consultation">
+    <div class="container">
+        <div class="cta-content">
+            <h2>Ready to Transform Your Look?</h2>
+            <p>Book a consultation with our aesthetic specialists today.</p>
+            <a href="/contact" class="btn-primary">Book Consultation</a>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Hero Section */
+    .treatments-hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/static/images/treatments-hero.jpg');
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 120px 0;
+        text-align: center;
+    }
+    
+    .treatments-hero h1 {
+        font-size: 48px;
+        margin-bottom: 20px;
+    }
+    
+    .treatments-hero .lead {
+        font-size: 20px;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+    
+    /* Category Navigation */
+    .treatment-categories {
+        padding: 30px 0;
+        background-color: #f9f9f9;
+    }
+    
+    .category-nav {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    
+    .category-btn {
+        padding: 10px 20px;
+        border: 1px solid #ddd;
+        background: white;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .category-btn:hover, .category-btn.active {
+        background: #4a4a4a;
+        color: white;
+        border-color: #4a4a4a;
+    }
+    
+    /* Treatments List */
+    .treatments-list {
+        padding: 60px 0;
+    }
+    
+    .treatments-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+        gap: 30px;
+    }
+    
+    .treatment-item {
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+    
+    .treatment-item:hover {
+        transform: translateY(-5px);
+    }
+    
+    .treatment-image {
+        height: 200px;
+        overflow: hidden;
+    }
+    
+    .treatment-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+    
+    .treatment-item:hover .treatment-image img {
+        transform: scale(1.05);
+    }
+    
+    .treatment-details {
+        padding: 20px;
+        background: white;
+    }
+    
+    .treatment-details h3 {
+        margin-top: 0;
+        margin-bottom: 10px;
+        font-size: 22px;
+    }
+    
+    .treatment-meta {
+        display: flex;
+        justify-content: space-between;
+        margin: 15px 0;
+        font-size: 14px;
+        color: #666;
+    }
+    
+    .btn-treatment {
+        display: inline-block;
+        padding: 8px 20px;
+        border: 1px solid #4a4a4a;
+        border-radius: 4px;
+        text-decoration: none;
+        color: #4a4a4a;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-treatment:hover {
+        background: #4a4a4a;
+        color: white;
+    }
+    
+    /* Treatment Process */
+    .treatment-process {
+        background-color: #f9f9f9;
+        padding: 60px 0;
+        text-align: center;
+    }
+    
+    .treatment-process h2 {
+        margin-bottom: 40px;
+    }
+    
+    .process-steps {
+        display: flex;
+        justify-content: space-between;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+    
+    .process-step {
+        flex: 1;
+        padding: 0 20px;
+        position: relative;
+    }
+    
+    .step-number {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: #4a4a4a;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        font-weight: bold;
+        margin: 0 auto 20px;
+    }
+    
+    /* Book Consultation */
+    .book-consultation {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/static/images/consultation-bg.jpg');
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 80px 0;
+        text-align: center;
+    }
+    
+    .cta-content {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+    
+    .cta-content h2 {
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+    
+    .cta-content p {
+        font-size: 18px;
+        margin-bottom: 30px;
+    }
+    
+    .btn-primary {
+        display: inline-block;
+        padding: 12px 30px;
+        background: #4a4a4a;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        font-weight: 500;
+        transition: background 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+        background: #333;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .treatments-hero {
+            padding: 80px 0;
+        }
+        
+        .treatments-hero h1 {
+            font-size: 36px;
+        }
+        
+        .process-steps {
+            flex-direction: column;
+            gap: 40px;
+        }
+        
+        .treatments-grid {
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        }
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Treatment category filtering
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        const treatmentItems = document.querySelectorAll('.treatment-item');
+        
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                const category = this.getAttribute('data-category');
+                
+                // Show/hide treatment items based on category
+                treatmentItems.forEach(item => {
+                    if (category === 'all' || item.getAttribute('data-category') === category) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    });
+</script>
+{% endblock %} 

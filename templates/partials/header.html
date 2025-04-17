@@ -1,0 +1,76 @@
+<header class="site-header">
+    <div class="top-bar">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="contact-info">
+                        <span><i class="fas fa-phone"></i> +123 456 7890</span>
+                        <span><i class="fas fa-envelope"></i> info@aestheticsclinic.com</span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <h1>Aesthetics</h1>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" 
+                    aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle {% if 'treatments' in request.path %}active{% endif %}" 
+                           href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Treatments
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'treatment_list' %}">All Treatments</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{% url 'treatment_list' %}?category=FACE">Face Treatments</a></li>
+                            <li><a class="dropdown-item" href="{% url 'treatment_list' %}?category=BODY">Body Treatments</a></li>
+                            <li><a class="dropdown-item" href="{% url 'treatment_list' %}?category=INJECTABLES">Injectables</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/about/' %}active{% endif %}" href="{% url 'about' %}">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/gallery/' %}active{% endif %}" href="{% url 'gallery' %}">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if 'blog' in request.path %}active{% endif %}" href="{% url 'blog_list' %}">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/contact/' %}active{% endif %}" href="{% url 'contact' %}">Contact</a>
+                    </li>
+                </ul>
+                <div class="header-btns ms-lg-3">
+                    <a href="{% url 'contact' %}?booking=true" class="btn btn-primary">Book Consultation</a>
+                </div>
+                <form class="search-form ms-lg-3" action="{% url 'search' %}" method="get">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" aria-label="Search">
+                        <button class="btn btn-outline-secondary" type="submit"><i class="fas fa-search"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </nav>
+</header> 

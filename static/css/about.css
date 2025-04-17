@@ -1,0 +1,457 @@
+/* About Page Styling */
+
+/* About Hero Section */
+.about-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/about/about-hero.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 120px 0;
+    text-align: center;
+}
+
+.about-hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.about-hero .lead {
+    font-size: 20px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Our Story Section */
+.about-story {
+    padding: 80px 0;
+}
+
+.about-image {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+.about-image::before {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    right: -15px;
+    width: 80%;
+    height: 80%;
+    border: 5px solid #f8f8f8;
+    border-radius: 8px;
+    z-index: -1;
+}
+
+.about-content {
+    padding: 0 20px;
+}
+
+.about-content h2 {
+    font-size: 32px;
+    margin-bottom: 25px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.about-content h2:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background-color: #4a4a4a;
+}
+
+.about-content p {
+    margin-bottom: 20px;
+    line-height: 1.8;
+    color: #666;
+}
+
+.about-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 0 15px;
+}
+
+.stat-number {
+    display: block;
+    font-size: 42px;
+    font-weight: 700;
+    color: #4a4a4a;
+    margin-bottom: 5px;
+}
+
+.stat-text {
+    font-size: 14px;
+    color: #777;
+}
+
+/* Our Values Section */
+.about-values {
+    padding: 80px 0;
+    background-color: #f9f9f9;
+}
+
+.about-values h2 {
+    margin-bottom: 15px;
+}
+
+.values-intro {
+    margin-bottom: 50px;
+    color: #777;
+}
+
+.values-row {
+    margin-bottom: 30px;
+}
+
+.value-item {
+    text-align: center;
+    padding: 40px 25px;
+    background-color: white;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+    height: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 6px;
+}
+
+.value-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.value-icon {
+    font-size: 40px;
+    color: #4a4a4a;
+    margin-bottom: 25px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.value-item h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.value-item p {
+    color: #666;
+    line-height: 1.7;
+}
+
+/* Meet Our Team Section */
+.about-team {
+    padding: 80px 0;
+}
+
+.team-intro {
+    margin-bottom: 50px;
+    color: #777;
+}
+
+.team-member {
+    margin-bottom: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.team-member:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.member-image {
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+}
+
+.member-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.team-member:hover .member-image img {
+    transform: scale(1.05);
+}
+
+.member-info {
+    padding: 25px;
+    background-color: white;
+}
+
+.member-info h3 {
+    font-size: 20px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.member-role {
+    color: #4a4a4a;
+    font-weight: 500;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.member-bio {
+    color: #666;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.read-more {
+    color: #4a4a4a;
+    font-weight: 500;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+
+.read-more:after {
+    content: '→';
+    margin-left: 5px;
+    transition: margin-left 0.3s ease;
+}
+
+.read-more:hover {
+    color: #333;
+}
+
+.read-more:hover:after {
+    margin-left: 10px;
+}
+
+/* Modal Styling */
+.modal-image {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 20px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 5px solid #f8f8f8;
+}
+
+.modal-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modal-body h3 {
+    text-align: center;
+    margin-bottom: 5px;
+    font-size: 22px;
+}
+
+.modal-body .member-role {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.member-bio-full {
+    line-height: 1.8;
+    color: #666;
+}
+
+/* Facilities Section */
+.about-facilities {
+    padding: 80px 0;
+    background-color: #f9f9f9;
+}
+
+.facilities-intro {
+    margin-bottom: 50px;
+    color: #777;
+}
+
+.facility-item {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    height: 280px;
+}
+
+.facility-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.facility-item:hover img {
+    transform: scale(1.05);
+}
+
+.facility-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));
+    padding: 20px;
+    color: white;
+}
+
+.facility-overlay h3 {
+    margin: 0;
+    font-size: 20px;
+}
+
+/* Certifications Section */
+.about-certifications {
+    padding: 80px 0;
+}
+
+.certifications-intro {
+    margin-bottom: 50px;
+    color: #777;
+}
+
+.certification-item {
+    padding: 30px 20px;
+    text-align: center;
+    margin-bottom: 30px;
+    border: 1px solid #eee;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 6px;
+}
+
+.certification-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.certification-item img {
+    max-height: 80px;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease, opacity 0.3s ease;
+    opacity: 0.7;
+}
+
+.certification-item:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+/* CTA Section */
+.cta-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../images/cta-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 80px 0;
+}
+
+.cta-content {
+    text-align: center;
+}
+
+.cta-content h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.cta-content p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.9;
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 14px 32px;
+    background: #4a4a4a;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.btn-primary:hover {
+    background: #333;
+    transform: translateY(-3px);
+    color: white;
+}
+
+/* Responsive Styles */
+@media (max-width: 991px) {
+    .about-stats {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .stat-item {
+        margin-bottom: 30px;
+    }
+    
+    .about-content {
+        margin-top: 40px;
+    }
+    
+    .facility-item {
+        height: 220px;
+    }
+}
+
+@media (max-width: 767px) {
+    .about-hero {
+        padding: 80px 0;
+    }
+    
+    .about-hero h1 {
+        font-size: 36px;
+    }
+    
+    .about-content h2 {
+        font-size: 28px;
+    }
+    
+    .cta-content h2 {
+        font-size: 30px;
+    }
+    
+    .value-item {
+        padding: 30px 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .stat-number {
+        font-size: 36px;
+    }
+    
+    .member-image {
+        height: 250px;
+    }
+    
+    .facility-item {
+        height: 200px;
+    }
+} 

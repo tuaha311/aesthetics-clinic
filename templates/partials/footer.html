@@ -1,0 +1,70 @@
+<footer class="site-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                <div class="footer-widget">
+                    <h3>Aesthetics</h3>
+                    <p>Your premier destination for high-quality aesthetic treatments and skin care solutions. We combine medical expertise with luxury for results you'll love.</p>
+                    <div class="social-links mt-3">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                <div class="footer-widget">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li><a href="{% url 'about' %}">About Us</a></li>
+                        <li><a href="{% url 'treatment_list' %}">Treatments</a></li>
+                        <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                        <li><a href="{% url 'blog_list' %}">Blog</a></li>
+                        <li><a href="{% url 'contact' %}">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                <div class="footer-widget">
+                    <h4>Treatments</h4>
+                    <ul class="footer-links">
+                        <li><a href="{% url 'treatment_list' %}?category=FACE">Face Treatments</a></li>
+                        <li><a href="{% url 'treatment_list' %}?category=BODY">Body Treatments</a></li>
+                        <li><a href="{% url 'treatment_list' %}?category=INJECTABLES">Injectables</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-widget">
+                    <h4>Contact Us</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Beauty Lane, Suite 100<br>Aesthetic City, AC 12345</p>
+                        <p><i class="fas fa-phone"></i> +123 456 7890</p>
+                        <p><i class="fas fa-envelope"></i> info@aestheticsclinic.com</p>
+                        <p><i class="fas fa-clock"></i> Mon-Fri: 9am-7pm <br> Sat: 10am-5pm</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; {% now "Y" %} Aesthetics Clinic. All Rights Reserved.</p>
+                </div>
+                <div class="col-md-6">
+                    <ul class="footer-bottom-links">
+                        <li><a href="/privacy-policy/">Privacy Policy</a></li>
+                        <li><a href="/terms-of-service/">Terms of Service</a></li>
+                        <li><a href="/cookie-policy/">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer> 

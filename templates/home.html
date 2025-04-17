@@ -1,0 +1,251 @@
+{% extends 'base.html' %}
+
+{% block title %}Aesthetics Clinic - Luxury Beauty Treatments{% endblock %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-slider">
+            <div class="hero-slide" style="background-image: url('/static/img/hero-bg.jpg');">
+                <div class="container">
+                    <div class="hero-content">
+                        <h1>Enhance Your Natural Beauty</h1>
+                        <p>Experience the perfect blend of science and luxury at our premium aesthetics clinic</p>
+                        <div class="hero-buttons">
+                            <a href="{% url 'treatment_list' %}" class="btn btn-primary">Explore Treatments</a>
+                            <a href="{% url 'contact' %}?booking=true" class="btn btn-outline-light">Book Consultation</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>Our Featured Treatments</h2>
+                <p>Discover our most popular aesthetic treatments</p>
+            </div>
+            
+            <div class="row">
+                {% for treatment in featured_treatments %}
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="feature-box">
+                        <div class="feature-image">
+                            <img src="{{ treatment.image.url }}" alt="{{ treatment.name }}" class="img-fluid">
+                            <div class="feature-overlay">
+                                <a href="{% url 'treatment_detail' treatment.slug %}" class="btn btn-sm btn-primary">Learn More</a>
+                            </div>
+                        </div>
+                        <div class="feature-content">
+                            <h3>{{ treatment.name }}</h3>
+                            <p>{{ treatment.description|truncatewords:15 }}</p>
+                            <div class="feature-meta">
+                                <span><i class="fas fa-clock"></i> {{ treatment.duration }}</span>
+                                <span><i class="fas fa-tag"></i> {{ treatment.price_range }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="col-12 text-center">
+                    <p>No featured treatments available at the moment. Please check back soon!</p>
+                </div>
+                {% endfor %}
+            </div>
+            
+            <div class="text-center mt-4">
+                <a href="{% url 'treatment_list' %}" class="btn btn-outline-primary">View All Treatments</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="about-content">
+                        <h2>About Our Clinic</h2>
+                        <p>Welcome to Aesthetics Clinic, where art meets science to enhance your natural beauty. We offer a comprehensive range of cutting-edge, non-surgical aesthetic treatments in a luxurious and welcoming environment.</p>
+                        <p>Our team of highly qualified practitioners combines medical expertise with an artistic eye to deliver exceptional results that look natural and enhance your individual beauty.</p>
+                        <a href="{% url 'about' %}" class="btn btn-primary">Learn More About Us</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about-image">
+                        <img src="/static/img/about-image.jpg" alt="About Our Clinic" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>Client Testimonials</h2>
+                <p>See what our clients say about their experience</p>
+            </div>
+            
+            <div class="testimonial-slider">
+                {% for testimonial in testimonials %}
+                <div class="testimonial-item">
+                    <div class="testimonial-content">
+                        <div class="quote">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p>{{ testimonial.quote }}</p>
+                        <div class="client-info">
+                            {% if testimonial.image %}
+                            <img src="{{ testimonial.image.url }}" alt="{{ testimonial.name }}" class="client-image">
+                            {% endif %}
+                            <div class="client-details">
+                                <h4>{{ testimonial.name }}</h4>
+                                {% if testimonial.treatment %}
+                                <p>{{ testimonial.treatment.name }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="testimonial-item">
+                    <div class="testimonial-content">
+                        <div class="quote">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p>We're currently collecting testimonials from our satisfied clients. Check back soon for real stories!</p>
+                        <div class="client-info">
+                            <div class="client-details">
+                                <h4>Aesthetics Team</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            
+            <div class="text-center mt-4">
+                <a href="{% url 'testimonial_list' %}" class="btn btn-outline-primary">View All Testimonials</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>Meet Our Team</h2>
+                <p>Our experts are here to help you look and feel your best</p>
+            </div>
+            
+            <div class="row">
+                {% for member in team_members %}
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="team-member">
+                        <div class="member-image">
+                            <img src="{{ member.image.url }}" alt="{{ member.name }}" class="img-fluid">
+                            <div class="member-social">
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h3>{{ member.name }}</h3>
+                            <p class="member-role">{{ member.role }}</p>
+                            <p class="member-bio">{{ member.bio|truncatewords:20 }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="col-12 text-center">
+                    <p>Our team information is coming soon. Check back for updates!</p>
+                </div>
+                {% endfor %}
+            </div>
+            
+            <div class="text-center mt-4">
+                <a href="{% url 'about' %}" class="btn btn-outline-primary">Meet Our Full Team</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Blog Section -->
+    <section class="blog-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>Latest from Our Blog</h2>
+                <p>Tips, treatments, and beauty insights</p>
+            </div>
+            
+            <div class="row">
+                {% for post in latest_posts %}
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="blog-card">
+                        <div class="blog-image">
+                            <a href="{% url 'blog_detail' post.slug %}">
+                                <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" class="img-fluid">
+                            </a>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span><i class="far fa-calendar"></i> {{ post.published_date|date:"F d, Y" }}</span>
+                                <span><i class="far fa-user"></i> {{ post.author.get_full_name|default:post.author.username }}</span>
+                            </div>
+                            <h3><a href="{% url 'blog_detail' post.slug %}">{{ post.title }}</a></h3>
+                            <p>{{ post.excerpt|default:post.content|truncatewords:15 }}</p>
+                            <a href="{% url 'blog_detail' post.slug %}" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="col-12 text-center">
+                    <p>Our blog posts are coming soon. Check back for beauty tips and insights!</p>
+                </div>
+                {% endfor %}
+            </div>
+            
+            <div class="text-center mt-4">
+                <a href="{% url 'blog_list' %}" class="btn btn-outline-primary">View All Posts</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h2>Subscribe to Our Newsletter</h2>
+                        <p>Stay updated with our latest treatments, special offers, and beauty tips</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <form class="newsletter-form" action="#" method="post">
+                            {% csrf_token %}
+                            <div class="input-group">
+                                <input type="email" class="form-control" placeholder="Your Email Address" required>
+                                <button class="btn btn-primary" type="submit">Subscribe</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Booking Section -->
+    <section class="booking-section">
+        <div class="container">
+            <div class="booking-content text-center">
+                <h2>Ready to Transform Your Look?</h2>
+                <p>Book a consultation with our experts today and start your beauty journey</p>
+                <a href="{% url 'contact' %}?booking=true" class="btn btn-lg btn-primary mt-4">Book Your Consultation</a>
+            </div>
+        </div>
+    </section>
+{% endblock %} 

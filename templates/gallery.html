@@ -1,0 +1,545 @@
+{% extends 'base.html' %}
+
+{% block title %}Gallery - Aesthetics Clinic{% endblock %}
+
+{% block content %}
+    <!-- Gallery Hero -->
+    <section class="gallery-hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h1>Our Gallery</h1>
+                    <p class="lead">See the stunning results of our aesthetic treatments</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Filters -->
+    <section class="gallery-filters">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="filter-container">
+                        <button class="btn filter-btn active" data-filter="all">All</button>
+                        <button class="btn filter-btn" data-filter="facial">Facial Treatments</button>
+                        <button class="btn filter-btn" data-filter="body">Body Treatments</button>
+                        <button class="btn filter-btn" data-filter="skin">Skin Rejuvenation</button>
+                        <button class="btn filter-btn" data-filter="lip">Lip Fillers</button>
+                        <button class="btn filter-btn" data-filter="botox">Botox</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Grid -->
+    <section class="gallery-grid">
+        <div class="container">
+            <div class="row gallery-row">
+                <!-- Item 1 -->
+                <div class="col-md-4 gallery-item facial" data-category="facial">
+                    <div class="gallery-item-inner">
+                        <div class="before-after-container">
+                            <img src="/static/img/gallery/facial-before-1.jpg" alt="Before Facial Treatment" class="before-img">
+                            <img src="/static/img/gallery/facial-after-1.jpg" alt="After Facial Treatment" class="after-img">
+                            <div class="slider-handle"></div>
+                        </div>
+                        <div class="gallery-caption">
+                            <h3>Facial Rejuvenation</h3>
+                            <p>Age: 42 | Sessions: 3</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Item 2 -->
+                <div class="col-md-4 gallery-item body" data-category="body">
+                    <div class="gallery-item-inner">
+                        <div class="before-after-container">
+                            <img src="/static/img/gallery/body-before-1.jpg" alt="Before Body Treatment" class="before-img">
+                            <img src="/static/img/gallery/body-after-1.jpg" alt="After Body Treatment" class="after-img">
+                            <div class="slider-handle"></div>
+                        </div>
+                        <div class="gallery-caption">
+                            <h3>Body Contouring</h3>
+                            <p>Age: 35 | Sessions: 5</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Item 3 -->
+                <div class="col-md-4 gallery-item skin" data-category="skin">
+                    <div class="gallery-item-inner">
+                        <div class="before-after-container">
+                            <img src="/static/img/gallery/skin-before-1.jpg" alt="Before Skin Treatment" class="before-img">
+                            <img src="/static/img/gallery/skin-after-1.jpg" alt="After Skin Treatment" class="after-img">
+                            <div class="slider-handle"></div>
+                        </div>
+                        <div class="gallery-caption">
+                            <h3>Skin Rejuvenation</h3>
+                            <p>Age: 38 | Sessions: 2</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Item 4 -->
+                <div class="col-md-4 gallery-item lip" data-category="lip">
+                    <div class="gallery-item-inner">
+                        <div class="before-after-container">
+                            <img src="/static/img/gallery/lip-before-1.jpg" alt="Before Lip Filler" class="before-img">
+                            <img src="/static/img/gallery/lip-after-1.jpg" alt="After Lip Filler" class="after-img">
+                            <div class="slider-handle"></div>
+                        </div>
+                        <div class="gallery-caption">
+                            <h3>Lip Enhancement</h3>
+                            <p>Age: 29 | Sessions: 1</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Item 5 -->
+                <div class="col-md-4 gallery-item botox" data-category="botox">
+                    <div class="gallery-item-inner">
+                        <div class="before-after-container">
+                            <img src="/static/img/gallery/botox-before-1.jpg" alt="Before Botox" class="before-img">
+                            <img src="/static/img/gallery/botox-after-1.jpg" alt="After Botox" class="after-img">
+                            <div class="slider-handle"></div>
+                        </div>
+                        <div class="gallery-caption">
+                            <h3>Forehead Botox</h3>
+                            <p>Age: 45 | Sessions: 1</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Item 6 -->
+                <div class="col-md-4 gallery-item facial" data-category="facial">
+                    <div class="gallery-item-inner">
+                        <div class="before-after-container">
+                            <img src="/static/img/gallery/facial-before-2.jpg" alt="Before Facial Treatment" class="before-img">
+                            <img src="/static/img/gallery/facial-after-2.jpg" alt="After Facial Treatment" class="after-img">
+                            <div class="slider-handle"></div>
+                        </div>
+                        <div class="gallery-caption">
+                            <h3>Complete Facial</h3>
+                            <p>Age: 31 | Sessions: 4</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- You can add more items following the same pattern -->
+            </div>
+            
+            <!-- Load More Button -->
+            <div class="row">
+                <div class="col-12 text-center mt-5">
+                    <button class="btn btn-primary load-more-btn">Load More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Gallery Testimonials -->
+    <section class="gallery-testimonials">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2>Client Testimonials</h2>
+                    <p class="section-subtitle">What our clients say about their results</p>
+                </div>
+            </div>
+            
+            <div class="row testimonial-slider">
+                <!-- Testimonial 1 -->
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"After just 3 sessions of the facial rejuvenation treatment, I noticed a significant improvement in my skin's texture and appearance. The staff was professional and made me feel comfortable throughout the process."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4>Sarah Johnson</h4>
+                                <p>Facial Rejuvenation</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"I was hesitant about getting lip fillers, but the team at Aesthetics Clinic made me feel at ease. The results are natural-looking and exactly what I wanted. I couldn't be happier!"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4>Emma Davis</h4>
+                                <p>Lip Enhancement</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"The body contouring treatment has transformed my confidence. After having children, I struggled with areas that wouldn't respond to diet and exercise. Now I feel like myself again!"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4>Michelle Thompson</h4>
+                                <p>Body Contouring</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="gallery-cta">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2>Ready to Transform?</h2>
+                    <p>Book your consultation today and discover what our treatments can do for you</p>
+                    <a href="/contact?booking=true" class="btn btn-primary">Book Consultation</a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .gallery-hero {
+        background-color: var(--secondary-color);
+        padding: 80px 0;
+        text-align: center;
+    }
+    
+    .gallery-hero h1 {
+        font-size: 48px;
+        margin-bottom: 20px;
+        color: var(--text-color);
+    }
+    
+    .gallery-hero .lead {
+        font-size: 20px;
+        color: var(--text-color);
+        opacity: 0.8;
+    }
+    
+    .gallery-filters {
+        padding: 40px 0;
+        background-color: var(--light-color);
+    }
+    
+    .filter-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .filter-btn {
+        padding: 8px 20px;
+        background-color: transparent;
+        border: 1px solid var(--primary-color);
+        color: var(--primary-color);
+        border-radius: 30px;
+        transition: all 0.3s ease;
+    }
+    
+    .filter-btn:hover, .filter-btn.active {
+        background-color: var(--primary-color);
+        color: white;
+    }
+    
+    .gallery-grid {
+        padding: 60px 0;
+    }
+    
+    .gallery-row {
+        margin-bottom: 30px;
+    }
+    
+    .gallery-item {
+        margin-bottom: 30px;
+    }
+    
+    .gallery-item-inner {
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+    }
+    
+    .gallery-item-inner:hover {
+        transform: translateY(-10px);
+    }
+    
+    .before-after-container {
+        position: relative;
+        height: 300px;
+        overflow: hidden;
+        cursor: grab;
+    }
+    
+    .before-img, .after-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .after-img {
+        clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+    }
+    
+    .slider-handle {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 4px;
+        background-color: white;
+        transform: translateX(-50%);
+        pointer-events: none;
+        z-index: 10;
+    }
+    
+    .slider-handle::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .gallery-caption {
+        padding: 15px;
+        background-color: white;
+    }
+    
+    .gallery-caption h3 {
+        font-size: 18px;
+        margin-bottom: 5px;
+        color: var(--primary-color);
+    }
+    
+    .gallery-caption p {
+        margin-bottom: 0;
+        color: var(--text-color);
+        opacity: 0.7;
+        font-size: 14px;
+    }
+    
+    .load-more-btn {
+        padding: 12px 30px;
+    }
+    
+    .gallery-testimonials {
+        padding: 80px 0;
+        background-color: var(--light-color);
+    }
+    
+    .section-subtitle {
+        margin-bottom: 40px;
+        color: var(--text-color);
+        opacity: 0.7;
+    }
+    
+    .testimonial-card {
+        background-color: white;
+        border-radius: 8px;
+        padding: 30px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        height: 100%;
+        position: relative;
+        transition: transform 0.3s ease;
+    }
+    
+    .testimonial-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .testimonial-content {
+        margin-bottom: 20px;
+    }
+    
+    .testimonial-content p {
+        font-style: italic;
+        color: var(--text-color);
+        line-height: 1.6;
+    }
+    
+    .testimonial-author {
+        display: flex;
+        align-items: center;
+    }
+    
+    .author-info h4 {
+        margin-bottom: 0;
+        color: var(--primary-color);
+        font-size: 18px;
+    }
+    
+    .author-info p {
+        margin-bottom: 0;
+        color: var(--text-color);
+        opacity: 0.7;
+        font-size: 14px;
+    }
+    
+    .gallery-cta {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 80px 0;
+    }
+    
+    .gallery-cta h2 {
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+    
+    .gallery-cta p {
+        font-size: 18px;
+        margin-bottom: 30px;
+        opacity: 0.9;
+    }
+    
+    .gallery-cta .btn {
+        background-color: white;
+        color: var(--primary-color);
+        padding: 12px 30px;
+        font-weight: 600;
+    }
+    
+    .gallery-cta .btn:hover {
+        background-color: var(--light-color);
+    }
+    
+    @media (max-width: 767px) {
+        .gallery-item {
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-card {
+            margin-bottom: 20px;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Before-After Slider Functionality
+        const beforeAfterContainers = document.querySelectorAll('.before-after-container');
+        
+        beforeAfterContainers.forEach(container => {
+            const afterImg = container.querySelector('.after-img');
+            const sliderHandle = container.querySelector('.slider-handle');
+            let isDown = false;
+            
+            // Mouse events
+            container.addEventListener('mousedown', () => {
+                isDown = true;
+            });
+            
+            window.addEventListener('mouseup', () => {
+                isDown = false;
+            });
+            
+            container.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                const rect = container.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const percent = Math.max(0, Math.min(100, x / rect.width * 100));
+                
+                afterImg.style.clipPath = `polygon(${percent}% 0, 100% 0, 100% 100%, ${percent}% 100%)`;
+                sliderHandle.style.left = `${percent}%`;
+            });
+            
+            // Touch events for mobile
+            container.addEventListener('touchstart', () => {
+                isDown = true;
+            });
+            
+            window.addEventListener('touchend', () => {
+                isDown = false;
+            });
+            
+            container.addEventListener('touchmove', (e) => {
+                if (!isDown) return;
+                const rect = container.getBoundingClientRect();
+                const x = e.touches[0].clientX - rect.left;
+                const percent = Math.max(0, Math.min(100, x / rect.width * 100));
+                
+                afterImg.style.clipPath = `polygon(${percent}% 0, 100% 0, 100% 100%, ${percent}% 100%)`;
+                sliderHandle.style.left = `${percent}%`;
+            });
+        });
+        
+        // Gallery Filtering
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Update active class
+                filterBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                const filter = this.getAttribute('data-filter');
+                
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.classList.contains(filter)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Load More Button (Simulated functionality)
+        const loadMoreBtn = document.querySelector('.load-more-btn');
+        let clickCount = 0;
+        
+        loadMoreBtn.addEventListener('click', function() {
+            clickCount++;
+            if (clickCount >= 2) {
+                this.textContent = 'No More Results';
+                this.disabled = true;
+                return;
+            }
+            
+            // In a real application, this would load more images from the server
+            // For demo purposes, we'll just show a message
+            const galleryRow = document.querySelector('.gallery-row');
+            
+            // Clone the first 6 items to simulate loading more
+            for (let i = 0; i < 3; i++) {
+                if (galleryItems[i]) {
+                    const clone = galleryItems[i].cloneNode(true);
+                    galleryRow.appendChild(clone);
+                }
+            }
+        });
+    });
+</script>
+{% endblock %} 

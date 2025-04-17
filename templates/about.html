@@ -1,0 +1,711 @@
+{% extends 'base.html' %}
+
+{% block title %}About Us | Aesthetics Clinic{% endblock %}
+
+{% block content %}
+<!-- About Hero Section -->
+<section class="about-hero">
+    <div class="container">
+        <h1>About Our Clinic</h1>
+        <p class="lead">Experience luxury aesthetics treatments with our expert practitioners</p>
+    </div>
+</section>
+
+<!-- Our Story Section -->
+<section class="about-story">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <div class="about-image">
+                    <img src="/static/images/about/clinic-exterior.jpg" alt="Aesthetics Clinic Exterior" class="img-fluid">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="about-content">
+                    <h2>Our Story</h2>
+                    <p>Founded in 2015, our clinic was born from a passion for helping people feel confident in their own skin. What began as a small treatment room has grown into a premier aesthetics destination, trusted by clients from across the region.</p>
+                    
+                    <p>Our journey has been driven by a commitment to excellence, combining cutting-edge technologies with a personalized approach to aesthetic care. We believe that true beauty enhancement respects each individual's unique features while helping them achieve their personal goals.</p>
+                    
+                    <p>Today, we are proud to offer a comprehensive range of non-surgical treatments delivered by our team of experienced practitioners in a luxurious, welcoming environment.</p>
+                    
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">8+</span>
+                            <span class="stat-text">Years of Experience</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">5,000+</span>
+                            <span class="stat-text">Happy Clients</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">20+</span>
+                            <span class="stat-text">Treatments Offered</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Our Values Section -->
+<section class="about-values">
+    <div class="container">
+        <h2 class="text-center">Our Values</h2>
+        <p class="text-center values-intro">These core principles guide everything we do</p>
+        
+        <div class="row values-row">
+            <div class="col-md-4">
+                <div class="value-item">
+                    <div class="value-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Excellence</h3>
+                    <p>We are committed to providing the highest standard of care in everything we do, from the treatments we offer to the products we use and the environment we create.</p>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="value-item">
+                    <div class="value-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3>Safety</h3>
+                    <p>Your safety is our priority. We adhere to strict protocols, use only FDA-approved products, and ensure all practitioners are properly qualified and continuously trained.</p>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="value-item">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Client-Centered</h3>
+                    <p>We listen carefully to your concerns and goals, creating personalized treatment plans that respect your individuality and help you achieve natural-looking results.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row values-row">
+            <div class="col-md-4">
+                <div class="value-item">
+                    <div class="value-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Innovation</h3>
+                    <p>We continuously research and invest in the latest technologies and techniques to offer you the most effective, state-of-the-art treatments available.</p>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="value-item">
+                    <div class="value-icon">
+                        <i class="fas fa-comment"></i>
+                    </div>
+                    <h3>Transparency</h3>
+                    <p>We believe in honest communication about what treatments can achieve, potential risks, and aftercare, empowering you to make informed decisions.</p>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="value-item">
+                    <div class="value-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Compassion</h3>
+                    <p>We understand that aesthetics is personal. Our team approaches each client with empathy, respect, and a genuine desire to enhance their well-being.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Meet Our Team Section -->
+<section class="about-team">
+    <div class="container">
+        <h2 class="text-center">Meet Our Expert Team</h2>
+        <p class="text-center team-intro">Our highly qualified practitioners bring years of experience and expertise</p>
+        
+        <div class="row team-row">
+            {% if team_members %}
+                {% for member in team_members %}
+                <div class="col-lg-3 col-md-6">
+                    <div class="team-member">
+                        <div class="member-image">
+                            <img src="{{ member.image.url }}" alt="{{ member.name }}" class="img-fluid">
+                        </div>
+                        <div class="member-info">
+                            <h3>{{ member.name }}</h3>
+                            <p class="member-role">{{ member.role }}</p>
+                            <p class="member-bio">{{ member.bio|truncatewords:25 }}</p>
+                            <a href="#" class="read-more" data-bs-toggle="modal" data-bs-target="#teamModal{{ member.id }}">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Team Member Modal -->
+                <div class="modal fade" id="teamModal{{ member.id }}" tabindex="-1" aria-labelledby="teamModalLabel{{ member.id }}" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="teamModalLabel{{ member.id }}">{{ member.name }}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="modal-image">
+                                    <img src="{{ member.image.url }}" alt="{{ member.name }}" class="img-fluid">
+                                </div>
+                                <h3>{{ member.name }}</h3>
+                                <p class="member-role">{{ member.role }}</p>
+                                <div class="member-bio-full">
+                                    {{ member.bio|linebreaks }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <!-- Fallback team members if no database data -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="team-member">
+                        <div class="member-image">
+                            <img src="/static/images/team/team1.jpg" alt="Dr. Sophia Williams" class="img-fluid">
+                        </div>
+                        <div class="member-info">
+                            <h3>Dr. Sophia Williams</h3>
+                            <p class="member-role">Lead Aesthetician & Medical Director</p>
+                            <p class="member-bio">Dr. Williams has over 15 years of experience in aesthetic medicine, specializing in advanced injectable treatments.</p>
+                            <a href="#" class="read-more">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="team-member">
+                        <div class="member-image">
+                            <img src="/static/images/team/team2.jpg" alt="Emma Johnson" class="img-fluid">
+                        </div>
+                        <div class="member-info">
+                            <h3>Emma Johnson</h3>
+                            <p class="member-role">Senior Aesthetician</p>
+                            <p class="member-bio">With 10 years in the industry, Emma specializes in advanced facial treatments and chemical peels.</p>
+                            <a href="#" class="read-more">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="team-member">
+                        <div class="member-image">
+                            <img src="/static/images/team/team3.jpg" alt="Michael Chen" class="img-fluid">
+                        </div>
+                        <div class="member-info">
+                            <h3>Michael Chen</h3>
+                            <p class="member-role">Body Contouring Specialist</p>
+                            <p class="member-bio">Michael brings 8 years of experience in non-surgical body contouring treatments.</p>
+                            <a href="#" class="read-more">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="team-member">
+                        <div class="member-image">
+                            <img src="/static/images/team/team4.jpg" alt="Jessica Martinez" class="img-fluid">
+                        </div>
+                        <div class="member-info">
+                            <h3>Jessica Martinez</h3>
+                            <p class="member-role">Laser Technician & Skincare Specialist</p>
+                            <p class="member-bio">Jessica specializes in laser treatments for hair removal, skin rejuvenation, and pigmentation.</p>
+                            <a href="#" class="read-more">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<!-- Clinic Facilities Section -->
+<section class="about-facilities">
+    <div class="container">
+        <h2 class="text-center">Our Facilities</h2>
+        <p class="text-center facilities-intro">Experience treatments in our luxurious, state-of-the-art clinic</p>
+        
+        <div class="facilities-gallery">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="facility-item">
+                        <img src="/static/images/about/reception.jpg" alt="Reception Area" class="img-fluid">
+                        <div class="facility-overlay">
+                            <h3>Reception</h3>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="facility-item">
+                        <img src="/static/images/about/treatment-room.jpg" alt="Treatment Room" class="img-fluid">
+                        <div class="facility-overlay">
+                            <h3>Treatment Rooms</h3>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="facility-item">
+                        <img src="/static/images/about/consultation.jpg" alt="Consultation Room" class="img-fluid">
+                        <div class="facility-overlay">
+                            <h3>Consultation Room</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Certifications Section -->
+<section class="about-certifications">
+    <div class="container">
+        <h2 class="text-center">Our Certifications</h2>
+        <p class="text-center certifications-intro">We maintain the highest standards of quality and safety</p>
+        
+        <div class="row certifications-row">
+            <div class="col-md-3 col-6">
+                <div class="certification-item">
+                    <img src="/static/images/certifications/cert1.png" alt="Certification 1" class="img-fluid">
+                </div>
+            </div>
+            
+            <div class="col-md-3 col-6">
+                <div class="certification-item">
+                    <img src="/static/images/certifications/cert2.png" alt="Certification 2" class="img-fluid">
+                </div>
+            </div>
+            
+            <div class="col-md-3 col-6">
+                <div class="certification-item">
+                    <img src="/static/images/certifications/cert3.png" alt="Certification 3" class="img-fluid">
+                </div>
+            </div>
+            
+            <div class="col-md-3 col-6">
+                <div class="certification-item">
+                    <img src="/static/images/certifications/cert4.png" alt="Certification 4" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-content text-center">
+            <h2>Ready to Experience Our Clinic?</h2>
+            <p>Book a consultation with our experts and take the first step towards enhancing your natural beauty</p>
+            <a href="/contact" class="btn-primary">Book Consultation</a>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* About Hero Section */
+    .about-hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/static/images/about/about-hero.jpg');
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 120px 0;
+        text-align: center;
+    }
+    
+    .about-hero h1 {
+        font-size: 48px;
+        margin-bottom: 20px;
+        font-weight: 700;
+    }
+    
+    .about-hero .lead {
+        font-size: 20px;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+    
+    /* Our Story Section */
+    .about-story {
+        padding: 80px 0;
+    }
+    
+    .about-image {
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    
+    .about-content {
+        padding: 0 20px;
+    }
+    
+    .about-content h2 {
+        font-size: 32px;
+        margin-bottom: 25px;
+        position: relative;
+        padding-bottom: 15px;
+    }
+    
+    .about-content h2:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        height: 3px;
+        background-color: #4a4a4a;
+    }
+    
+    .about-content p {
+        margin-bottom: 20px;
+        line-height: 1.8;
+        color: #666;
+    }
+    
+    .about-stats {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40px;
+    }
+    
+    .stat-item {
+        text-align: center;
+    }
+    
+    .stat-number {
+        display: block;
+        font-size: 42px;
+        font-weight: 700;
+        color: #4a4a4a;
+        margin-bottom: 5px;
+    }
+    
+    .stat-text {
+        font-size: 14px;
+        color: #777;
+    }
+    
+    /* Our Values Section */
+    .about-values {
+        padding: 80px 0;
+        background-color: #f9f9f9;
+    }
+    
+    .about-values h2 {
+        margin-bottom: 15px;
+    }
+    
+    .values-intro {
+        margin-bottom: 50px;
+        color: #777;
+    }
+    
+    .values-row {
+        margin-bottom: 30px;
+    }
+    
+    .value-item {
+        text-align: center;
+        padding: 30px 20px;
+        background-color: white;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        margin-bottom: 30px;
+        height: 100%;
+        transition: transform 0.3s ease;
+    }
+    
+    .value-item:hover {
+        transform: translateY(-10px);
+    }
+    
+    .value-icon {
+        font-size: 36px;
+        color: #4a4a4a;
+        margin-bottom: 20px;
+    }
+    
+    .value-item h3 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+    
+    .value-item p {
+        color: #666;
+        line-height: 1.7;
+    }
+    
+    /* Meet Our Team Section */
+    .about-team {
+        padding: 80px 0;
+    }
+    
+    .team-intro {
+        margin-bottom: 50px;
+        color: #777;
+    }
+    
+    .team-member {
+        margin-bottom: 30px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease;
+    }
+    
+    .team-member:hover {
+        transform: translateY(-10px);
+    }
+    
+    .member-image {
+        height: 300px;
+        overflow: hidden;
+    }
+    
+    .member-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+    
+    .team-member:hover .member-image img {
+        transform: scale(1.05);
+    }
+    
+    .member-info {
+        padding: 20px;
+        background-color: white;
+    }
+    
+    .member-info h3 {
+        font-size: 20px;
+        margin-bottom: 5px;
+    }
+    
+    .member-role {
+        color: #4a4a4a;
+        font-weight: 500;
+        margin-bottom: 15px;
+    }
+    
+    .member-bio {
+        color: #666;
+        margin-bottom: 15px;
+        line-height: 1.6;
+    }
+    
+    .read-more {
+        color: #4a4a4a;
+        font-weight: 500;
+        text-decoration: none;
+        position: relative;
+    }
+    
+    .read-more:after {
+        content: '→';
+        margin-left: 5px;
+        transition: margin-left 0.3s ease;
+    }
+    
+    .read-more:hover:after {
+        margin-left: 10px;
+    }
+    
+    /* Modal Styling */
+    .modal-image {
+        width: 150px;
+        height: 150px;
+        margin: 0 auto 20px;
+        overflow: hidden;
+        border-radius: 50%;
+    }
+    
+    .modal-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .modal-body h3 {
+        text-align: center;
+        margin-bottom: 5px;
+    }
+    
+    .modal-body .member-role {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .member-bio-full {
+        line-height: 1.8;
+    }
+    
+    /* Facilities Section */
+    .about-facilities {
+        padding: 80px 0;
+        background-color: #f9f9f9;
+    }
+    
+    .facilities-intro {
+        margin-bottom: 50px;
+        color: #777;
+    }
+    
+    .facility-item {
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 30px;
+        border-radius: 8px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .facility-item img {
+        transition: transform 0.5s ease;
+    }
+    
+    .facility-item:hover img {
+        transform: scale(1.05);
+    }
+    
+    .facility-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));
+        padding: 20px;
+        color: white;
+    }
+    
+    .facility-overlay h3 {
+        margin: 0;
+    }
+    
+    /* Certifications Section */
+    .about-certifications {
+        padding: 80px 0;
+    }
+    
+    .certifications-intro {
+        margin-bottom: 50px;
+        color: #777;
+    }
+    
+    .certification-item {
+        padding: 20px;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    
+    .certification-item img {
+        max-height: 100px;
+        filter: grayscale(100%);
+        transition: filter 0.3s ease;
+    }
+    
+    .certification-item:hover img {
+        filter: grayscale(0%);
+    }
+    
+    /* CTA Section */
+    .cta-section {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/static/images/cta-bg.jpg');
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 80px 0;
+    }
+    
+    .cta-content h2 {
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+    
+    .cta-content p {
+        font-size: 18px;
+        margin-bottom: 30px;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .btn-primary {
+        display: inline-block;
+        padding: 14px 32px;
+        background: #4a4a4a;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+        background: #333;
+        transform: translateY(-3px);
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 991px) {
+        .about-stats {
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .stat-item {
+            margin-bottom: 30px;
+        }
+        
+        .about-content {
+            margin-top: 40px;
+        }
+    }
+    
+    @media (max-width: 767px) {
+        .about-hero h1 {
+            font-size: 36px;
+        }
+        
+        .about-content h2 {
+            font-size: 28px;
+        }
+        
+        .cta-content h2 {
+            font-size: 30px;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize AOS (Animate On Scroll) if available
+        if (typeof AOS !== 'undefined') {
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out'
+            });
+        }
+        
+        // Image lazy loading
+        if ('loading' in HTMLImageElement.prototype) {
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.loading = 'lazy';
+            });
+        }
+    });
+</script>
+{% endblock %} 
