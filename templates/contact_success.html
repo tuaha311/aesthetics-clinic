@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block title %}Message Sent Successfully - Aesthetics Clinic{% endblock %}
+
+{% block content %}
+<div class="min-h-[80vh] flex items-center justify-center bg-gray-50">
+    <div class="max-w-2xl w-full mx-4">
+        <!-- Success Card -->
+        <div class="bg-white rounded-3xl shadow-xl p-8 relative overflow-hidden">
+            <!-- Decorative Elements -->
+            <div class="absolute w-64 h-64 rounded-full bg-purple-100 -top-32 -right-32 z-0"></div>
+            <div class="absolute w-64 h-64 rounded-full bg-pink-100 -bottom-32 -left-32 z-0"></div>
+            
+            <!-- Content -->
+            <div class="relative z-10 text-center">
+                <!-- Success Icon -->
+                <div class="mx-auto w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-6">
+                    <svg class="w-10 h-10 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                </div>
+                
+                <!-- Message -->
+                <h2 class="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                    Thank You!
+                </h2>
+                <p class="text-gray-600 mb-8">
+                    Your message has been sent successfully. Our team will get back to you shortly.
+                </p>
+                
+                <!-- What's Next Section -->
+                <div class="bg-gray-50 rounded-2xl p-6 mb-8">
+                    <h3 class="text-lg font-semibold mb-4 text-gray-800">What's Next?</h3>
+                    <ul class="space-y-3 text-left">
+                        <li class="flex items-center text-gray-600">
+                            <svg class="w-5 h-5 mr-3 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            We'll review your message within 24 hours
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <svg class="w-5 h-5 mr-3 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            You'll receive a confirmation email shortly
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <svg class="w-5 h-5 mr-3 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            Our team will contact you to discuss next steps
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="{% url 'home' %}" 
+                       class="inline-flex items-center justify-center px-6 py-3 border-2 border-purple-600 text-purple-600 rounded-full hover:bg-purple-600 hover:text-white transition-all duration-300">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                        </svg>
+                        Return Home
+                    </a>
+                    <a href="{% url 'treatment_list' %}" 
+                       class="inline-flex items-center justify-center px-6 py-3 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition-all duration-300">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                        </svg>
+                        Explore Treatments
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

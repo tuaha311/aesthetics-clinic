@@ -45,7 +45,12 @@ class BeforeAfterImage(models.Model):
     title = models.CharField(max_length=100)
     before_image = models.ImageField(upload_to='before_after/before/')
     after_image = models.ImageField(upload_to='before_after/after/')
+    patient_age = models.PositiveIntegerField(null=True, blank=True)
+    sessions = models.PositiveIntegerField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    
+    class Meta:
+        ordering = ['-created_at']
     
     def __str__(self):
         return f"{self.treatment.name} - {self.title}"
@@ -84,6 +89,7 @@ class BlogPost(models.Model):
     published_date = models.DateTimeField(default=timezone.now)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    featured = models.BooleanField(default=False, null=True, blank=True)
     
     class Meta:
         ordering = ['-published_date']

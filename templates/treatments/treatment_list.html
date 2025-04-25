@@ -3,165 +3,65 @@
 {% block title %}Treatments - Aesthetics Clinic{% endblock %}
 
 {% block content %}
-    <!-- Treatments Hero -->
-    <section class="page-hero" style="background-image: url('/static/img/treatments-bg.jpg');">
-        <div class="container">
-            <div class="page-hero-content text-center">
-                <h1>Our Treatments</h1>
-                <p>Discover our range of luxury aesthetic treatments</p>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Treatments Filters -->
-    <section class="treatments-filter">
-        <div class="container">
-            <div class="filter-wrap">
-                <div class="filter-buttons">
-                    <a href="{% url 'treatment_list' %}" class="filter-btn {% if not request.GET.category %}active{% endif %}">All Treatments</a>
-                    {% for category_choice in categories %}
-                        <a href="{% url 'treatment_list' %}?category={{ category_choice.0 }}" 
-                           class="filter-btn {% if request.GET.category == category_choice.0 %}active{% endif %}">
-                            {{ category_choice.1 }}
-                        </a>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Treatments List -->
-    <section class="treatments-section">
-        <div class="container">
-            <div class="row">
-                {% for treatment in treatments %}
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="treatment-box">
-                        <div class="treatment-image">
-                            <img src="{{ treatment.image.url }}" alt="{{ treatment.name }}" class="img-fluid">
-                            <div class="treatment-overlay">
-                                <a href="{% url 'treatment_detail' treatment.slug %}" class="btn btn-sm btn-primary">Learn More</a>
-                            </div>
-                        </div>
-                        <div class="treatment-content">
-                            <h3>{{ treatment.name }}</h3>
-                            <p>{{ treatment.description|truncatewords:20 }}</p>
-                            <div class="treatment-meta">
-                                <span><i class="fas fa-clock"></i> {{ treatment.duration }}</span>
-                                <span><i class="fas fa-tag"></i> {{ treatment.price_range }}</span>
-                            </div>
-                            <a href="{% url 'treatment_detail' treatment.slug %}" class="btn btn-outline-primary mt-3">View Details</a>
-                        </div>
-                    </div>
-                </div>
-                {% empty %}
-                <div class="col-12 text-center">
-                    <p>No treatments found in this category. Please check back soon or try a different category.</p>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-    </section>
-    
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-content text-center">
-                <h2>Ready to Transform Your Look?</h2>
-                <p>Book a consultation with our experts today and start your beauty journey</p>
-                <a href="{% url 'contact' %}?booking=true" class="btn btn-lg btn-primary mt-4">Book Your Consultation</a>
-            </div>
-        </div>
-    </section>
-{% endblock %}
+{% load custom_tags %}
 
-{% block extra_css %}
-<style>
-    .treatments-filter {
-        padding: 30px 0;
-        border-bottom: 1px solid var(--border-color);
-    }
-    
-    .filter-buttons {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
-    }
-    
-    .filter-btn {
-        padding: 10px 20px;
-        border: 1px solid var(--primary-color);
-        color: var(--primary-color);
-        text-decoration: none;
-        transition: all 0.3s ease;
-        border-radius: 0;
-    }
-    
-    .filter-btn:hover,
-    .filter-btn.active {
-        background-color: var(--primary-color);
-        color: var(--light-color);
-    }
-    
-    .treatment-box {
-        background-color: var(--light-color);
-        box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
-        margin-bottom: 30px;
-        transition: all 0.3s ease;
-        height: 100%;
-    }
-    
-    .treatment-box:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-    }
-    
-    .treatment-image {
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .treatment-image img {
-        width: 100%;
-        height: 250px;
-        object-fit: cover;
-        transition: all 0.3s ease;
-    }
-    
-    .treatment-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.4);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        opacity: 0;
-        transition: all 0.3s ease;
-    }
-    
-    .treatment-box:hover .treatment-overlay {
-        opacity: 1;
-    }
-    
-    .treatment-content {
-        padding: 25px;
-    }
-    
-    .treatment-content h3 {
-        font-size: 22px;
-        margin-bottom: 15px;
-    }
-    
-    .treatment-meta {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 15px;
-        font-size: 14px;
-        color: var(--dark-gray);
-    }
-</style>
-{% endblock %} 
+{% hero "Our Treatments" "Discover our range of luxury aesthetic treatments" %}
+
+<!-- Gallery Filters -->
+<section class="py-10 bg-light">
+    <div class="container mx-auto">
+        <div class="flex flex-wrap justify-center gap-4">
+            <a href="{% url 'treatment_list' %}" 
+               class="text-center min-w-40 max-w-40{% if not request.GET.category %}inline-block px-8 py-4 bg-white text-purple-900 rounded-full hover:bg-purple-100 transition-all duration-300 border-2 border-black {% else %}inline-block px-8 py-4 border-2 border-dark text-white rounded-full hover:bg-white/10 transition-all duration-300 inset-0 bg-gradient-to-r from-purple-900/70 to-pink-800/50{% endif %}" 
+               data-filter="all">
+               All Treatments
+            </a>
+            {% for category in categories %}
+                {% with category_slug=category|slugify %}
+                <a href="{% url 'treatment_list' %}?category={{ category.1|upper }}" 
+                   class="text-center min-w-40 max-w-40{% if request.GET.category == category_slug %}inline-block px-8 py-4 bg-white text-black rounded-full hover:bg-purple-100 transition-all duration-300 border-2 border-black {% else %}inline-block px-8 py-4 border-2 border-dark text-white rounded-full hover:bg-white/10 transition-all duration-300 inset-0 bg-gradient-to-r from-purple-900/70 to-pink-800/50{% endif %}" 
+                   data-filter="{{ category_slug }}">
+                    {{ category.1 }}
+                </a>
+                {% endwith %}
+            {% endfor %}
+        </div>                   
+    </div>
+</section>
+
+<!-- Treatments Grid -->
+<section class="py-16">
+  <div class="container mx-auto px-4">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {% for treatment in treatments %}
+      <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-all">
+        <div class="relative group">
+          <img src="{{ treatment.image.url }}" alt="{{ treatment.name }}" class="w-full h-64 object-cover">
+          <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+            <a href="{% url 'treatment_detail' treatment.slug %}" class="bg-white text-gray-900 font-semibold px-4 py-2 rounded-md hover:bg-gray-200 transition">Learn More</a>
+          </div>
+        </div>
+        <div class="p-6 flex flex-col justify-between h-full">
+          <div>
+            <h3 class="text-xl font-semibold mb-2">{{ treatment.name }}</h3>
+            <p class="text-gray-600 mb-4">{{ treatment.description|truncatewords:20 }}</p>
+          </div>
+          <div class="flex justify-between text-sm text-gray-500 mb-4">
+            <span><i class="fas fa-clock mr-1"></i>{{ treatment.duration }}</span>
+            <span><i class="fas fa-tag mr-1"></i>{{ treatment.price_range }}</span>
+          </div>
+          <a href="{% url 'treatment_detail' treatment.slug %}" class="inline-block border border-gray-800 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-900 hover:text-white transition">View Details</a>
+        </div>
+      </div>
+      {% empty %}
+      <div class="col-span-full text-center text-gray-500">
+        <p>No treatments found in this category. Please check back soon or try a different category.</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+{% cta %}
+{% endblock %}

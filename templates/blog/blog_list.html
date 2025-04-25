@@ -3,13 +3,9 @@
 {% block title %}Blog | Aesthetics Clinic{% endblock %}
 
 {% block content %}
-<!-- Blog Hero Section -->
-<section class="blog-hero">
-    <div class="container">
-        <h1>Our Blog</h1>
-        <p class="lead">Insights, tips, and news from the world of aesthetics</p>
-    </div>
-</section>
+{% load custom_tags %}
+
+    {% hero "Our Blog" "Insights, tips, and news from the world of aesthetics" %}
 
 <!-- Featured Post Section -->
 {% if featured_post %}

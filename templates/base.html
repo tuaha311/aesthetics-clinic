@@ -5,484 +5,455 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Aesthetics Clinic{% endblock %}</title>
     
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#fdf4e7',
+                            100: '#fbe9d0',
+                            200: '#f7d3a1',
+                            300: '#f3bd72',
+                            400: '#efa743',
+                            500: '#eb9114',
+                            600: '#bc7410',
+                            700: '#8d570c',
+                            800: '#5e3a08',
+                            900: '#2f1d04',
+                        },
+                        secondary: {
+                            50: '#f5f7fa',
+                            100: '#ebeef5',
+                            200: '#d7deeb',
+                            300: '#c3cde1',
+                            400: '#afbdd7',
+                            500: '#9baccd',
+                            600: '#7c8aa4',
+                            700: '#5d677b',
+                            800: '#3e4552',
+                            900: '#1f2229',
+                        },
+                    },
+                    fontFamily: {
+                        'playfair': ['"Playfair Display"', 'serif'],
+                        'body': ['"Inter"', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
     
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Custom CSS -->
+    <!-- AOS Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
     <style>
-        /* Main Color Palette */
-        :root {
-            --primary-color: #d4af7a;
-            --secondary-color: #f0e6dd;
-            --text-color: #333333;
-            --light-color: #ffffff;
-            --gray-color: #f8f8f8;
-            --dark-gray: #666666;
-            --border-color: #e0e0e0;
-        }
-        
-        /* Typography */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    
         body {
-            font-family: 'Montserrat', sans-serif;
-            color: var(--text-color);
-            line-height: 1.7;
-            font-size: 16px;
-            font-weight: 300;
-            overflow-x: hidden;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #fdf7fd 0%, #f0e6ff 100%);
         }
         
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 600;
-            color: var(--text-color);
+        .funky-gradient {
+        background: linear-gradient(45deg, #ff6b6b, #6b47ff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
         }
         
-        /* Buttons */
-        .btn {
-            padding: 12px 30px;
-            border-radius: 0;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            font-size: 14px;
-            letter-spacing: 1px;
+        .funky-bg {
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
         }
         
-        .btn-primary {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-            color: var(--light-color);
+        .funky-border {
+        border-image-slice: 1;
+        border-image-source: linear-gradient(to right, #6366f1, #ec4899);
         }
         
-        .btn-primary:hover {
-            background-color: #c2a069;
-            border-color: #c2a069;
+        .funky-input:focus {
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
         }
         
-        .btn-outline-primary {
-            border-color: var(--primary-color);
-            color: var(--primary-color);
-        }
-        
-        .btn-outline-primary:hover {
-            background-color: var(--primary-color);
-            color: var(--light-color);
-        }
-        
-        /* Header */
-        .site-header {
-            position: relative;
-            z-index: 100;
-        }
-        
-        .top-bar {
-            background-color: var(--primary-color);
-            padding: 10px 0;
-            color: var(--light-color);
-        }
-        
-        .contact-info span, 
-        .social-links a {
-            margin-right: 20px;
-            font-size: 14px;
-        }
-        
-        .social-links a {
-            color: var(--light-color);
-            transition: all 0.3s ease;
-        }
-        
-        .navbar {
-            background-color: var(--light-color);
-            padding: 20px 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-        }
-        
-        .navbar-brand h1 {
-            margin: 0;
-            font-size: 28px;
-            color: var(--primary-color);
-        }
-        
-        .nav-link {
-            color: var(--text-color);
-            font-weight: 500;
-            padding: 10px 15px !important;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-link:hover,
-        .nav-link.active {
-            color: var(--primary-color);
-        }
-        
-        /* Hero Sections */
-        .page-hero {
-            position: relative;
-            height: 400px;
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-        }
-        
-        .page-hero::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-        }
-        
-        .page-hero-content {
-            position: relative;
-            z-index: 2;
-            color: var(--light-color);
-        }
-        
-        .page-hero-content h1 {
-            font-size: 48px;
-            margin-bottom: 15px;
-            color: var(--light-color);
-        }
-        
-        /* Sections */
-        section {
-            padding: 80px 0;
-        }
-        
-        .section-header {
-            margin-bottom: 60px;
-        }
-        
-        .section-header h2 {
-            font-size: 36px;
-            position: relative;
-            padding-bottom: 15px;
-            margin-bottom: 15px;
-        }
-        
-        .section-header h2::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 2px;
-            background-color: var(--primary-color);
-        }
-        
-        .text-center .section-header h2::after {
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        /* CTA Section */
-        .cta-section {
-            background-color: var(--secondary-color);
-            padding: 80px 0;
-        }
-        
-        .cta-content h2 {
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
-        
-        /* Footer */
-        .site-footer {
-            background-color: #222222;
-            color: #999999;
-            padding: 80px 0 0;
-        }
-        
-        .footer-widget h3,
-        .footer-widget h4 {
-            color: var(--light-color);
-            margin-bottom: 25px;
-            position: relative;
-            padding-bottom: 15px;
-        }
-        
-        .footer-widget h3::after,
-        .footer-widget h4::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 2px;
-            background-color: var(--primary-color);
-        }
-        
-        .footer-links {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-links a {
-            color: #999999;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        
-        .footer-links a:hover {
-            color: var(--primary-color);
-            text-decoration: none;
-            padding-left: 5px;
-        }
-        
-        .footer-bottom {
-            padding: 20px 0;
-            margin-top: 60px;
-            border-top: 1px solid #333333;
-        }
-        
-        /* WhatsApp & Back to Top */
-        .whatsapp-button,
-        .back-to-top {
-            position: fixed;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: var(--primary-color);
-            color: var(--light-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            z-index: 99;
-            transition: all 0.3s ease;
-        }
-        
-        .whatsapp-button {
-            right: 20px;
-            bottom: 80px;
-        }
-        
-        .back-to-top {
-            right: 20px;
-            bottom: 20px;
-            opacity: 0;
-            visibility: hidden;
-        }
-        
-        .back-to-top.show {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .whatsapp-button a {
-            color: var(--light-color);
-            font-size: 24px;
+        .blob {
+        position: absolute;
+        z-index: -1;
+        filter: blur(70px);
+        opacity: 0.4;
         }
     </style>
-    
     {% block extra_css %}{% endblock %}
+</head>
+<body class="font-body bg-white text-gray-800">
+    <!-- Background blobs -->
+    <div class="blob bg-purple-500 w-96 h-96 rounded-full -top-48 -left-48"></div>
+    <div class="blob bg-pink-500 w-96 h-96 rounded-full bottom-0 right-0"></div>
+    <div class="blob bg-blue-500 w-64 h-64 rounded-full top-1/2 left-1/3"></div>
+    
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Funky Header</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Righteous&display=swap');
+    
+    body {
+      font-family: 'Quicksand', sans-serif;
+    }
+    
+    .brand-font {
+      font-family: 'Righteous', cursive;
+    }
+    
+    .funky-gradient {
+      background: linear-gradient(45deg, #ff6b6b, #6b47ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .funky-bg {
+      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+    }
+    
+    .glow-effect {
+      box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
+    }
+    
+    /* Animated underline effect */
+    .nav-link {
+      position: relative;
+      padding-bottom: 4px;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background: linear-gradient(to right, #6366f1, #ec4899);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    .nav-link.active::after {
+      width: 100%;
+    }
+    
+    /* Neon animation */
+    @keyframes neon-pulse {
+      0% { box-shadow: 0 0 5px rgba(139, 92, 246, 0.7), 0 0 10px rgba(139, 92, 246, 0.5); }
+      50% { box-shadow: 0 0 10px rgba(139, 92, 246, 0.9), 0 0 20px rgba(139, 92, 246, 0.7); }
+      100% { box-shadow: 0 0 5px rgba(139, 92, 246, 0.7), 0 0 10px rgba(139, 92, 246, 0.5); }
+    }
+    
+    .neon-effect {
+      animation: neon-pulse 2s infinite;
+    }
+    
+    /* Sparkle animation for icons */
+    @keyframes sparkle {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.2); opacity: 0.8; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    
+    .social-icon:hover {
+      animation: sparkle 0.5s ease;
+    }
+
+    .brand-font {
+    font-family: 'Righteous', cursive;
+    }
+    
+    .funky-gradient {
+    background: linear-gradient(45deg, #ff6b6b, #6b47ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    }
+    
+    .funky-bg {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+    }
+    
+    .glow-effect {
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
+    }
+    
+    /* Animated underline effect */
+    .nav-link {
+    position: relative;
+    padding-bottom: 4px;
+    transition: all 0.3s ease;
+    }
+    
+    .nav-link::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(to right, #6366f1, #ec4899);
+    transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after {
+    width: 100%;
+    }
+    
+    .nav-link.active::after {
+    width: 100%;
+    }
+    
+    /* Neon animation */
+    @keyframes neon-pulse {
+    0% { box-shadow: 0 0 5px rgba(139, 92, 246, 0.7), 0 0 10px rgba(139, 92, 246, 0.5); }
+    50% { box-shadow: 0 0 10px rgba(139, 92, 246, 0.9), 0 0 20px rgba(139, 92, 246, 0.7); }
+    100% { box-shadow: 0 0 5px rgba(139, 92, 246, 0.7), 0 0 10px rgba(139, 92, 246, 0.5); }
+    }
+    
+    .neon-effect {
+    animation: neon-pulse 2s infinite;
+    }
+    
+    /* Sparkle animation for icons */
+    @keyframes sparkle {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+    }
+    
+    .social-icon:hover {
+    animation: sparkle 0.5s ease;
+    }
+  </style>
 </head>
 <body>
     <!-- Header -->
-    <header class="site-header">
-        <div class="top-bar">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-6">
-                        <div class="contact-info">
-                            <span><i class="fas fa-phone"></i> +123 456 7890</span>
-                            <span><i class="fas fa-envelope"></i> info@aestheticsclinic.com</span>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="social-links float-end">
-                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        </div>
-                    </div>
-                </div>
+    <header class="relative z-50">
+        <!-- Top Bar with wavy design -->
+        <div class="funky-bg relative py-3 overflow-hidden">
+        <div class="absolute inset-0" style="background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxNHB4IiB2aWV3Qm94PSIwIDAgMTI4MCAxNDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0iI2ZmZmZmZiI+PHBhdGggZD0iTTAgNTEuNzZjMzYuMjEtMi4yNSA3Ny41Ny0zLjU4IDEyNi40Mi0zLjU4IDMyMCAwIDMyMCA1NyA2NDAgNTcgMjcxLjE1IDAgMzEyLjU4LTQwLjkxIDUxMy41OC01My40VjBIMFoiIGZpbGwtb3BhY2l0eT0iLjMiLz48cGF0aCBkPSJNMCA5OS4xYzM2LjIxIDMgNzcuNTcgNC4zNCAxMjYuNDIgNC4zNCAzMjAgMCAzMjAtNTcgNjQwLTU3IDI3MS4xNSAwIDMxMi41OCA0OC41NyA1MTMuNTggNzIuNjNWMEgwWiIgZmlsbC1vcGFjaXR5PSIuNSIvPjxwYXRoIGQ9Ik0wIDAgMTI4MCAwaDB2NjMuNzktNjMuNzl6Ii8+PC9nPjwvc3ZnPg=='); background-size: 100% 100%; opacity: 0.15;"></div>
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap justify-between items-center">
+            <div class="flex items-center space-x-6 text-sm text-white">
+                <span class="flex items-center hover:scale-105 transition-transform">
+                <i class="fas fa-phone mr-2 rotate-12"></i>
+                +123 456 7890
+                </span>
+                <span class="flex items-center hover:scale-105 transition-transform">
+                <i class="fas fa-envelope mr-2 rotate-6"></i>
+                info@aestheticsclinic.com
+                </span>
+            </div>
+            <div class="flex items-center space-x-5">
+                <a href="#" class="social-icon text-white text-lg hover:text-white hover:scale-125 transition-all duration-300">
+                <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="social-icon text-white text-lg hover:text-white hover:scale-125 transition-all duration-300">
+                <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="social-icon text-white text-lg hover:text-white hover:scale-125 transition-all duration-300">
+                <i class="fab fa-twitter"></i>
+                </a>
+            </div>
             </div>
         </div>
-        
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <div class="container">
-                <a class="navbar-brand" href="/">
-                    <h1>Aesthetics</h1>
-                </a>
-                
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" 
-                        aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+        </div>
+          
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-24">
+            <!-- Logo with animation -->
+            <a href="/" class="brand-font text-4xl font-bold funky-gradient transform transition-transform hover:scale-105">
+                Aesthetics
+            </a>
+            
+            <!-- Mobile menu button -->
+            <button type="button" class="lg:hidden bg-purple-100 p-2 rounded-full" aria-label="Toggle menu">
+                <i class="fas fa-bars text-purple-600 text-2xl"></i>
+            </button>
+            
+            <!-- Desktop Navigation -->
+            <div class="hidden lg:flex items-center space-x-8">
+                <a href="/" class="nav-link active text-lg hover:text-purple-600 font-medium">Home</a>
+                <div class="relative group">
+                <button class="nav-link text-lg flex items-center hover:text-purple-600 font-medium">
+                    Treatments
+                    <i class="fas fa-chevron-down ml-2 text-xs group-hover:rotate-180 transition-transform duration-300"></i>
                 </button>
-                
-                <div class="collapse navbar-collapse" id="navbarContent">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="/">Home</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle {% if 'treatments' in request.path %}active{% endif %}" 
-                               href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Treatments
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{% url 'treatment_list' %}">All Treatments</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="{% url 'treatment_list' %}?category=FACE">Face Treatments</a></li>
-                                <li><a class="dropdown-item" href="{% url 'treatment_list' %}?category=BODY">Body Treatments</a></li>
-                                <li><a class="dropdown-item" href="{% url 'treatment_list' %}?category=INJECTABLES">Injectables</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {% if request.path == '/about/' %}active{% endif %}" href="/about/">About Us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {% if request.path == '/gallery/' %}active{% endif %}" href="/gallery/">Gallery</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {% if 'blog' in request.path %}active{% endif %}" href="/blog/">Blog</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {% if request.path == '/contact/' %}active{% endif %}" href="/contact/">Contact</a>
-                        </li>
+                <div class="absolute left-0 mt-2 w-60 rounded-2xl shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 overflow-hidden">
+                    <div class="h-1 funky-bg"></div>
+                    <ul class="py-3">
+                    <li><a class="block px-6 py-2 hover:bg-purple-50 hover:text-purple-600 transition-colors" href="{% url 'treatment_list' %}">All Treatments</a></li>
+                    <li><hr class="my-1 mx-4 border-gray-100"></li>
+                    <li><a class="block px-6 py-2 hover:bg-purple-50 hover:text-purple-600 transition-colors" href="{% url 'treatment_list' %}?category=FACE">Face Treatments</a></li>
+                    <li><a class="block px-6 py-2 hover:bg-purple-50 hover:text-purple-600 transition-colors" href="{% url 'treatment_list' %}?category=BODY">Body Treatments</a></li>
+                    <li><a class="block px-6 py-2 hover:bg-purple-50 hover:text-purple-600 transition-colors" href="{% url 'treatment_list' %}?category=INJECTABLES">Injectables</a></li>
                     </ul>
-                    <div class="header-btns ms-lg-3">
-                        <a href="/contact/?booking=true" class="btn btn-primary">Book Consultation</a>
-                    </div>
                 </div>
+                </div>
+                <a href="/about/" class="nav-link text-lg hover:text-purple-600 font-medium">About Us</a>
+                <a href="/gallery/" class="nav-link text-lg hover:text-purple-600 font-medium">Gallery</a>
+                <a href="/blog/" class="nav-link text-lg hover:text-purple-600 font-medium">Blog</a>
+                <a href="/contact/" class="nav-link text-lg hover:text-purple-600 font-medium">Contact</a>
             </div>
+            
+            <a href="/contact/?booking=true" 
+                class="hidden lg:inline-flex items-center px-8 py-3 funky-bg text-white rounded-full hover:opacity-90 transition-colors transform hover:-translate-y-1 transition-transform duration-300 neon-effect">
+                <span class="mr-2">Book Consultation</span>
+                <i class="fas fa-calendar-check"></i>
+            </a>
+            </div>
+        </div>
         </nav>
     </header>
-    
+
     <!-- Main Content -->
     <main>
         {% block content %}{% endblock %}
     </main>
-    
+
     <!-- Footer -->
-    <footer class="site-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+    <footer class="bg-gray-900 text-gray-400 pt-16">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap -mx-4">
+                <div class="w-full md:w-1/2 lg:w-1/4 px-4 mb-8 lg:mb-0">
                     <div class="footer-widget">
-                        <h3>Aesthetics</h3>
+                        <h3 class="text-white text-xl font-semibold mb-4">Aesthetics</h3>
                         <p>Your premier destination for high-quality aesthetic treatments and skin care solutions. We combine medical expertise with luxury for results you'll love.</p>
-                        <div class="social-links mt-3">
-                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <div class="flex space-x-4 mt-4">
+                            <a href="#" class="hover:text-white transition-colors">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="hover:text-white transition-colors">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="hover:text-white transition-colors">
+                                <i class="fab fa-twitter"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
                 
-                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                <div class="w-full md:w-1/2 lg:w-1/4 px-4 mb-8 lg:mb-0">
                     <div class="footer-widget">
-                        <h4>Quick Links</h4>
-                        <ul class="footer-links">
-                            <li><a href="/">Home</a></li>
-                            <li><a href="/about/">About Us</a></li>
-                            <li><a href="{% url 'treatment_list' %}">Treatments</a></li>
-                            <li><a href="/gallery/">Gallery</a></li>
-                            <li><a href="/blog/">Blog</a></li>
-                            <li><a href="/contact/">Contact</a></li>
+                        <h4 class="text-white text-lg font-semibold mb-4">Quick Links</h4>
+                        <ul class="space-y-2">
+                            <li><a href="/" class="hover:text-white transition-colors">Home</a></li>
+                            <li><a href="/about/" class="hover:text-white transition-colors">About Us</a></li>
+                            <li><a href="{% url 'treatment_list' %}" class="hover:text-white transition-colors">Treatments</a></li>
+                            <li><a href="/gallery/" class="hover:text-white transition-colors">Gallery</a></li>
+                            <li><a href="/blog/" class="hover:text-white transition-colors">Blog</a></li>
+                            <li><a href="/contact/" class="hover:text-white transition-colors">Contact</a></li>
                         </ul>
                     </div>
                 </div>
                 
-                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                <div class="w-full md:w-1/2 lg:w-1/4 px-4 mb-8 lg:mb-0">
                     <div class="footer-widget">
-                        <h4>Treatments</h4>
-                        <ul class="footer-links">
-                            <li><a href="{% url 'treatment_list' %}?category=FACE">Face Treatments</a></li>
-                            <li><a href="{% url 'treatment_list' %}?category=BODY">Body Treatments</a></li>
-                            <li><a href="{% url 'treatment_list' %}?category=INJECTABLES">Injectables</a></li>
+                        <h4 class="text-white text-lg font-semibold mb-4">Treatments</h4>
+                        <ul class="space-y-2">
+                            <li><a href="{% url 'treatment_list' %}?category=FACE" class="hover:text-white transition-colors">Face Treatments</a></li>
+                            <li><a href="{% url 'treatment_list' %}?category=BODY" class="hover:text-white transition-colors">Body Treatments</a></li>
+                            <li><a href="{% url 'treatment_list' %}?category=INJECTABLES" class="hover:text-white transition-colors">Injectables</a></li>
                         </ul>
                     </div>
                 </div>
                 
-                <div class="col-lg-3 col-md-6">
+                <div class="w-full md:w-1/2 lg:w-1/4 px-4">
                     <div class="footer-widget">
-                        <h4>Contact Us</h4>
-                        <div class="contact-info">
-                            <p><i class="fas fa-map-marker-alt"></i> 123 Beauty Lane, Suite 100<br>Aesthetic City, AC 12345</p>
-                            <p><i class="fas fa-phone"></i> +123 456 7890</p>
-                            <p><i class="fas fa-envelope"></i> info@aestheticsclinic.com</p>
-                            <p><i class="fas fa-clock"></i> Mon-Fri: 9am-7pm <br> Sat: 10am-5pm</p>
+                        <h4 class="text-white text-lg font-semibold mb-4">Contact Us</h4>
+                        <div class="space-y-2">
+                            <p class="flex items-center">
+                                <i class="fas fa-map-marker-alt mr-2"></i>
+                                123 Beauty Lane, Suite 100<br>Aesthetic City, AC 12345
+                            </p>
+                            <p class="flex items-center">
+                                <i class="fas fa-phone mr-2"></i>
+                                +123 456 7890
+                            </p>
+                            <p class="flex items-center">
+                                <i class="fas fa-envelope mr-2"></i>
+                                info@aestheticsclinic.com
+                            </p>
+                            <p class="flex items-center">
+                                <i class="fas fa-clock mr-2"></i>
+                                Mon-Fri: 9am-7pm <br> Sat: 10am-5pm
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="footer-bottom">
-                <div class="row">
-                    <div class="col-md-6">
-                        <p>&copy; {% now "Y" %} Aesthetics Clinic. All Rights Reserved.</p>
-                    </div>
-                    <div class="col-md-6">
-                        <ul class="footer-bottom-links list-inline text-end">
-                            <li class="list-inline-item"><a href="/privacy-policy/">Privacy Policy</a></li>
-                            <li class="list-inline-item"><a href="/terms-of-service/">Terms of Service</a></li>
-                        </ul>
-                    </div>
+            <div class="border-t border-gray-700 mt-8 pt-8">
+                <div class="flex flex-wrap justify-between items-center">
+                    <p class="text-sm">&copy; {% now "Y" %} Aesthetics Clinic. All Rights Reserved.</p>
+                    <ul class="flex space-x-4 text-sm">
+                        <li><a href="/privacy-policy/" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="/terms-of-service/" class="hover:text-white transition-colors">Terms of Service</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
     </footer>
-    
-    <!-- WhatsApp Button -->
-    <div class="whatsapp-button">
-        <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer">
-            <i class="fab fa-whatsapp"></i>
+
+    <!-- Floating Action Buttons -->
+    <div class="fixed right-4 bottom-4 space-y-4 z-50">
+        <a href="https://wa.me/1234567890" 
+           class="flex items-center justify-center w-12 h-12 bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors">
+            <i class="fab fa-whatsapp text-xl"></i>
         </a>
+        <button id="back-to-top" 
+                class="flex items-center justify-center w-12 h-12 bg-primary-500 text-white rounded-full hover:bg-primary-600 transition-all opacity-0 invisible">
+            <i class="fas fa-chevron-up"></i>
+        </button>
     </div>
-    
-    <!-- Back to Top Button -->
-    <div id="back-to-top" class="back-to-top">
-        <i class="fas fa-chevron-up"></i>
-    </div>
-    
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    
-    <!-- Custom JS -->
+
     <script>
-        // Back to Top Button
-        const backToTopBtn = document.getElementById('back-to-top');
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+
+        // Back to top functionality
+        const backToTop = document.getElementById('back-to-top');
         
-        if (backToTopBtn) {
-            window.addEventListener('scroll', function() {
-                if (window.pageYOffset > 300) {
-                    backToTopBtn.classList.add('show');
-                } else {
-                    backToTopBtn.classList.remove('show');
-                }
-            });
-            
-            backToTopBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        }
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.classList.remove('opacity-0', 'invisible');
+            } else {
+                backToTop.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
     </script>
     
     {% block extra_js %}{% endblock %}
 </body>
-</html> 
+</html>

@@ -3,213 +3,140 @@
 {% block title %}Gallery - Aesthetics Clinic{% endblock %}
 
 {% block content %}
-    <!-- Gallery Hero -->
-    <section class="gallery-hero">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h1>Our Gallery</h1>
-                    <p class="lead">See the stunning results of our aesthetic treatments</p>
-                </div>
-            </div>
-        </div>
-    </section>
+{% load custom_tags %}
+
+    {% hero "Our Gallery" "See the stunning results of our aesthetic treatments" %}
 
     <!-- Gallery Filters -->
-    <section class="gallery-filters">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="filter-container">
-                        <button class="btn filter-btn active" data-filter="all">All</button>
-                        <button class="btn filter-btn" data-filter="facial">Facial Treatments</button>
-                        <button class="btn filter-btn" data-filter="body">Body Treatments</button>
-                        <button class="btn filter-btn" data-filter="skin">Skin Rejuvenation</button>
-                        <button class="btn filter-btn" data-filter="lip">Lip Fillers</button>
-                        <button class="btn filter-btn" data-filter="botox">Botox</button>
-                    </div>
-                </div>
-            </div>
+    <section class="py-10 bg-light">
+        <div class="container mx-auto">
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="{% url 'gallery' %}" 
+                   class="text-center min-w-40 max-w-40{% if not request.GET.category %}inline-block px-8 py-4 bg-white text-purple-900 rounded-full hover:bg-purple-100 transition-all duration-300 border-2 border-black {% else %}inline-block px-8 py-4 border-2 border-dark text-white rounded-full hover:bg-white/10 transition-all duration-300 inset-0 bg-gradient-to-r from-purple-900/70 to-pink-800/50{% endif %}" 
+                   data-filter="all">
+                    All
+                </a>
+                {% for category in categories %}
+                    {% with category_slug=category|slugify %}
+                    <a href="{% url 'gallery' %}?category={{ category_slug }}" 
+                       class="text-center min-w-40 max-w-40{% if request.GET.category == category_slug %}inline-block px-8 py-4 bg-white text-black rounded-full hover:bg-purple-100 transition-all duration-300 border-2 border-black {% else %}inline-block px-8 py-4 border-2 border-dark text-white rounded-full hover:bg-white/10 transition-all duration-300 inset-0 bg-gradient-to-r from-purple-900/70 to-pink-800/50{% endif %}" 
+                       data-filter="{{ category_slug }}">
+                        {{ category|title }}
+                    </a>
+                    {% endwith %}
+                {% endfor %}
+            </div>                   
         </div>
     </section>
 
     <!-- Gallery Grid -->
-    <section class="gallery-grid">
-        <div class="container">
-            <div class="row gallery-row">
-                <!-- Item 1 -->
-                <div class="col-md-4 gallery-item facial" data-category="facial">
-                    <div class="gallery-item-inner">
-                        <div class="before-after-container">
-                            <img src="/static/img/gallery/facial-before-1.jpg" alt="Before Facial Treatment" class="before-img">
-                            <img src="/static/img/gallery/facial-after-1.jpg" alt="After Facial Treatment" class="after-img">
-                            <div class="slider-handle"></div>
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="gallery-grid">
+                {% for image in before_after_images %}
+                <div class="gallery-item group" data-category="{{ image.treatment.category|lower }}" data-aos="fade-up" data-aos-delay="{{ forloop.counter }}">
+                    <div class="relative bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl">
+                        <div class="relative h-[400px] cursor-grab before-after-container">
+                            <img src="{{ image.before_image.url }}" 
+                                 alt="Before {{ image.title }}" 
+                                 class="absolute inset-0 w-full h-full object-cover before-img">
+                            <img src="{{ image.after_image.url }}" 
+                                 alt="After {{ image.title }}" 
+                                 class="absolute inset-0 w-full h-full object-cover after-img">
+                            <div class="absolute inset-y-0 left-1/2 w-0.5 bg-white transform -translate-x-1/2 slider-handle">
+                                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-purple-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4"></path>
+                                    </svg>
+                                </div>
+                            </div>
                         </div>
-                        <div class="gallery-caption">
-                            <h3>Facial Rejuvenation</h3>
-                            <p>Age: 42 | Sessions: 3</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Item 2 -->
-                <div class="col-md-4 gallery-item body" data-category="body">
-                    <div class="gallery-item-inner">
-                        <div class="before-after-container">
-                            <img src="/static/img/gallery/body-before-1.jpg" alt="Before Body Treatment" class="before-img">
-                            <img src="/static/img/gallery/body-after-1.jpg" alt="After Body Treatment" class="after-img">
-                            <div class="slider-handle"></div>
-                        </div>
-                        <div class="gallery-caption">
-                            <h3>Body Contouring</h3>
-                            <p>Age: 35 | Sessions: 5</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Item 3 -->
-                <div class="col-md-4 gallery-item skin" data-category="skin">
-                    <div class="gallery-item-inner">
-                        <div class="before-after-container">
-                            <img src="/static/img/gallery/skin-before-1.jpg" alt="Before Skin Treatment" class="before-img">
-                            <img src="/static/img/gallery/skin-after-1.jpg" alt="After Skin Treatment" class="after-img">
-                            <div class="slider-handle"></div>
-                        </div>
-                        <div class="gallery-caption">
-                            <h3>Skin Rejuvenation</h3>
-                            <p>Age: 38 | Sessions: 2</p>
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-xl font-semibold text-gray-900">{{ image.title }}</h3>
+                                <span class="px-3 py-1 text-sm font-medium text-purple-600 bg-purple-50 rounded-full">
+                                    {{ image.treatment.name }}
+                                </span>
+                            </div>
+                            <div class="flex justify-between text-sm text-gray-500">
+                                {% if image.patient_age %}
+                                <span>Age: {{ image.patient_age }}</span>
+                                {% endif %}
+                                {% if image.sessions %}
+                                <span>Sessions: {{ image.sessions }}</span>
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Item 4 -->
-                <div class="col-md-4 gallery-item lip" data-category="lip">
-                    <div class="gallery-item-inner">
-                        <div class="before-after-container">
-                            <img src="/static/img/gallery/lip-before-1.jpg" alt="Before Lip Filler" class="before-img">
-                            <img src="/static/img/gallery/lip-after-1.jpg" alt="After Lip Filler" class="after-img">
-                            <div class="slider-handle"></div>
-                        </div>
-                        <div class="gallery-caption">
-                            <h3>Lip Enhancement</h3>
-                            <p>Age: 29 | Sessions: 1</p>
-                        </div>
-                    </div>
+                {% empty %}
+                <div class="col-span-full text-center py-20">
+                    <p class="text-gray-500">No before/after images available at the moment.</p>
                 </div>
-                
-                <!-- Item 5 -->
-                <div class="col-md-4 gallery-item botox" data-category="botox">
-                    <div class="gallery-item-inner">
-                        <div class="before-after-container">
-                            <img src="/static/img/gallery/botox-before-1.jpg" alt="Before Botox" class="before-img">
-                            <img src="/static/img/gallery/botox-after-1.jpg" alt="After Botox" class="after-img">
-                            <div class="slider-handle"></div>
-                        </div>
-                        <div class="gallery-caption">
-                            <h3>Forehead Botox</h3>
-                            <p>Age: 45 | Sessions: 1</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Item 6 -->
-                <div class="col-md-4 gallery-item facial" data-category="facial">
-                    <div class="gallery-item-inner">
-                        <div class="before-after-container">
-                            <img src="/static/img/gallery/facial-before-2.jpg" alt="Before Facial Treatment" class="before-img">
-                            <img src="/static/img/gallery/facial-after-2.jpg" alt="After Facial Treatment" class="after-img">
-                            <div class="slider-handle"></div>
-                        </div>
-                        <div class="gallery-caption">
-                            <h3>Complete Facial</h3>
-                            <p>Age: 31 | Sessions: 4</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- You can add more items following the same pattern -->
+                {% endfor %}
             </div>
-            
-            <!-- Load More Button -->
-            <div class="row">
-                <div class="col-12 text-center mt-5">
-                    <button class="btn btn-primary load-more-btn">Load More</button>
-                </div>
+
+            {% if before_after_images.has_next %}
+            <div class="text-center mt-12">
+                <button id="load-more" 
+                        class="px-8 py-3 bg-white border-2 border-purple-900 text-purple-900 rounded-full hover:bg-purple-900 hover:text-white transition-all duration-300"
+                        data-page="{{ before_after_images.number }}"
+                        data-total="{{ before_after_images.paginator.num_pages }}">
+                    Load More Results
+                </button>
             </div>
+            {% endif %}
         </div>
     </section>
     
     <!-- Gallery Testimonials -->
-    <section class="gallery-testimonials">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center">
-                    <h2>Client Testimonials</h2>
-                    <p class="section-subtitle">What our clients say about their results</p>
-                </div>
+    <section class="py-20 bg-gradient-to-br from-purple-100 via-pink-100 to-yellow-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-purple-900 mb-2">Client Testimonials</h2>
+                <p class="text-lg text-purple-600">What our clients say about their results</p>
             </div>
-            
-            <div class="row testimonial-slider">
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Testimonial 1 -->
-                <div class="col-md-4">
-                    <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            <p>"After just 3 sessions of the facial rejuvenation treatment, I noticed a significant improvement in my skin's texture and appearance. The staff was professional and made me feel comfortable throughout the process."</p>
-                        </div>
-                        <div class="testimonial-author">
-                            <div class="author-info">
-                                <h4>Sarah Johnson</h4>
-                                <p>Facial Rejuvenation</p>
-                            </div>
-                        </div>
+                <div class="bg-white p-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border-l-8 border-purple-400">
+                    <div class="text-purple-800 italic mb-4">
+                        “After just 3 sessions of the facial rejuvenation treatment, I noticed a significant improvement in my skin's texture and appearance. The staff was professional and made me feel comfortable throughout the process.”
+                    </div>
+                    <div class="mt-4">
+                        <h4 class="text-lg font-semibold text-purple-900">Sarah Johnson</h4>
+                        <p class="text-sm text-purple-500">Facial Rejuvenation</p>
                     </div>
                 </div>
-                
+
                 <!-- Testimonial 2 -->
-                <div class="col-md-4">
-                    <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            <p>"I was hesitant about getting lip fillers, but the team at Aesthetics Clinic made me feel at ease. The results are natural-looking and exactly what I wanted. I couldn't be happier!"</p>
-                        </div>
-                        <div class="testimonial-author">
-                            <div class="author-info">
-                                <h4>Emma Davis</h4>
-                                <p>Lip Enhancement</p>
-                            </div>
-                        </div>
+                <div class="bg-white p-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border-l-8 border-pink-400">
+                    <div class="text-pink-800 italic mb-4">
+                        “I was hesitant about getting lip fillers, but the team at Aesthetics Clinic made me feel at ease. The results are natural-looking and exactly what I wanted. I couldn't be happier!”
+                    </div>
+                    <div class="mt-4">
+                        <h4 class="text-lg font-semibold text-pink-900">Emma Davis</h4>
+                        <p class="text-sm text-pink-500">Lip Enhancement</p>
                     </div>
                 </div>
-                
+
                 <!-- Testimonial 3 -->
-                <div class="col-md-4">
-                    <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            <p>"The body contouring treatment has transformed my confidence. After having children, I struggled with areas that wouldn't respond to diet and exercise. Now I feel like myself again!"</p>
-                        </div>
-                        <div class="testimonial-author">
-                            <div class="author-info">
-                                <h4>Michelle Thompson</h4>
-                                <p>Body Contouring</p>
-                            </div>
-                        </div>
+                <div class="bg-white p-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border-l-8 border-yellow-400">
+                    <div class="text-yellow-800 italic mb-4">
+                        “The body contouring treatment has transformed my confidence. After having children, I struggled with areas that wouldn't respond to diet and exercise. Now I feel like myself again!”
+                    </div>
+                    <div class="mt-4">
+                        <h4 class="text-lg font-semibold text-yellow-900">Michelle Thompson</h4>
+                        <p class="text-sm text-yellow-600">Body Contouring</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
+
     <!-- CTA Section -->
-    <section class="gallery-cta">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 mx-auto text-center">
-                    <h2>Ready to Transform?</h2>
-                    <p>Book your consultation today and discover what our treatments can do for you</p>
-                    <a href="/contact?booking=true" class="btn btn-primary">Book Consultation</a>
-                </div>
-            </div>
-        </div>
-    </section>
+    {% cta %}
+
 {% endblock %}
 
 {% block extra_css %}
@@ -446,100 +373,69 @@
 
 {% block extra_js %}
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Before-After Slider Functionality
-        const beforeAfterContainers = document.querySelectorAll('.before-after-container');
-        
-        beforeAfterContainers.forEach(container => {
-            const afterImg = container.querySelector('.after-img');
-            const sliderHandle = container.querySelector('.slider-handle');
-            let isDown = false;
-            
-            // Mouse events
-            container.addEventListener('mousedown', () => {
-                isDown = true;
-            });
-            
-            window.addEventListener('mouseup', () => {
-                isDown = false;
-            });
-            
-            container.addEventListener('mousemove', (e) => {
-                if (!isDown) return;
-                const rect = container.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const percent = Math.max(0, Math.min(100, x / rect.width * 100));
-                
-                afterImg.style.clipPath = `polygon(${percent}% 0, 100% 0, 100% 100%, ${percent}% 100%)`;
-                sliderHandle.style.left = `${percent}%`;
-            });
-            
-            // Touch events for mobile
-            container.addEventListener('touchstart', () => {
-                isDown = true;
-            });
-            
-            window.addEventListener('touchend', () => {
-                isDown = false;
-            });
-            
-            container.addEventListener('touchmove', (e) => {
-                if (!isDown) return;
-                const rect = container.getBoundingClientRect();
-                const x = e.touches[0].clientX - rect.left;
-                const percent = Math.max(0, Math.min(100, x / rect.width * 100));
-                
-                afterImg.style.clipPath = `polygon(${percent}% 0, 100% 0, 100% 100%, ${percent}% 100%)`;
-                sliderHandle.style.left = `${percent}%`;
-            });
+    document.addEventListener('DOMContentLoaded', function () {
+        // Before-after slider
+        document.querySelectorAll('.before-after-container').forEach(container => {
+        const afterImg = container.querySelector('.after-img');
+        const sliderHandle = container.querySelector('.slider-handle');
+        let isDown = false;
+    
+        const moveSlider = (x, rect) => {
+            const percent = Math.max(0, Math.min(100, ((x - rect.left) / rect.width) * 100));
+            afterImg.style.clipPath = `polygon(${percent}% 0, 100% 0, 100% 100%, ${percent}% 100%)`;
+            sliderHandle.style.left = `${percent}%`;
+        }
+    
+        container.addEventListener('mousedown', () => isDown = true);
+        window.addEventListener('mouseup', () => isDown = false);
+        container.addEventListener('mousemove', e => {
+            if (!isDown) return;
+            moveSlider(e.clientX, container.getBoundingClientRect());
         });
-        
-        // Gallery Filtering
+    
+        container.addEventListener('touchstart', () => isDown = true);
+        window.addEventListener('touchend', () => isDown = false);
+        container.addEventListener('touchmove', e => {
+            if (!isDown) return;
+            moveSlider(e.touches[0].clientX, container.getBoundingClientRect());
+        });
+        });
+    
+        // Filter functionality
         const filterBtns = document.querySelectorAll('.filter-btn');
         const galleryItems = document.querySelectorAll('.gallery-item');
-        
+    
         filterBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                // Update active class
-                filterBtns.forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                
-                const filter = this.getAttribute('data-filter');
-                
-                galleryItems.forEach(item => {
-                    if (filter === 'all' || item.classList.contains(filter)) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
+        btn.addEventListener('click', function () {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+    
+            const filter = this.getAttribute('data-filter');
+            galleryItems.forEach(item => {
+            item.style.display = (filter === 'all' || item.classList.contains(filter)) ? 'block' : 'none';
             });
         });
-        
-        // Load More Button (Simulated functionality)
+        });
+    
+        // Load More Simulation
         const loadMoreBtn = document.querySelector('.load-more-btn');
         let clickCount = 0;
-        
-        loadMoreBtn.addEventListener('click', function() {
-            clickCount++;
-            if (clickCount >= 2) {
-                this.textContent = 'No More Results';
-                this.disabled = true;
-                return;
+        loadMoreBtn.addEventListener('click', function () {
+        clickCount++;
+        if (clickCount >= 2) {
+            this.textContent = 'No More Results';
+            this.disabled = true;
+            return;
+        }
+        const galleryRow = document.querySelector('.gallery-row');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        for (let i = 0; i < 3; i++) {
+            if (galleryItems[i]) {
+            const clone = galleryItems[i].cloneNode(true);
+            galleryRow.appendChild(clone);
             }
-            
-            // In a real application, this would load more images from the server
-            // For demo purposes, we'll just show a message
-            const galleryRow = document.querySelector('.gallery-row');
-            
-            // Clone the first 6 items to simulate loading more
-            for (let i = 0; i < 3; i++) {
-                if (galleryItems[i]) {
-                    const clone = galleryItems[i].cloneNode(true);
-                    galleryRow.appendChild(clone);
-                }
-            }
+        }
         });
     });
 </script>
-{% endblock %} 
+{% endblock %}

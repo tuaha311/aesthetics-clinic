@@ -4,248 +4,230 @@
 
 {% block content %}
     <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="hero-slider">
-            <div class="hero-slide" style="background-image: url('/static/img/hero-bg.jpg');">
-                <div class="container">
-                    <div class="hero-content">
-                        <h1>Enhance Your Natural Beauty</h1>
-                        <p>Experience the perfect blend of science and luxury at our premium aesthetics clinic</p>
-                        <div class="hero-buttons">
-                            <a href="{% url 'treatment_list' %}" class="btn btn-primary">Explore Treatments</a>
-                            <a href="{% url 'contact' %}?booking=true" class="btn btn-outline-light">Book Consultation</a>
-                        </div>
+    <section class="relative h-[50vh]">
+        <div class="absolute inset-0">
+            <div class="absolute inset-0 bg-gradient-to-r from-purple-900/70 to-pink-800/50" style="    border-radius: 500px 0;"></div>
+        </div>
+        <div class="relative h-full flex items-center">
+            <div class="container mx-auto px-4">
+                <div class="max-w-3xl" data-aos="fade-up">
+                    <h1 class="text-5xl md:text-6xl font-serif text-white mb-6 leading-tight">Enhance Your Natural Beauty</h1>
+                    <p class="text-xl text-gray-200 mb-8">Experience the perfect blend of science and luxury at our premium aesthetics clinic</p>
+                    <div class="space-x-4">
+                        <a href="{% url 'treatment_list' %}" class="inline-block px-8 py-4 bg-white text-purple-900 rounded-full hover:bg-purple-100 transition-all duration-300">
+                            Explore Treatments
+                        </a>
+                        <a href="{% url 'contact' %}?booking=true" class="inline-block px-8 py-4 border-2 border-white text-white rounded-full hover:bg-white/10 transition-all duration-300">
+                            Book Consultation
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
+
     <!-- Features Section -->
-    <section class="features-section">
-        <div class="container">
-            <div class="section-header text-center">
-                <h2>Our Featured Treatments</h2>
-                <p>Discover our most popular aesthetic treatments</p>
+    <section class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-serif text-gray-900 mb-4">Our Featured Treatments</h2>
+                <p class="text-lg text-gray-600">Discover our most popular aesthetic treatments</p>
             </div>
             
-            <div class="row">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {% for treatment in featured_treatments %}
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="feature-box">
-                        <div class="feature-image">
-                            <img src="{{ treatment.image.url }}" alt="{{ treatment.name }}" class="img-fluid">
-                            <div class="feature-overlay">
-                                <a href="{% url 'treatment_detail' treatment.slug %}" class="btn btn-sm btn-primary">Learn More</a>
-                            </div>
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg transition-transform duration-300 hover:-translate-y-2" data-aos="fade-up" data-aos-delay="{{ forloop.counter }}">
+                    <div class="aspect-w-3 aspect-h-4">
+                        <img src="{{ treatment.image.url }}" alt="{{ treatment.name }}" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-purple-900/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                        <h3 class="text-2xl font-serif mb-2">{{ treatment.name }}</h3>
+                        <p class="text-gray-200 mb-4">{{ treatment.description|truncatewords:15 }}</p>
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="flex items-center"><i class="fas fa-clock mr-2"></i>{{ treatment.duration }}</span>
+                            <span class="flex items-center"><i class="fas fa-tag mr-2"></i>{{ treatment.price_range }}</span>
                         </div>
-                        <div class="feature-content">
-                            <h3>{{ treatment.name }}</h3>
-                            <p>{{ treatment.description|truncatewords:15 }}</p>
-                            <div class="feature-meta">
-                                <span><i class="fas fa-clock"></i> {{ treatment.duration }}</span>
-                                <span><i class="fas fa-tag"></i> {{ treatment.price_range }}</span>
-                            </div>
-                        </div>
+                        <a href="{% url 'treatment_detail' treatment.slug %}" class="inline-block mt-4 px-6 py-2 bg-white text-purple-900 rounded-full hover:bg-purple-100 transition-all duration-300">
+                            Learn More
+                        </a>
                     </div>
                 </div>
                 {% empty %}
-                <div class="col-12 text-center">
-                    <p>No featured treatments available at the moment. Please check back soon!</p>
+                <div class="col-span-full text-center">
+                    <p class="text-gray-600">No featured treatments available at the moment. Please check back soon!</p>
                 </div>
                 {% endfor %}
             </div>
-            
-            <div class="text-center mt-4">
-                <a href="{% url 'treatment_list' %}" class="btn btn-outline-primary">View All Treatments</a>
-            </div>
         </div>
     </section>
-    
-    <!-- About Section -->
-    <section class="about-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div class="about-content">
-                        <h2>About Our Clinic</h2>
-                        <p>Welcome to Aesthetics Clinic, where art meets science to enhance your natural beauty. We offer a comprehensive range of cutting-edge, non-surgical aesthetic treatments in a luxurious and welcoming environment.</p>
-                        <p>Our team of highly qualified practitioners combines medical expertise with an artistic eye to deliver exceptional results that look natural and enhance your individual beauty.</p>
-                        <a href="{% url 'about' %}" class="btn btn-primary">Learn More About Us</a>
-                    </div>
+
+    <!-- About Section with parallax -->
+    <section class="py-20 relative overflow-hidden">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="relative" data-aos="fade-right">
+                    <div class="absolute inset-0 -left-4 -top-4 bg-purple-200 rounded-2xl"></div>
+                    <img src="/static/img/about-image.jpg" alt="About Our Clinic" class="relative rounded-2xl shadow-lg w-full h-[600px] object-cover">
                 </div>
-                <div class="col-lg-6">
-                    <div class="about-image">
-                        <img src="/static/img/about-image.jpg" alt="About Our Clinic" class="img-fluid">
-                    </div>
+                <div data-aos="fade-left">
+                    <h2 class="text-4xl font-serif text-gray-900 mb-6">About Our Clinic</h2>
+                    <p class="text-lg text-gray-600 mb-6">Welcome to Aesthetics Clinic, where art meets science to enhance your natural beauty. We offer a comprehensive range of cutting-edge, non-surgical aesthetic treatments in a luxurious and welcoming environment.</p>
+                    <p class="text-lg text-gray-600 mb-8">Our team of highly qualified practitioners combines medical expertise with an artistic eye to deliver exceptional results that look natural and enhance your individual beauty.</p>
+                    <a href="{% url 'about' %}" class="inline-block px-8 py-4 bg-purple-900 text-white rounded-full hover:bg-purple-800 transition-all duration-300">
+                        Learn More About Us
+                    </a>
                 </div>
             </div>
         </div>
     </section>
-    
+
     <!-- Testimonials Section -->
-    <section class="testimonials-section">
-        <div class="container">
-            <div class="section-header text-center">
-                <h2>Client Testimonials</h2>
-                <p>See what our clients say about their experience</p>
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold text-gray-800">Client Testimonials</h2>
+        <p class="mt-2 text-gray-600">See what our clients say about their experience</p>
+    
+        <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {% for testimonial in testimonials %}
+            <div class="bg-white rounded-2xl shadow-lg p-6">
+            <div class="text-indigo-500 text-3xl mb-4">
+                <i class="fas fa-quote-left"></i>
             </div>
-            
-            <div class="testimonial-slider">
-                {% for testimonial in testimonials %}
-                <div class="testimonial-item">
-                    <div class="testimonial-content">
-                        <div class="quote">
-                            <i class="fas fa-quote-left"></i>
-                        </div>
-                        <p>{{ testimonial.quote }}</p>
-                        <div class="client-info">
-                            {% if testimonial.image %}
-                            <img src="{{ testimonial.image.url }}" alt="{{ testimonial.name }}" class="client-image">
-                            {% endif %}
-                            <div class="client-details">
-                                <h4>{{ testimonial.name }}</h4>
-                                {% if testimonial.treatment %}
-                                <p>{{ testimonial.treatment.name }}</p>
-                                {% endif %}
-                            </div>
-                        </div>
-                    </div>
+            <p class="text-gray-700">{{ testimonial.quote }}</p>
+            <div class="mt-6 flex items-center gap-4">
+                {% if testimonial.image %}
+                <img src="{{ testimonial.image.url }}" alt="{{ testimonial.name }}" class="w-12 h-12 rounded-full object-cover">
+                {% endif %}
+                <div class="text-left">
+                <h4 class="text-gray-900 font-semibold">{{ testimonial.name }}</h4>
+                {% if testimonial.treatment %}
+                <p class="text-gray-500 text-sm">{{ testimonial.treatment.name }}</p>
+                {% endif %}
                 </div>
-                {% empty %}
-                <div class="testimonial-item">
-                    <div class="testimonial-content">
-                        <div class="quote">
-                            <i class="fas fa-quote-left"></i>
-                        </div>
-                        <p>We're currently collecting testimonials from our satisfied clients. Check back soon for real stories!</p>
-                        <div class="client-info">
-                            <div class="client-details">
-                                <h4>Aesthetics Team</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
             </div>
-            
-            <div class="text-center mt-4">
-                <a href="{% url 'testimonial_list' %}" class="btn btn-outline-primary">View All Testimonials</a>
             </div>
+            {% empty %}
+            <div class="bg-white rounded-2xl shadow-lg p-6 col-span-full">
+            <div class="text-indigo-500 text-3xl mb-4">
+                <i class="fas fa-quote-left"></i>
+            </div>
+            <p class="text-gray-700">We're currently collecting testimonials from our satisfied clients. Check back soon for real stories!</p>
+            <div class="mt-6 text-left">
+                <h4 class="text-gray-900 font-semibold">Aesthetics Team</h4>
+            </div>
+            </div>
+            {% endfor %}
+        </div>
+    
+        <div class="mt-10">
+            <a href="{% url 'testimonial_list' %}" class="inline-block px-6 py-3 text-indigo-600 border border-indigo-600 rounded-full hover:bg-indigo-600 hover:text-white transition">View All Testimonials</a>
+        </div>
         </div>
     </section>
     
     <!-- Team Section -->
-    <section class="team-section">
-        <div class="container">
-            <div class="section-header text-center">
-                <h2>Meet Our Team</h2>
-                <p>Our experts are here to help you look and feel your best</p>
-            </div>
-            
-            <div class="row">
-                {% for member in team_members %}
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="team-member">
-                        <div class="member-image">
-                            <img src="{{ member.image.url }}" alt="{{ member.name }}" class="img-fluid">
-                            <div class="member-social">
-                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="#"><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                        <div class="member-info">
-                            <h3>{{ member.name }}</h3>
-                            <p class="member-role">{{ member.role }}</p>
-                            <p class="member-bio">{{ member.bio|truncatewords:20 }}</p>
-                        </div>
-                    </div>
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold text-gray-800">Meet Our Team</h2>
+        <p class="mt-2 text-gray-600">Our experts are here to help you look and feel your best</p>
+    
+        <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {% for member in team_members %}
+            <div class="bg-gray-50 rounded-2xl shadow-md overflow-hidden">
+            <div class="relative">
+                <img src="{{ member.image.url }}" alt="{{ member.name }}" class="w-full h-64 object-cover">
+                <div class="absolute bottom-4 left-4 flex gap-2">
+                <a href="#" class="text-white bg-blue-600 p-2 rounded-full hover:bg-blue-700"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="text-white bg-pink-500 p-2 rounded-full hover:bg-pink-600"><i class="fab fa-instagram"></i></a>
                 </div>
-                {% empty %}
-                <div class="col-12 text-center">
-                    <p>Our team information is coming soon. Check back for updates!</p>
-                </div>
-                {% endfor %}
             </div>
-            
-            <div class="text-center mt-4">
-                <a href="{% url 'about' %}" class="btn btn-outline-primary">Meet Our Full Team</a>
+            <div class="p-6 text-left">
+                <h3 class="text-xl font-semibold text-gray-900">{{ member.name }}</h3>
+                <p class="text-indigo-500 font-medium">{{ member.role }}</p>
+                <p class="text-gray-600 mt-2">{{ member.bio|truncatewords:20 }}</p>
             </div>
+            </div>
+            {% empty %}
+            <div class="col-span-full text-center">
+            <p class="text-gray-600">Our team information is coming soon. Check back for updates!</p>
+            </div>
+            {% endfor %}
+        </div>
+    
+        <div class="mt-10">
+            <a href="{% url 'about' %}" class="inline-block px-6 py-3 text-indigo-600 border border-indigo-600 rounded-full hover:bg-indigo-600 hover:text-white transition">Meet Our Full Team</a>
+        </div>
         </div>
     </section>
     
     <!-- Blog Section -->
-    <section class="blog-section">
-        <div class="container">
-            <div class="section-header text-center">
-                <h2>Latest from Our Blog</h2>
-                <p>Tips, treatments, and beauty insights</p>
-            </div>
-            
-            <div class="row">
-                {% for post in latest_posts %}
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="blog-card">
-                        <div class="blog-image">
-                            <a href="{% url 'blog_detail' post.slug %}">
-                                <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" class="img-fluid">
-                            </a>
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-meta">
-                                <span><i class="far fa-calendar"></i> {{ post.published_date|date:"F d, Y" }}</span>
-                                <span><i class="far fa-user"></i> {{ post.author.get_full_name|default:post.author.username }}</span>
-                            </div>
-                            <h3><a href="{% url 'blog_detail' post.slug %}">{{ post.title }}</a></h3>
-                            <p>{{ post.excerpt|default:post.content|truncatewords:15 }}</p>
-                            <a href="{% url 'blog_detail' post.slug %}" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold text-gray-800">Latest from Our Blog</h2>
+        <p class="mt-2 text-gray-600">Tips, treatments, and beauty insights</p>
+    
+        <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {% for post in latest_posts %}
+            <div class="bg-white rounded-2xl shadow-md overflow-hidden">
+            <a href="{% url 'blog_detail' post.slug %}">
+                <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" class="w-full h-56 object-cover">
+            </a>
+            <div class="p-6 text-left">
+                <div class="text-sm text-gray-500 flex items-center justify-between">
+                <span><i class="far fa-calendar mr-1"></i> {{ post.published_date|date:"F d, Y" }}</span>
+                <span><i class="far fa-user mr-1"></i> {{ post.author.get_full_name|default:post.author.username }}</span>
                 </div>
-                {% empty %}
-                <div class="col-12 text-center">
-                    <p>Our blog posts are coming soon. Check back for beauty tips and insights!</p>
-                </div>
-                {% endfor %}
+                <h3 class="mt-2 text-lg font-semibold text-gray-900">
+                <a href="{% url 'blog_detail' post.slug %}">{{ post.title }}</a>
+                </h3>
+                <p class="mt-2 text-gray-600">{{ post.excerpt|default:post.content|truncatewords:15 }}</p>
+                <a href="{% url 'blog_detail' post.slug %}" class="mt-4 inline-block text-indigo-600 hover:underline">Read More <i class="fas fa-arrow-right ml-1"></i></a>
             </div>
-            
-            <div class="text-center mt-4">
-                <a href="{% url 'blog_list' %}" class="btn btn-outline-primary">View All Posts</a>
             </div>
+            {% empty %}
+            <div class="col-span-full text-center">
+            <p class="text-gray-600">Our blog posts are coming soon. Check back for beauty tips and insights!</p>
+            </div>
+            {% endfor %}
+        </div>
+    
+        <div class="mt-10">
+            <a href="{% url 'blog_list' %}" class="inline-block px-6 py-3 text-indigo-600 border border-indigo-600 rounded-full hover:bg-indigo-600 hover:text-white transition">View All Posts</a>
+        </div>
         </div>
     </section>
     
     <!-- Newsletter Section -->
-    <section class="newsletter-section">
-        <div class="container">
-            <div class="newsletter-content">
-                <div class="row align-items-center">
-                    <div class="col-lg-6">
-                        <h2>Subscribe to Our Newsletter</h2>
-                        <p>Stay updated with our latest treatments, special offers, and beauty tips</p>
-                    </div>
-                    <div class="col-lg-6">
-                        <form class="newsletter-form" action="#" method="post">
-                            {% csrf_token %}
-                            <div class="input-group">
-                                <input type="email" class="form-control" placeholder="Your Email Address" required>
-                                <button class="btn btn-primary" type="submit">Subscribe</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+    <section class="py-20 inset-0 bg-gradient-to-r from-purple-900/70 to-pink-800/50 text-white">
+        <div class="max-w-7xl mx-auto px-4">
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+            <div>
+            <h2 class="text-3xl font-bold">Subscribe to Our Newsletter</h2>
+            <p class="mt-2 text-indigo-100">Stay updated with our latest treatments, special offers, and beauty tips</p>
             </div>
+            <div>
+            <form action="#" method="post" class="flex w-full max-w-md mx-auto md:mx-0">
+                {% csrf_token %}
+                <input type="email" class="w-full px-4 py-3 rounded-l-full text-gray-800" placeholder="Your Email Address" required>
+                <button type="submit" class="bg-white text-indigo-600 px-6 py-3 rounded-r-full font-semibold hover:bg-gray-100 transition">Subscribe</button>
+            </form>
+            </div>
+        </div>
         </div>
     </section>
     
     <!-- Booking Section -->
-    <section class="booking-section">
-        <div class="container">
-            <div class="booking-content text-center">
-                <h2>Ready to Transform Your Look?</h2>
-                <p>Book a consultation with our experts today and start your beauty journey</p>
-                <a href="{% url 'contact' %}?booking=true" class="btn btn-lg btn-primary mt-4">Book Your Consultation</a>
-            </div>
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto text-center px-4">
+        <h2 class="text-3xl font-bold text-gray-800">Ready to Transform Your Look?</h2>
+        <p class="mt-4 text-gray-600">Book a consultation with our experts today and start your beauty journey</p>
+        <a href="/contact/?booking=true" 
+                class="hidden mt-7 lg:inline-flex items-center px-8 py-3 funky-bg text-white rounded-full hover:opacity-90 transition-colors transform hover:-translate-y-1 transition-transform duration-300 neon-effect">
+                <span class="mr-2">Book Consultation</span>
+                <i class="fas fa-calendar-check"></i>
+            </a>
         </div>
     </section>
-{% endblock %} 
+  
+{% endblock %}

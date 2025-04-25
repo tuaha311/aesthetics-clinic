@@ -3,6 +3,7 @@ from django.views.generic import ListView, DetailView, CreateView, TemplateView
 from django.contrib import messages
 from django.urls import reverse_lazy
 from django.db.models import Q
+from django.core.paginator import Paginator
 
 from .models import Treatment, TeamMember, Testimonial, BlogPost, BeforeAfterImage, Contact
 from .forms import ContactForm
@@ -62,18 +63,20 @@ class AboutView(TemplateView):
 class GalleryView(ListView):
     model = BeforeAfterImage
     template_name = 'gallery.html'
-    context_object_name = 'images'
+    context_object_name = 'before_after_images'
+    paginate_by = 9
     
     def get_queryset(self):
-        queryset = BeforeAfterImage.objects.all()
+        queryset = BeforeAfterImage.objects.select_related('treatment').all()
         category = self.request.GET.get('category')
-        if category:
-            queryset = queryset.filter(treatment__category=category)
+        if category and category != 'all':
+            queryset = queryset.filter(treatment__category__iexact=category)
         return queryset
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['categories'] = Treatment.CATEGORY_CHOICES
+        context['categories'] = Treatment.objects.values_list('category', flat=True).distinct()
+        context['treatment_categories'] = Treatment.CATEGORY_CHOICES
         return context
 
 class TestimonialListView(ListView):
@@ -128,8 +131,13 @@ class ContactView(CreateView):
     success_url = reverse_lazy('contact_success')
     
     def form_valid(self, form):
+        response = super().form_valid(form)
         messages.success(self.request, "Your message has been sent successfully! We'll be in touch soon.")
-        return super().form_valid(form)
+        return response
+    
+    def form_invalid(self, form):
+        messages.error(self.request, "There was an error with your submission. Please check the form and try again.")
+        return super().form_invalid(form)
 
 class ContactSuccessView(TemplateView):
     template_name = 'contact_success.html'
@@ -142,7 +150,7 @@ def search_view(request):
     ) if query else []
     
     posts = BlogPost.objects.filter(
-        Q(title__icontains=query) | Q(content__icontains=query)
+        Q(title__icontains=query) | Q(content__icontains(query))
     ) if query else []
     
     context = {

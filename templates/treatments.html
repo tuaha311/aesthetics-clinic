@@ -1,414 +1,183 @@
 {% extends 'base.html' %}
 
-{% block title %}Our Treatments | Aesthetics Clinic{% endblock %}
+{% block title %}Luxury Aesthetic Treatments | Aesthetics Clinic{% endblock %}
 
 {% block content %}
-<section class="treatments-hero">
-    <div class="container">
-        <h1>Our Treatments</h1>
-        <p class="lead">Discover our range of advanced aesthetic treatments designed to enhance your natural beauty</p>
+<!-- Hero Section with Parallax -->
+<section class="relative h-[60vh] overflow-hidden">
+    <div class="absolute inset-0">
+        <img src="/static/images/treatments-hero.jpg" alt="Treatments" 
+             class="w-full h-full object-cover object-center scale-110 transform motion-safe:animate-subtle-zoom">
+        <div class="absolute inset-0 bg-gradient-to-r from-purple-900/80 via-purple-800/70 to-pink-800/60"></div>
     </div>
-</section>
-
-<section class="treatment-categories">
-    <div class="container">
-        <div class="category-nav">
-            <button class="category-btn active" data-category="all">All Treatments</button>
-            <button class="category-btn" data-category="facial">Facial</button>
-            <button class="category-btn" data-category="body">Body</button>
-            <button class="category-btn" data-category="skin">Skin</button>
-            <button class="category-btn" data-category="lip">Lip</button>
-            <button class="category-btn" data-category="botox">Botox</button>
+    <div class="relative h-full flex items-center justify-center text-center">
+        <div class="max-w-3xl px-4">
+            <h1 class="text-4xl md:text-6xl font-serif text-white mb-6" data-aos="fade-up">
+                Discover Our Premium Treatmentss
+            </h1>
+            <p class="text-lg md:text-xl text-gray-200 mb-8" data-aos="fade-up" data-aos-delay="100">
+                Experience the perfect harmony of science and luxury in our carefully curated treatments
+            </p>
         </div>
     </div>
 </section>
 
-<section class="treatments-list">
-    <div class="container">
-        <div class="treatments-grid">
-            <!-- Facial Treatments -->
-            <div class="treatment-item" data-category="facial">
-                <div class="treatment-image">
-                    <img src="/static/images/treatments/facial-fillers.jpg" alt="Facial Fillers">
-                </div>
-                <div class="treatment-details">
-                    <h3>Facial Fillers</h3>
-                    <p>Restore volume and reduce the appearance of fine lines with our premium dermal fillers.</p>
-                    <div class="treatment-meta">
-                        <span class="duration"><i class="fas fa-clock"></i> 30-45 min</span>
-                        <span class="price"><i class="fas fa-tag"></i> From £250</span>
+<!-- Floating Category Filter -->
+<div class="sticky top-20 z-30 bg-white/80 backdrop-blur-lg shadow-md py-4 transition-all duration-300">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-nowrap overflow-x-auto gap-3 pb-2 md:justify-center md:flex-wrap scrollbar-hide">
+            <button class="category-btn active min-w-[120px] bg-purple-900 text-white px-6 py-2.5 rounded-full hover:bg-purple-800 transition-all" 
+                    data-category="all">
+                All Treatments
+            </button>
+            {% for category in categories %}
+            <button class="category-btn min-w-[120px] bg-white border border-purple-200 text-purple-900 px-6 py-2.5 rounded-full hover:bg-purple-50 transition-all" 
+                    data-category="{{ category.slug }}">
+                {{ category.name }}
+            </button>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!-- Treatments Grid -->
+<section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="treatmentsGrid">
+            {% for treatment in treatments %}
+            <div class="treatment-item group" data-category="{{ treatment.category }}" data-aos="fade-up" data-aos-delay="{{ forloop.counter|multiply:100 }}">
+                <div class="relative overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:shadow-2xl">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="{{ treatment.image_url }}" 
+                             alt="{{ treatment.name }}" 
+                             class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-purple-900/90 via-purple-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
-                    <a href="/treatments/facial-fillers" class="btn-treatment">Learn More</a>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-semibold text-gray-900">{{ treatment.name }}</h3>
+                            <span class="text-sm font-medium text-purple-600 bg-purple-50 px-3 py-1 rounded-full">
+                                {{ treatment.category }}
+                            </span>
+                        </div>
+                        <p class="text-gray-600 mb-4">{{ treatment.description|truncatewords:20 }}</p>
+                        <div class="flex items-center justify-between text-sm text-gray-500 mb-6">
+                            <span class="flex items-center">
+                                <i class="far fa-clock mr-2"></i>{{ treatment.duration }}
+                            </span>
+                            <span class="flex items-center">
+                                <i class="far fa-gem mr-2"></i>{{ treatment.price }}
+                            </span>
+                        </div>
+                        <a href="{{ treatment.link }}" 
+                           class="block w-full text-center bg-white border-2 border-purple-900 text-purple-900 px-6 py-2.5 rounded-full hover:bg-purple-900 hover:text-white transition-all duration-300">
+                            Learn More
+                        </a>
+                    </div>
                 </div>
             </div>
-            
-            <div class="treatment-item" data-category="facial">
-                <div class="treatment-image">
-                    <img src="/static/images/treatments/face-lift.jpg" alt="Non-Surgical Face Lift">
-                </div>
-                <div class="treatment-details">
-                    <h3>Non-Surgical Face Lift</h3>
-                    <p>Achieve a more youthful appearance without surgery using advanced thread lift techniques.</p>
-                    <div class="treatment-meta">
-                        <span class="duration"><i class="fas fa-clock"></i> 60 min</span>
-                        <span class="price"><i class="fas fa-tag"></i> From £450</span>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Treatment Process -->
+<section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-serif text-center mb-16">Your Treatment Journey</h2>
+        <div class="relative">
+            <div class="hidden md:block absolute top-1/2 left-0 right-0 h-0.5 bg-purple-100 -translate-y-1/2"></div>
+            <div class="grid md:grid-cols-3 gap-8">
+                {% for step in treatment_steps %}
+                <div class="relative" data-aos="fade-up" data-aos-delay="{{ forloop.counter|multiply:100 }}">
+                    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+                        <div class="w-16 h-16 mx-auto bg-purple-900 text-white rounded-full flex items-center justify-center text-2xl font-bold mb-6">
+                            {{ forloop.counter }}
+                        </div>
+                        <h3 class="text-xl font-semibold text-center mb-4">{{ step.title }}</h3>
+                        <p class="text-gray-600 text-center">{{ step.description }}</p>
                     </div>
-                    <a href="/treatments/non-surgical-face-lift" class="btn-treatment">Learn More</a>
                 </div>
-            </div>
-            
-            <!-- Body Treatments -->
-            <div class="treatment-item" data-category="body">
-                <div class="treatment-image">
-                    <img src="/static/images/treatments/body-contouring.jpg" alt="Body Contouring">
-                </div>
-                <div class="treatment-details">
-                    <h3>Body Contouring</h3>
-                    <p>Sculpt and define your body with our non-invasive body contouring treatments.</p>
-                    <div class="treatment-meta">
-                        <span class="duration"><i class="fas fa-clock"></i> 45-60 min</span>
-                        <span class="price"><i class="fas fa-tag"></i> From £350</span>
-                    </div>
-                    <a href="/treatments/body-contouring" class="btn-treatment">Learn More</a>
-                </div>
-            </div>
-            
-            <!-- Skin Treatments -->
-            <div class="treatment-item" data-category="skin">
-                <div class="treatment-image">
-                    <img src="/static/images/treatments/chemical-peel.jpg" alt="Chemical Peel">
-                </div>
-                <div class="treatment-details">
-                    <h3>Chemical Peel</h3>
-                    <p>Reveal fresher, younger-looking skin with our customized chemical peel treatments.</p>
-                    <div class="treatment-meta">
-                        <span class="duration"><i class="fas fa-clock"></i> 30 min</span>
-                        <span class="price"><i class="fas fa-tag"></i> From £120</span>
-                    </div>
-                    <a href="/treatments/chemical-peel" class="btn-treatment">Learn More</a>
-                </div>
-            </div>
-            
-            <!-- Lip Treatments -->
-            <div class="treatment-item" data-category="lip">
-                <div class="treatment-image">
-                    <img src="/static/images/treatments/lip-enhancement.jpg" alt="Lip Enhancement">
-                </div>
-                <div class="treatment-details">
-                    <h3>Lip Enhancement</h3>
-                    <p>Achieve fuller, more defined lips with our specialized lip filler treatments.</p>
-                    <div class="treatment-meta">
-                        <span class="duration"><i class="fas fa-clock"></i> 30 min</span>
-                        <span class="price"><i class="fas fa-tag"></i> From £200</span>
-                    </div>
-                    <a href="/treatments/lip-enhancement" class="btn-treatment">Learn More</a>
-                </div>
-            </div>
-            
-            <!-- Botox Treatments -->
-            <div class="treatment-item" data-category="botox">
-                <div class="treatment-image">
-                    <img src="/static/images/treatments/botox.jpg" alt="Botox">
-                </div>
-                <div class="treatment-details">
-                    <h3>Anti-Wrinkle Injections</h3>
-                    <p>Reduce fine lines and wrinkles with our premium botox treatments.</p>
-                    <div class="treatment-meta">
-                        <span class="duration"><i class="fas fa-clock"></i> 20-30 min</span>
-                        <span class="price"><i class="fas fa-tag"></i> From £180</span>
-                    </div>
-                    <a href="/treatments/anti-wrinkle-injections" class="btn-treatment">Learn More</a>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
 </section>
 
-<section class="treatment-process">
-    <div class="container">
-        <h2>Our Treatment Process</h2>
-        <div class="process-steps">
-            <div class="process-step">
-                <div class="step-number">1</div>
-                <h3>Consultation</h3>
-                <p>Begin with a thorough consultation to understand your needs and develop a personalized treatment plan.</p>
-            </div>
-            <div class="process-step">
-                <div class="step-number">2</div>
-                <h3>Treatment</h3>
-                <p>Experience our advanced aesthetic procedures performed by our expert clinicians.</p>
-            </div>
-            <div class="process-step">
-                <div class="step-number">3</div>
-                <h3>Aftercare</h3>
-                <p>Receive comprehensive aftercare advice and follow-up support to ensure optimal results.</p>
-            </div>
-        </div>
+<!-- Booking CTA -->
+<section class="relative py-20 overflow-hidden">
+    <div class="absolute inset-0">
+        <img src="/static/images/booking-bg.jpg" alt="Booking" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-purple-900/90"></div>
+    </div>
+    <div class="relative container mx-auto px-4 text-center">
+        <h2 class="text-3xl md:text-4xl font-serif text-white mb-6">Ready to Begin Your Transformation?</h2>
+        <p class="text-lg text-gray-200 mb-8 max-w-2xl mx-auto">
+            Book a consultation with our experts and discover the perfect treatment plan for you
+        </p>
+        <a href="{% url 'booking' %}" 
+           class="inline-block bg-white text-purple-900 px-8 py-4 rounded-full hover:bg-purple-50 transition-all">
+            Book Your Consultation
+        </a>
     </div>
 </section>
 
-<section class="book-consultation">
-    <div class="container">
-        <div class="cta-content">
-            <h2>Ready to Transform Your Look?</h2>
-            <p>Book a consultation with our aesthetic specialists today.</p>
-            <a href="/contact" class="btn-primary">Book Consultation</a>
-        </div>
-    </div>
-</section>
-{% endblock %}
-
-{% block extra_css %}
-<style>
-    /* Hero Section */
-    .treatments-hero {
-        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/static/images/treatments-hero.jpg');
-        background-size: cover;
-        background-position: center;
-        color: white;
-        padding: 120px 0;
-        text-align: center;
-    }
-    
-    .treatments-hero h1 {
-        font-size: 48px;
-        margin-bottom: 20px;
-    }
-    
-    .treatments-hero .lead {
-        font-size: 20px;
-        max-width: 700px;
-        margin: 0 auto;
-    }
-    
-    /* Category Navigation */
-    .treatment-categories {
-        padding: 30px 0;
-        background-color: #f9f9f9;
-    }
-    
-    .category-nav {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 15px;
-    }
-    
-    .category-btn {
-        padding: 10px 20px;
-        border: 1px solid #ddd;
-        background: white;
-        border-radius: 30px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-    
-    .category-btn:hover, .category-btn.active {
-        background: #4a4a4a;
-        color: white;
-        border-color: #4a4a4a;
-    }
-    
-    /* Treatments List */
-    .treatments-list {
-        padding: 60px 0;
-    }
-    
-    .treatments-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-        gap: 30px;
-    }
-    
-    .treatment-item {
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease;
-    }
-    
-    .treatment-item:hover {
-        transform: translateY(-5px);
-    }
-    
-    .treatment-image {
-        height: 200px;
-        overflow: hidden;
-    }
-    
-    .treatment-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.5s ease;
-    }
-    
-    .treatment-item:hover .treatment-image img {
-        transform: scale(1.05);
-    }
-    
-    .treatment-details {
-        padding: 20px;
-        background: white;
-    }
-    
-    .treatment-details h3 {
-        margin-top: 0;
-        margin-bottom: 10px;
-        font-size: 22px;
-    }
-    
-    .treatment-meta {
-        display: flex;
-        justify-content: space-between;
-        margin: 15px 0;
-        font-size: 14px;
-        color: #666;
-    }
-    
-    .btn-treatment {
-        display: inline-block;
-        padding: 8px 20px;
-        border: 1px solid #4a4a4a;
-        border-radius: 4px;
-        text-decoration: none;
-        color: #4a4a4a;
-        font-weight: 500;
-        transition: all 0.3s ease;
-    }
-    
-    .btn-treatment:hover {
-        background: #4a4a4a;
-        color: white;
-    }
-    
-    /* Treatment Process */
-    .treatment-process {
-        background-color: #f9f9f9;
-        padding: 60px 0;
-        text-align: center;
-    }
-    
-    .treatment-process h2 {
-        margin-bottom: 40px;
-    }
-    
-    .process-steps {
-        display: flex;
-        justify-content: space-between;
-        max-width: 900px;
-        margin: 0 auto;
-    }
-    
-    .process-step {
-        flex: 1;
-        padding: 0 20px;
-        position: relative;
-    }
-    
-    .step-number {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background: #4a4a4a;
-        color: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 24px;
-        font-weight: bold;
-        margin: 0 auto 20px;
-    }
-    
-    /* Book Consultation */
-    .book-consultation {
-        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/static/images/consultation-bg.jpg');
-        background-size: cover;
-        background-position: center;
-        color: white;
-        padding: 80px 0;
-        text-align: center;
-    }
-    
-    .cta-content {
-        max-width: 700px;
-        margin: 0 auto;
-    }
-    
-    .cta-content h2 {
-        font-size: 36px;
-        margin-bottom: 20px;
-    }
-    
-    .cta-content p {
-        font-size: 18px;
-        margin-bottom: 30px;
-    }
-    
-    .btn-primary {
-        display: inline-block;
-        padding: 12px 30px;
-        background: #4a4a4a;
-        color: white;
-        text-decoration: none;
-        border-radius: 4px;
-        font-weight: 500;
-        transition: background 0.3s ease;
-    }
-    
-    .btn-primary:hover {
-        background: #333;
-    }
-    
-    /* Responsive Design */
-    @media (max-width: 768px) {
-        .treatments-hero {
-            padding: 80px 0;
-        }
-        
-        .treatments-hero h1 {
-            font-size: 36px;
-        }
-        
-        .process-steps {
-            flex-direction: column;
-            gap: 40px;
-        }
-        
-        .treatments-grid {
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        }
-    }
-</style>
 {% endblock %}
 
 {% block extra_js %}
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Treatment category filtering
-        const categoryButtons = document.querySelectorAll('.category-btn');
-        const treatmentItems = document.querySelectorAll('.treatment-item');
-        
-        categoryButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                // Remove active class from all buttons
-                categoryButtons.forEach(btn => btn.classList.remove('active'));
-                
-                // Add active class to clicked button
-                this.classList.add('active');
-                
-                const category = this.getAttribute('data-category');
-                
-                // Show/hide treatment items based on category
-                treatmentItems.forEach(item => {
-                    if (category === 'all' || item.getAttribute('data-category') === category) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
+document.addEventListener('DOMContentLoaded', () => {
+    const categoryButtons = document.querySelectorAll('.category-btn');
+    const treatmentItems = document.querySelectorAll('.treatment-item');
+
+    categoryButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const category = button.dataset.category;
+            
+            // Update active button state
+            categoryButtons.forEach(btn => {
+                btn.classList.remove('bg-purple-900', 'text-white');
+                btn.classList.add('bg-white', 'text-purple-900');
+            });
+            button.classList.remove('bg-white', 'text-purple-900');
+            button.classList.add('bg-purple-900', 'text-white');
+
+            // Filter treatments
+            treatmentItems.forEach(item => {
+                const itemCategory = item.dataset.category;
+                if (category === 'all' || category === itemCategory) {
+                    item.style.display = '';
+                    item.classList.add('fade-in');
+                } else {
+                    item.style.display = 'none';
+                    item.classList.remove('fade-in');
+                }
             });
         });
     });
+});
 </script>
-{% endblock %} 
+<style>
+.fade-in {
+    animation: fadeIn 0.5s ease-in forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+@keyframes subtle-zoom {
+    from { transform: scale(1.1); }
+    to { transform: scale(1.15); }
+}
+
+.animate-subtle-zoom {
+    animation: subtle-zoom 20s ease-in-out infinite alternate;
+}
+</style>
+{% endblock %}
