@@ -11,7 +11,7 @@
 <section class="py-24">
     <div class="container mx-auto px-6 lg:px-16 grid lg:grid-cols-2 gap-12 items-center">
         <div class="shadow-xl rounded-xl overflow-hidden">
-            <img src="/static/images/about/clinic-exterior.jpg" alt="Aesthetics Clinic Exterior" class="w-full h-full object-cover">
+            <img src="/static/img/contacts-1.webp" alt="Aesthetics Clinic Exterior" class="w-full h-full object-cover">
         </div>
         <div>
             <h2 class="text-3xl font-semibold mb-6 border-b-4 border-gray-800 inline-block pb-2">Our Story</h2>
@@ -39,21 +39,79 @@
 <!-- Our Values Section -->
 <section class="py-24 bg-gray-50">
     <div class="container mx-auto px-6 lg:px-16 text-center">
-        <h2 class="text-3xl font-semibold mb-2">Our Values</h2>
-        <p class="text-gray-500 mb-12">These core principles guide everything we do</p>
-        <div class="grid md:grid-cols-3 gap-8">
-            {% for value in values %}
-            <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-transform hover:-translate-y-1">
-                <div class="text-4xl text-gray-800 mb-4">
-                    <i class="fas fa-{{ value.icon }}"></i>
-                </div>
-                <h3 class="text-xl font-medium mb-3">{{ value.title }}</h3>
-                <p class="text-gray-600 leading-relaxed">{{ value.description }}</p>
+      <h2 class="text-3xl font-semibold mb-2">Our Values</h2>
+      <p class="text-gray-500 mb-12">These core principles guide everything we do</p>
+  
+      <!-- Swiper Container -->
+      <div class="swiper our-values-swiper md:hidden">
+        <div class="swiper-wrapper">
+          <!-- Slide 1 -->
+          <div class="swiper-slide bg-white p-8 rounded-xl shadow-lg">
+            <div class="text-indigo-600 mb-4">
+              <svg class="w-10 h-10 mx-auto" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2" />
+              </svg>
             </div>
-            {% endfor %}
+            <h3 class="text-xl font-medium mb-3">Integrity</h3>
+            <p class="text-gray-600">We operate with honesty and transparency in every interaction.</p>
+          </div>
+          <!-- Slide 2 -->
+          <div class="swiper-slide bg-white p-8 rounded-xl shadow-lg">
+            <div class="text-indigo-600 mb-4">
+              <svg class="w-10 h-10 mx-auto" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 9.75L7.5 14.25" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-medium mb-3">Excellence</h3>
+            <p class="text-gray-600">Striving for the highest quality in everything we offer.</p>
+          </div>
+          <!-- Slide 3 -->
+          <div class="swiper-slide bg-white p-8 rounded-xl shadow-lg">
+            <div class="text-indigo-600 mb-4">
+              <svg class="w-10 h-10 mx-auto" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5l4 7H8l4-7z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-medium mb-3">Compassion</h3>
+            <p class="text-gray-600">Caring deeply for our clients and each other.</p>
+          </div>
         </div>
+        <!-- Swiper Pagination -->
+        <div class="swiper-pagination mt-6"></div>
+      </div>
+  
+      <!-- Static Grid for md+ -->
+      <div class="hidden md:grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-xl shadow-lg">
+          <div class="text-indigo-600 mb-4">
+            <svg class="w-10 h-10 mx-auto" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-medium mb-3">Integrity</h3>
+          <p class="text-gray-600">We operate with honesty and transparency in every interaction.</p>
+        </div>
+        <div class="bg-white p-8 rounded-xl shadow-lg">
+          <div class="text-indigo-600 mb-4">
+            <svg class="w-10 h-10 mx-auto" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 9.75L7.5 14.25" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-medium mb-3">Excellence</h3>
+          <p class="text-gray-600">Striving for the highest quality in everything we offer.</p>
+        </div>
+        <div class="bg-white p-8 rounded-xl shadow-lg">
+          <div class="text-indigo-600 mb-4">
+            <svg class="w-10 h-10 mx-auto" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5l4 7H8l4-7z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-medium mb-3">Compassion</h3>
+          <p class="text-gray-600">Caring deeply for our clients and each other.</p>
+        </div>
+      </div>
     </div>
-</section>
+  </section>
 
 <!-- Meet Our Team Section -->
 <section class="py-24">
@@ -79,23 +137,51 @@
 <!-- Facilities Section -->
 <section class="py-24 bg-gray-50">
     <div class="container mx-auto px-6 lg:px-16 text-center">
-        <h2 class="text-3xl font-semibold mb-2">Our Facilities</h2>
-        <p class="text-gray-500 mb-12">Experience treatments in our luxurious, state-of-the-art clinic</p>
-        <div class="grid md:grid-cols-3 gap-8">
-            {% for facility in facilities %}
-            <div class="relative group overflow-hidden rounded-xl shadow-lg">
-                <img src="{{ facility.image_url }}" alt="{{ facility.title }}" class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105">
-                <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <h3 class="text-white text-lg font-semibold">{{ facility.title }}</h3>
-                </div>
-            </div>
-            {% endfor %}
+      <h2 class="text-3xl font-semibold mb-2">Our Facilities</h2>
+      <p class="text-gray-500 mb-12">Experience treatments in our luxurious, state-of-the-art clinic</p>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Feature Box 1 -->
+        <div class="flex flex-col items-center text-center">
+          <div class="w-16 h-16 mb-4">
+            <!-- Safety and hygiene Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="Layer_1" x="0px" y="0px" viewBox="0 0 60 60" style="enable-background:new 0 0 60 60;" xml:space="preserve"><style type="text/css">	.st0{fill-rule:evenodd;clip-rule:evenodd;}</style><path class="st0 svvg-fill" d="M43,23c3.9-3.9,10.2-3.9,14,0c3.9,3.9,3.9,10.2,0,14c-3.9,3.9-10.2,3.9-14,0l-3-3l-6,6l3,3  c3.9,3.9,3.9,10.2,0,14c-3.9,3.9-10.2,3.9-14,0c-3.9-3.9-3.9-10.2,0-14l3-3l-6-6l-3,3c-3.9,3.9-10.2,3.9-14,0C-1,33.1-1,26.9,2.9,23  c3.9-3.9,10.2-3.9,14,0l3,3l6-6l-3-3c-3.9-3.9-3.9-10.2,0-14C26.9-1,33.1-1,37,2.9c3.9,3.9,3.9,10.2,0,14l-3,3l6,6L43,23z M53.1,33  c-1.7,1.7-4.4,1.7-6,0l-3-3l3-3c1.7-1.7,4.4-1.7,6,0C54.7,28.7,54.7,31.3,53.1,33z M27,6.9c1.7-1.7,4.4-1.7,6,0c1.7,1.7,1.7,4.4,0,6  l-3,3l-3-3C25.3,11.3,25.3,8.6,27,6.9z M30,24l-6,6l6,6l6-6L30,24z M6.9,33c-1.7-1.7-1.7-4.4,0-6c1.7-1.7,4.4-1.7,6,0l3,3l-3,3  C11.3,34.7,8.6,34.7,6.9,33z M33,53.1c-1.7,1.7-4.4,1.7-6,0c-1.7-1.7-1.7-4.4,0-6l3-3l3,3C34.7,48.7,34.7,51.4,33,53.1z"></path><path class="st0 svvg-fill" d="M57.1,23c-3.9-3.9-10.2-3.9-14,0l-3,3l-6-6l3-3c3.9-3.9,3.9-10.2,0-14C33.1-1,26.9-1,23,2.9  c-3.9,3.9-3.9,10.2,0,14l3,3l-6,6l-3-3c-3.9-3.9-10.2-3.9-14,0C-1,26.9-1,33.1,2.9,37c3.9,3.9,10.2,3.9,14,0l3-3l6,6l-3,3  c-3.9,3.9-3.9,10.2,0,14c3.9,3.9,10.2,3.9,14,0c3.9-3.9,3.9-10.2,0-14l-3-3l6-6l3,3c3.9,3.9,10.2,3.9,14,0C61,33.1,61,26.9,57.1,23z   M33,53.1c-1.7,1.7-4.4,1.7-6,0c-1.7-1.7-1.7-4.4,0-6l3-3l3,3C34.7,48.7,34.7,51.4,33,53.1z M24,30l6-6l6,6l-6,6L24,30z M27,6.9  c1.7-1.7,4.4-1.7,6,0c1.7,1.7,1.7,4.4,0,6l-3,3l-3-3C25.3,11.3,25.3,8.6,27,6.9z M6.9,27c-1.7,1.7-1.7,4.4,0,6c1.7,1.7,4.4,1.7,6,0  l3-3l-3-3C11.3,25.3,8.6,25.3,6.9,27z M53.1,33c-1.7,1.7-4.4,1.7-6,0l-3-3l3-3c1.7-1.7,4.4-1.7,6,0C54.7,28.7,54.7,31.3,53.1,33z"></path></svg>
+          </div>
+          <h3 class="text-lg font-semibold">Safety and hygiene</h3>
         </div>
+  
+        <!-- Feature Box 2 -->
+        <div class="flex flex-col items-center text-center">
+          <div class="w-16 h-16 mb-4">
+            <!-- Top-quality products Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 62 62" class="w-full h-full fill-current text-primary svgg">
+              <path d="M34.7,28.6l18.2-18.2l-1.2-1.2L33.4,27.4l9.8-23.7L41.7,3l-9.8,23.7V1h-1.7v25.7L20.3,3l-1.6,0.7l9.8,23.7
+                L10.4,9.2l-1.2,1.2l18.2,18.2L3.6,18.7L3,20.3l23.7,9.8H1v1.7h25.7L3,41.7l0.7,1.6l23.7-9.8L9.2,51.6l1.2,1.2l18.2-18.2
+                l-9.8,23.7l1.6,0.7l9.8-23.7V61h1.7V35.3L41.7,59l1.6-0.7l-9.8-23.7l18.2,18.2l1.2-1.2L34.6,33.4l23.7,9.8l0.7-1.6
+                l-23.7-9.8H61v-1.7H35.3L59,20.3l-0.7-1.6L34.7,28.6z"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold">Top-quality products</h3>
+        </div>
+  
+        <!-- Feature Box 3 -->
+        <div class="flex flex-col items-center text-center">
+          <div class="w-16 h-16 mb-4">
+            <!-- Professional devices Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" class="w-full h-full fill-current text-primary svgg">
+              <path d="M60,0H0v60h60V0z M56,56H10.4l45.8-22.8L56,56z M10.4,28.1L56.2,5.4L56,28.1H10.4z M49.6,4L3.7,26.8v-23L49.6,4z
+                M4,31.9h45.5L4,54.9L4,31.9z"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold">Professional devices</h3>
+        </div>
+      </div>
     </div>
-</section>
+  </section>
+  
 
 <!-- Certifications Section -->
-<section class="py-24">
+{% comment %} <section class="py-24">
     <div class="container mx-auto px-6 lg:px-16 text-center">
         <h2 class="text-3xl font-semibold mb-2">Our Certifications</h2>
         <p class="text-gray-500 mb-12">We maintain the highest standards of quality and safety</p>
@@ -107,8 +193,34 @@
             {% endfor %}
         </div>
     </div>
-</section>
+</section> {% endcomment %}
 
 <!-- CTA Section -->
 {% cta %}
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .svgg{
+        color: #8D4D5D
+    }
+    .svvg-fill {
+        fill: #8D4D5D;
+    }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  new Swiper(".our-values-swiper", {
+    loop: true,
+    spaceBetween: 20,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+  });
+</script>
 {% endblock %}

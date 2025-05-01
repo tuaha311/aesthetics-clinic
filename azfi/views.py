@@ -14,7 +14,7 @@ class HomeView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['featured_treatments'] = Treatment.objects.filter(featured=True)[:3]
-        context['testimonials'] = Testimonial.objects.filter(featured=True)[:6]
+        context['testimonials'] = Testimonial.objects.filter(featured=True)[:3]
         context['team_members'] = TeamMember.objects.all()[:3]
         context['latest_posts'] = BlogPost.objects.all()[:3]
         return context
@@ -81,7 +81,7 @@ class GalleryView(ListView):
 
 class TestimonialListView(ListView):
     model = Testimonial
-    template_name = 'testimonials.html'
+    template_name = 'testimonial_list.html'
     context_object_name = 'testimonials'
 
 class BlogListView(ListView):
@@ -193,3 +193,6 @@ def blog_search(request):
     }
     
     return render(request, 'blog/blog_list.html', context)
+
+def render_404(request, exception):
+    return render(request, '404.html', status=404)

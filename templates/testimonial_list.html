@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+{% load custom_tags %}
+
+    {% hero "What Our Clients Say" "Real stories from real people who’ve enhanced their beauty with us." %}
+<!-- Testimonials Section -->
+<section class="py-24 bg-gradient-to-b from-white via-purple-50 to-pink-100">
+  <div class="container mx-auto px-6 lg:px-16 text-center">
+    <h2 class="text-4xl font-serif font-semibold text-purple-900 mb-4">What Our Clients Say</h2>
+    <p class="text-lg text-gray-600 mb-12 max-w-2xl mx-auto">Real stories from real people who’ve enhanced their beauty with us.</p>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+      {% for testimonial in testimonials %}
+      <div class="bg-white shadow-xl rounded-3xl p-8 transition-transform hover:-translate-y-1 hover:shadow-2xl">
+        {% if testimonial.image %}
+        <img src="{{ testimonial.image.url }}" alt="{{ testimonial.name }}" class="w-20 h-20 rounded-full mx-auto mb-4 object-cover shadow-md border-2 border-purple-200">
+        {% else %}
+        <div class="w-20 h-20 rounded-full mx-auto mb-4 bg-purple-100 flex items-center justify-center text-purple-800 font-bold text-xl shadow-md">
+          {{ testimonial.name|slice:":1" }}
+        </div>
+        {% endif %}
+        <blockquote class="text-gray-700 italic mb-4 leading-relaxed">“{{ testimonial.quote }}”</blockquote>
+        <p class="font-semibold text-purple-800">{{ testimonial.name }}</p>
+        {% if testimonial.treatment %}
+        <p class="text-sm text-gray-500">{{ testimonial.treatment.name }}</p>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% endblock %}

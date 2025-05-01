@@ -15,16 +15,26 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.shortcuts import render
+from django.urls import path, include, re_path
 from django.conf import settings
 from django.conf.urls.static import static
 
+def render_404(request):
+    return render(request, '404.html', status=404)
+    
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('azfi.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
+    # path('1', render_404, name='404'),
+    re_path(r'^(?!media/|static/).*$', render_404, name='404'),
 ]
+
+# handler404 = 'settings.views.render_404'
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+handler404 = 'azfi.views.render_404'  # or 'azfi.views.render_404', based on your actual structure

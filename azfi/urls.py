@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path
 from . import views
 
@@ -32,3 +34,5 @@ urlpatterns = [
     # Newsletter Signup
     path('newsletter-signup/', views.newsletter_signup, name='newsletter_signup'),
 ] 
+
+handler404 = 'azfi.views.render_404'  # or 'azfi.views.render_404', based on your actual structure

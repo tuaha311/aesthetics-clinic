@@ -3,6 +3,7 @@
 {% block title %}{{ treatment.name }} - Aesthetics Clinic{% endblock %}
 
 {% block content %}
+{% load custom_tags %}
     <!-- Treatment Hero -->
     <section class="relative h-[500px] bg-cover bg-center flex items-center" style="background-image: url('{{ treatment.image.url }}');">
         <div class="absolute inset-0 bg-black/50"></div>
@@ -141,11 +142,5 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="bg-secondary py-16 text-center text-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold mb-4">Ready for Your Transformation?</h2>
-            <p class="mb-6">Book your {{ treatment.name }} consultation today and take the first step toward the new you.</p>
-            <a href="/contact/?booking=true&treatment={{ treatment.name }}" class="btn btn-lg btn-primary">Book Your Consultation</a>
-        </div>
-    </section>
+    {% cta %}
 {% endblock %}
