@@ -36,6 +36,10 @@
                             800: '#3e4552',
                             900: '#1f2229',
                         },
+                        brand: {
+                            dark: '#1f0f2a',    // background color for main sections
+                            card: '#3c235b',    // service cards or secondary modules
+                        },
                     },
                     fontFamily: {
                         'playfair': ['"Playfair Display"', 'serif'],
@@ -102,83 +106,83 @@
     <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Funky Header</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azfi Aesthetics</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
     @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Righteous&display=swap');
     
     body {
-      font-family: 'Quicksand', sans-serif;
+        font-family: 'Quicksand', sans-serif;
     }
     
     .brand-font {
-      font-family: 'Righteous', cursive;
+        font-family: 'Righteous', cursive;
     }
     
     .funky-gradient {
-      background: linear-gradient(45deg, #ff6b6b, #6b47ff);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+        background: linear-gradient(45deg, #ff6b6b, #6b47ff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
     }
     
     .funky-bg {
-      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
     }
     
     .glow-effect {
-      box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
+        box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
     }
     
     /* Animated underline effect */
     .nav-link {
-      position: relative;
-      padding-bottom: 4px;
-      transition: all 0.3s ease;
+        position: relative;
+        padding-bottom: 4px;
+        transition: all 0.3s ease;
     }
     
     .nav-link::after {
-      content: "";
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: 0;
-      left: 0;
-      background: linear-gradient(to right, #6366f1, #ec4899);
-      transition: width 0.3s ease;
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background: linear-gradient(to right, #6366f1, #ec4899);
+        transition: width 0.3s ease;
     }
     
     .nav-link:hover::after {
-      width: 100%;
+        width: 100%;
     }
     
     .nav-link.active::after {
-      width: 100%;
+        width: 100%;
     }
     
     /* Neon animation */
     @keyframes neon-pulse {
-      0% { box-shadow: 0 0 5px rgba(139, 92, 246, 0.7), 0 0 10px rgba(139, 92, 246, 0.5); }
-      50% { box-shadow: 0 0 10px rgba(139, 92, 246, 0.9), 0 0 20px rgba(139, 92, 246, 0.7); }
-      100% { box-shadow: 0 0 5px rgba(139, 92, 246, 0.7), 0 0 10px rgba(139, 92, 246, 0.5); }
+        0% { box-shadow: 0 0 5px rgba(139, 92, 246, 0.7), 0 0 10px rgba(139, 92, 246, 0.5); }
+        50% { box-shadow: 0 0 10px rgba(139, 92, 246, 0.9), 0 0 20px rgba(139, 92, 246, 0.7); }
+        100% { box-shadow: 0 0 5px rgba(139, 92, 246, 0.7), 0 0 10px rgba(139, 92, 246, 0.5); }
     }
     
     .neon-effect {
-      animation: neon-pulse 2s infinite;
+        animation: neon-pulse 2s infinite;
     }
     
     /* Sparkle animation for icons */
     @keyframes sparkle {
-      0% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.2); opacity: 0.8; }
-      100% { transform: scale(1); opacity: 1; }
+        0% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.2); opacity: 0.8; }
+        100% { transform: scale(1); opacity: 1; }
     }
     
     .social-icon:hover {
-      animation: sparkle 0.5s ease;
+        animation: sparkle 0.5s ease;
     }
 
     .brand-font {
@@ -247,9 +251,14 @@
     .social-icon:hover {
     animation: sparkle 0.5s ease;
     }
-  </style>
+    </style>
 </head>
-<body>
+<body class="font-body bg-brand-dark text-gray-800">
+    <!-- Background blobs -->
+    <div class="blob bg-purple-500 w-96 h-96 rounded-full -top-48 -left-48"></div>
+    <div class="blob bg-pink-500 w-96 h-96 rounded-full bottom-0 right-0"></div>
+    <div class="blob bg-blue-500 w-64 h-64 rounded-full top-1/2 left-1/3"></div>
+    
     <!-- Header -->
     <header class="relative z-50">
         <!-- Top Bar with wavy design -->
@@ -282,50 +291,108 @@
         </div>
         </div>
           
-        <div class="container mx-auto px-4">
-            <div class="flex justify-between items-center h-24">
-            <!-- Logo with animation -->
-            <a href="/" class="brand-font text-4xl font-bold funky-gradient transform transition-transform hover:scale-105">
-                Aesthetics
-            </a>
-            
-            <!-- Mobile menu button -->
-            <button type="button" class="lg:hidden bg-purple-100 p-2 rounded-full" aria-label="Toggle menu">
-                <i class="fas fa-bars text-purple-600 text-2xl"></i>
-            </button>
-            
-            <!-- Desktop Navigation -->
-            <div class="hidden lg:flex items-center space-x-8">
-                <a href="/" class="nav-link active text-lg hover:text-purple-600 font-medium">Home</a>
-                <div class="relative group">
-                <button class="nav-link text-lg flex items-center hover:text-purple-600 font-medium">
-                    Treatments
-                    <i class="fas fa-chevron-down ml-2 text-xs group-hover:rotate-180 transition-transform duration-300"></i>
-                </button>
-                <div class="absolute left-0 mt-2 w-60 rounded-2xl shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 overflow-hidden">
-                    <div class="h-1 funky-bg"></div>
-                    <ul class="py-3">
-                    <li><a class="block px-6 py-2 hover:bg-purple-50 hover:text-purple-600 transition-colors" href="{% url 'treatment_list' %}">All Treatments</a></li>
-                    <li><hr class="my-1 mx-4 border-gray-100"></li>
-                    <li><a class="block px-6 py-2 hover:bg-purple-50 hover:text-purple-600 transition-colors" href="{% url 'treatment_list' %}?category=FACE">Face Treatments</a></li>
-                    <li><a class="block px-6 py-2 hover:bg-purple-50 hover:text-purple-600 transition-colors" href="{% url 'treatment_list' %}?category=BODY">Body Treatments</a></li>
-                    <li><a class="block px-6 py-2 hover:bg-purple-50 hover:text-purple-600 transition-colors" href="{% url 'treatment_list' %}?category=INJECTABLES">Injectables</a></li>
-                    </ul>
+        <nav class="bg-white shadow-lg">
+            <div class="container mx-auto px-4">
+                <div class="flex justify-between items-center h-24">
+                    <!-- Logo -->
+                    <a href="/" class="transform transition-transform hover:scale-105 block w-fit">
+                        <img src="/static/img/logo.png" alt="Aesthetics Logo" class="h-28 w-auto" />
+                    </a>
+                      
+                    
+                    <!-- Mobile menu button -->
+                    <button id="mobile-menu-button" type="button" 
+                            class="lg:hidden p-2 rounded-full hover:bg-gray-100 transition-colors"
+                            aria-label="Toggle menu">
+                        <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+
+                    <!-- Desktop Navigation -->
+                    <div class="hidden lg:flex items-center space-x-8">
+                        <a href="/" class="nav-link active text-lg hover:text-purple-600 font-medium">Home</a>
+                        <div class="relative group">
+                        <button class="nav-link text-lg flex items-center hover:text-purple-600 font-medium">
+                            Treatments
+                            <i class="fas fa-chevron-down ml-2 text-xs group-hover:rotate-180 transition-transform duration-300"></i>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-60 rounded-2xl shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 overflow-hidden">
+                            <div class="h-1 funky-bg"></div>
+                            <ul class="py-3">
+                            <li><a class="block px-6 py-2 hover:bg-purple-50 hover:text-purple-600 transition-colors" href="{% url 'treatment_list' %}">All Treatments</a></li>
+                            <li><hr class="my-1 mx-4 border-gray-100"></li>
+                            <li><a class="block px-6 py-2 hover:bg-purple-50 hover:text-purple-600 transition-colors" href="{% url 'treatment_list' %}?category=FACE">Face Treatments</a></li>
+                            <li><a class="block px-6 py-2 hover:bg-purple-50 hover:text-purple-600 transition-colors" href="{% url 'treatment_list' %}?category=BODY">Body Treatments</a></li>
+                            <li><a class="block px-6 py-2 hover:bg-purple-50 hover:text-purple-600 transition-colors" href="{% url 'treatment_list' %}?category=INJECTABLES">Injectables</a></li>
+                            </ul>
+                        </div>
+                        </div>
+                        <a href="/about/" class="nav-link text-lg hover:text-purple-600 font-medium">About Us</a>
+                        <a href="/gallery/" class="nav-link text-lg hover:text-purple-600 font-medium">Gallery</a>
+                        <a href="/blog/" class="nav-link text-lg hover:text-purple-600 font-medium">Blog</a>
+                        <a href="/contact/" class="nav-link text-lg hover:text-purple-600 font-medium">Contact</a>
+                    </div>
+                    
+                    <a href="/contact/?booking=true" 
+                        class="hidden lg:inline-flex items-center px-8 py-3 funky-bg text-white rounded-full hover:opacity-90 transition-colors transform hover:-translate-y-1 transition-transform duration-300 neon-effect">
+                        <span class="mr-2">Book Consultation</span>
+                        <i class="fas fa-calendar-check"></i>
+                    </a>
                 </div>
+            </div>
+
+            <!-- Mobile Navigation Overlay -->
+            <div id="mobile-menu" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden lg:hidden">
+                <div class="absolute right-0 top-0 h-full w-[300px] bg-white shadow-xl transform transition-transform duration-300 translate-x-full">
+                    <div class="p-5">
+                        <!-- Close button -->
+                        <div class="flex justify-end">
+                            <button id="close-mobile-menu" class="p-2 rounded-full hover:bg-gray-100">
+                                <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <!-- Mobile Navigation Links -->
+                        <nav class="mt-8">
+                            <div class="space-y-2">
+                                <a href="/" class="block px-4 py-3 text-lg hover:bg-purple-50 rounded-lg transition-colors">Home</a>
+                                
+                                <!-- Mobile Treatments Dropdown -->
+                                <div class="mobile-dropdown">
+                                    <button class="w-full px-4 py-3 text-lg flex items-center justify-between hover:bg-purple-50 rounded-lg transition-colors">
+                                        <span>Treatments</span>
+                                        <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                        </svg>
+                                    </button>
+                                    <div class="hidden pl-4 mt-2 space-y-2">
+                                        <a href="{% url 'treatment_list' %}" class="block px-4 py-2 hover:text-purple-600 transition-colors">All Treatments</a>
+                                        <a href="{% url 'treatment_list' %}?category=FACE" class="block px-4 py-2 hover:text-purple-600 transition-colors">Face Treatments</a>
+                                        <a href="{% url 'treatment_list' %}?category=BODY" class="block px-4 py-2 hover:text-purple-600 transition-colors">Body Treatments</a>
+                                        <a href="{% url 'treatment_list' %}?category=INJECTABLES" class="block px-4 py-2 hover:text-purple-600 transition-colors">Injectables</a>
+                                    </div>
+                                </div>
+
+                                <a href="/about/" class="block px-4 py-3 text-lg hover:bg-purple-50 rounded-lg transition-colors">About Us</a>
+                                <a href="/gallery/" class="block px-4 py-3 text-lg hover:bg-purple-50 rounded-lg transition-colors">Gallery</a>
+                                <a href="/blog/" class="block px-4 py-3 text-lg hover:bg-purple-50 rounded-lg transition-colors">Blog</a>
+                                <a href="/contact/" class="block px-4 py-3 text-lg hover:bg-purple-50 rounded-lg transition-colors">Contact</a>
+                            </div>
+
+                            <!-- Mobile Book Button -->
+                            <div class="mt-8">
+                                <a href="/contact/?booking=true" 
+                                class="block w-full py-3 px-4 text-center funky-bg text-white rounded-full hover:opacity-90 transition-colors">
+                                    Book Consultation
+                                </a>
+                            </div>
+                        </nav>
+                    </div>
                 </div>
-                <a href="/about/" class="nav-link text-lg hover:text-purple-600 font-medium">About Us</a>
-                <a href="/gallery/" class="nav-link text-lg hover:text-purple-600 font-medium">Gallery</a>
-                <a href="/blog/" class="nav-link text-lg hover:text-purple-600 font-medium">Blog</a>
-                <a href="/contact/" class="nav-link text-lg hover:text-purple-600 font-medium">Contact</a>
             </div>
-            
-            <a href="/contact/?booking=true" 
-                class="hidden lg:inline-flex items-center px-8 py-3 funky-bg text-white rounded-full hover:opacity-90 transition-colors transform hover:-translate-y-1 transition-transform duration-300 neon-effect">
-                <span class="mr-2">Book Consultation</span>
-                <i class="fas fa-calendar-check"></i>
-            </a>
-            </div>
-        </div>
         </nav>
     </header>
 
@@ -451,6 +518,62 @@
         
         backToTop.addEventListener('click', () => {
             window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+
+        // Mobile menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const closeMobileMenu = document.getElementById('close-mobile-menu');
+            const mobileMenuContent = mobileMenu.querySelector('.transform');
+            
+            function toggleMobileMenu() {
+                const isOpen = !mobileMenu.classList.contains('hidden');
+                
+                if (isOpen) {
+                    // Close menu
+                    mobileMenuContent.classList.add('translate-x-full');
+                    setTimeout(() => {
+                        mobileMenu.classList.add('hidden');
+                        document.body.style.overflow = '';
+                    }, 300);
+                } else {
+                    // Open menu
+                    mobileMenu.classList.remove('hidden');
+                    setTimeout(() => {
+                        mobileMenuContent.classList.remove('translate-x-full');
+                    }, 10);
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+
+            // Mobile dropdowns
+            const mobileDropdowns = document.querySelectorAll('.mobile-dropdown');
+            mobileDropdowns.forEach(dropdown => {
+                const button = dropdown.querySelector('button');
+                const content = dropdown.querySelector('div');
+                const icon = button.querySelector('svg');
+
+                button.addEventListener('click', () => {
+                    const isOpen = !content.classList.contains('hidden');
+                    content.classList.toggle('hidden');
+                    icon.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+                });
+            });
+
+            // Event listeners
+            mobileMenuButton.addEventListener('click', toggleMobileMenu);
+            closeMobileMenu.addEventListener('click', toggleMobileMenu);
+            mobileMenu.addEventListener('click', (e) => {
+                if (e.target === mobileMenu) toggleMobileMenu();
+            });
+
+            // Close menu on resize if open
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 1024 && !mobileMenu.classList.contains('hidden')) {
+                    toggleMobileMenu();
+                }
+            });
         });
     </script>
     

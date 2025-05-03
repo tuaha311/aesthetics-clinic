@@ -4,7 +4,7 @@
 
 {% block content %}
     <!-- Hero Section -->
-    <section class="relative h-[60vh] min-h-[60vh] md:min-h-[50vh] md:h-[50vh]">
+    <section class="relative h-[60vh] min-h-[60vh] md:min-h-[50vh] md:h-[50vh] hidden sm:block">
         <div class="absolute inset-0">
             <div class="absolute inset-0 bg-gradient-to-r from-purple-900/70 to-pink-800/50" style="    border-radius: 500px 0;"></div>
         </div>
@@ -25,6 +25,19 @@
             </div>
         </div>
     </section>
+
+    <!-- Mobile Hero Section -->
+    <section class="inset-0 bg-gradient-to-r from-purple-900/70 to-pink-800/50 py-48 block sm:hidden" style="border: 1000px; border-radius: 1000px 0;">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="brand-font text-4xl md:text-5xl font-extrabold text-white transform transition-transform hover:scale-105 mb-4">
+                Enhance Your Natural Beauty
+            </h1>
+            <p class="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto">
+                Experience the perfect blend of science and luxury at our premium aesthetics clinic
+            </p>
+        </div>
+    </section>
+    
 
     <!-- Features Section -->
     <section class="py-20">
