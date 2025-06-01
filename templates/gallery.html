@@ -8,7 +8,7 @@
     {% hero "Our Gallery" "See the stunning results of our aesthetic treatments" %}
 
     <!-- Gallery Filters -->
-    <section class="py-10 bg-light">
+    <section class="py-10 bg-brand-card">
         <div class="container mx-auto">
             <div class="flex flex-wrap justify-center gap-4">
                 <a href="{% url 'gallery' %}" 
@@ -35,7 +35,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="gallery-grid">
                 {% for image in before_after_images %}
                 <div class="gallery-item group" data-category="{{ image.treatment.category|lower }}" data-aos="fade-up" data-aos-delay="{{ forloop.counter }}">
-                    <div class="relative bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl">
+                    <div class="relative bg-brand-card rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl">
                         <div class="relative h-[400px] cursor-grab before-after-container">
                             <img src="{{ image.before_image.url }}" 
                                  alt="Before {{ image.title }}" 
@@ -53,7 +53,7 @@
                         </div>
                         <div class="p-6">
                             <div class="flex items-center justify-between mb-4">
-                                <h3 class="text-xl font-semibold text-gray-900">{{ image.title }}</h3>
+                                <h3 class="text-xl font-semibold text-gray-100">{{ image.title }}</h3>
                                 <span class="px-3 py-1 text-sm font-medium text-purple-600 bg-purple-50 rounded-full">
                                     {{ image.treatment.name }}
                                 </span>

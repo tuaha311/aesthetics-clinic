@@ -16,7 +16,7 @@
         <span><i class="far fa-user mr-1"></i>{{ post.author.get_full_name|default:post.author.username }}</span>
       </div>
 
-      <h1 class="text-4xl font-semibold text-gray-800 leading-tight mb-10">{{ post.title }}</h1>
+      <h1 class="text-4xl font-semibold text-gray-100 leading-tight mb-10">{{ post.title }}</h1>
 
       {% if post.featured_image %}
         <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" class="w-full rounded-xl shadow mb-10">
@@ -24,7 +24,7 @@
         <img src="/static/images/blog/placeholder.jpg" alt="{{ post.title }}" class="w-full rounded-xl shadow mb-10">
       {% endif %}
 
-      <div class="prose lg:prose-lg max-w-none text-gray-700 mb-10">
+      <div class="prose lg:prose-lg max-w-none text-gray-300 mb-10">
         {{ post.content|safe }}
       </div>
 
@@ -65,15 +65,15 @@
 
       <div class="flex flex-col lg:flex-row justify-between gap-6 mb-20">
         {% if previous_post %}
-          <a href="{% url 'blog_detail' previous_post.slug %}" class="block p-4 rounded-xl bg-white shadow hover:shadow-md transition w-full">
+          <a href="{% url 'blog_detail' previous_post.slug %}" class="block p-4 rounded-xl bg-brand-card shadow hover:shadow-md transition w-full">
             <span class="text-sm text-pink-500 font-medium flex items-center gap-1"><i class="fas fa-arrow-left"></i> Previous Article</span>
-            <h4 class="text-gray-800 mt-1">{{ previous_post.title|truncatechars:40 }}</h4>
+            <h4 class="text-gray-200 mt-1">{{ previous_post.title|truncatechars:40 }}</h4>
           </a>
         {% endif %}
         {% if next_post %}
-          <a href="{% url 'blog_detail' next_post.slug %}" class="block p-4 rounded-xl bg-white shadow hover:shadow-md transition w-full text-right">
+          <a href="{% url 'blog_detail' next_post.slug %}" class="block p-4 rounded-xl bg-brand-card shadow hover:shadow-md transition w-full text-right">
             <span class="text-sm text-pink-500 font-medium flex justify-end items-center gap-1">Next Article <i class="fas fa-arrow-right"></i></span>
-            <h4 class="text-gray-800 mt-1">{{ next_post.title|truncatechars:40 }}</h4>
+            <h4 class="text-gray-200 mt-1">{{ next_post.title|truncatechars:40 }}</h4>
           </a>
         {% endif %}
       </div>
@@ -82,15 +82,15 @@
     <!-- Sidebar -->
     <aside class="lg:col-span-4 space-y-10">
       <!-- About Widget -->
-      <div class="bg-white p-6 rounded-xl shadow">
-        <h3 class="text-xl font-semibold text-gray-800 mb-3">About Us</h3>
-        <p class="text-sm text-gray-600">Our aesthetics clinic provides premium non-surgical treatments to enhance your natural beauty.</p>
+      <div class="bg-brand-card p-6 rounded-xl shadow">
+        <h3 class="text-xl font-semibold text-gray-100 mb-3">About Us</h3>
+        <p class="text-sm text-gray-300">Our aesthetics clinic provides premium non-surgical treatments to enhance your natural beauty.</p>
         <a href="{% url 'about' %}" class="inline-block mt-4 px-4 py-2 bg-pink-500 text-white text-sm rounded-full hover:bg-pink-600 transition">Learn More</a>
       </div>
 
       <!-- Recent Posts Widget -->
-      <div class="bg-white p-6 rounded-xl shadow">
-        <h3 class="text-xl font-semibold text-gray-800 mb-4">Recent Articles</h3>
+      <div class="bg-brand-card p-6 rounded-xl shadow">
+        <h3 class="text-xl font-semibold text-gray-100 mb-4">Recent Articles</h3>
         <div class="space-y-4">
           {% for recent_post in recent_posts %}
           <div class="flex items-start gap-4">
@@ -102,7 +102,7 @@
               {% endif %}
             </div>
             <div>
-              <h4 class="text-sm font-medium text-gray-800"><a href="{% url 'blog_detail' recent_post.slug %}">{{ recent_post.title|truncatechars:50 }}</a></h4>
+              <h4 class="text-sm font-medium text-gray-300"><a href="{% url 'blog_detail' recent_post.slug %}">{{ recent_post.title|truncatechars:50 }}</a></h4>
               <span class="text-xs text-gray-500">{{ recent_post.created_at|date:"F j, Y" }}</span>
             </div>
           </div>

@@ -8,9 +8,9 @@
 
 <!-- Featured Post Section -->
 {% if featured_post %}
-<section class="py-12">
+<section class="py-12 bg-brand-dark">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-sm font-medium text-pink-600 mb-4">Featured Article</div>
+    <div class="text-sm font-medium text-pink-400 mb-4">Featured Article</div>
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
       <div>
         {% if featured_post.featured_image %}
@@ -20,12 +20,12 @@
         {% endif %}
       </div>
       <div>
-        <h2 class="text-3xl font-semibold text-gray-900">{{ featured_post.title }}</h2>
-        <div class="mt-3 text-gray-500 text-sm flex flex-wrap gap-4">
+        <h2 class="text-3xl font-semibold text-white">{{ featured_post.title }}</h2>
+        <div class="mt-3 text-gray-300 text-sm flex flex-wrap gap-4">
           <span><i class="far fa-calendar-alt mr-1"></i>{{ featured_post.created_at|date:"F j, Y" }}</span>
           <span><i class="far fa-user mr-1"></i>{{ featured_post.author.get_full_name|default:featured_post.author.username }}</span>
         </div>
-        <p class="mt-4 text-gray-700">{{ featured_post.excerpt }}</p>
+        <p class="mt-4 text-gray-200">{{ featured_post.excerpt }}</p>
         <a href="{% url 'blog_detail' featured_post.slug %}" class="mt-6 inline-block text-white bg-pink-600 hover:bg-pink-700 px-6 py-2 rounded-xl font-medium transition">Read Article</a>
       </div>
     </div>
@@ -34,26 +34,26 @@
 {% endif %}
 
 <!-- Blog Filter Section -->
-<section class="py-10">
+<section class="py-10 bg-brand-card">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-    <form action="{% url 'blog_search' %}" method="get" class="flex items-center bg-white rounded-xl shadow-sm overflow-hidden">
-      <input type="text" name="q" placeholder="Search articles..." value="{{ search_query|default:'' }}" class="w-full px-4 py-3 text-sm focus:outline-none" />
+    <form action="{% url 'blog_search' %}" method="get" class="flex items-center bg-brand-dark rounded-xl shadow-sm overflow-hidden">
+      <input type="text" name="q" placeholder="Search articles..." value="{{ search_query|default:'' }}" class="w-full px-4 py-3 text-sm focus:outline-none bg-brand-dark text-white placeholder-gray-400" />
       <button type="submit" class="bg-pink-600 text-white px-5 py-3 hover:bg-pink-700 transition"><i class="fas fa-search"></i></button>
     </form>
   </div>
 </section>
 
 <!-- Blog Posts Section -->
-<section class="py-14">
+<section class="py-14 bg-brand-dark">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     {% if search_query %}
-      <h2 class="text-2xl font-semibold text-gray-800 mb-6">Search Results for "{{ search_query }}"</h2>
+      <h2 class="text-2xl font-semibold text-white mb-6">Search Results for "{{ search_query }}"</h2>
     {% endif %}
 
     {% if posts %}
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
       {% for post in posts %}
-        <article class="bg-white rounded-2xl shadow-md hover:shadow-lg transition p-4">
+        <article class="bg-brand-card rounded-2xl shadow-md hover:shadow-lg transition p-4">
           <div class="aspect-w-16 aspect-h-9 overflow-hidden rounded-xl">
             {% if post.featured_image %}
               <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" class="object-cover w-full h-full">
@@ -62,7 +62,7 @@
             {% endif %}
           </div>
           <div class="mt-4">
-            <h3 class="text-lg font-semibold text-gray-900"><a href="{% url 'blog_detail' post.slug %}">{{ post.title }}</a></h3>
+            <h3 class="text-lg font-semibold text-gray-100"><a href="{% url 'blog_detail' post.slug %}">{{ post.title }}</a></h3>
             <div class="text-sm text-gray-500 mt-1">
               <i class="far fa-calendar-alt mr-1"></i>{{ post.created_at|date:"F j, Y" }}
             </div>
@@ -115,10 +115,10 @@
 <!-- Newsletter Section -->
 <section class="bg-gradient-to-r from-purple-900/70 to-pink-800/50 text-white py-14">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="bg-white rounded-2xl shadow-lg p-8 lg:p-12 grid lg:grid-cols-2 gap-8 items-center">
+    <div class="bg-brand-card rounded-2xl shadow-lg p-8 lg:p-12 grid lg:grid-cols-2 gap-8 items-center">
       <div>
-        <h2 class="text-3xl font-semibold text-gray-900">Subscribe to Our Newsletter</h2>
-        <p class="mt-2 text-gray-600">Stay updated with the latest aesthetics trends, treatment innovations, and exclusive offers.</p>
+        <h2 class="text-3xl font-semibold text-gray-100">Subscribe to Our Newsletter</h2>
+        <p class="mt-2 text-gray-300">Stay updated with the latest aesthetics trends, treatment innovations, and exclusive offers.</p>
       </div>
       <div>
         <form action="{% url 'newsletter_signup' %}" method="post" class="flex flex-col sm:flex-row gap-4">
@@ -157,4 +157,4 @@
         }
     });
 </script>
-{% endblock %} 
+{% endblock %}

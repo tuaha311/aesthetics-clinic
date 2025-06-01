@@ -8,36 +8,36 @@
     {% hero "Get in Touch" "We're here to answer your questions and help you book your treatments" %}
 
     <!-- Contact Content -->
-    <section class="max-w-6xl mx-auto px-4 my-5">
+    <section class="max-w-6xl mx-auto px-4 my-5 bg-brand-dark py-16">
     
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
         <!-- Contact Form -->
-        <div class="lg:col-span-7 bg-white rounded-3xl shadow-xl p-8 relative overflow-hidden">
-        <div class="absolute w-64 h-64 rounded-full bg-purple-100 -top-32 -right-32 z-0"></div>
-        <div class="absolute w-64 h-64 rounded-full bg-pink-100 -bottom-32 -left-32 z-0"></div>
+        <div class="lg:col-span-7 bg-brand-card rounded-3xl shadow-xl p-8 relative overflow-hidden">
+        <div class="absolute w-64 h-64 rounded-full bg-purple-900/20 -top-32 -right-32 z-0"></div>
+        <div class="absolute w-64 h-64 rounded-full bg-pink-900/20 -bottom-32 -left-32 z-0"></div>
         
         <div class="relative z-10">
             <h2 class="text-3xl font-bold mb-2 funky-gradient">Contact Us</h2>
-            <p class="text-gray-600 mb-8">Fill out the form below and one of our specialists will get back to you shortly.</p>
+            <p class="text-gray-200 mb-8">Fill out the form below and one of our specialists will get back to you shortly.</p>
             
-            <div id="success-message" class="hidden bg-green-50 border-l-4 border-green-500 p-4 mb-6 rounded">
+            <div id="success-message" class="hidden bg-green-900/30 border-l-4 border-green-500 p-4 mb-6 rounded">
             <div class="flex">
                 <div class="flex-shrink-0">
                 <i class="fas fa-check-circle text-green-500"></i>
                 </div>
                 <div class="ml-3">
-                <p class="text-green-800">Thank you for your message. We will contact you shortly.</p>
+                <p class="text-green-300">Thank you for your message. We will contact you shortly.</p>
                 </div>
             </div>
             </div>
             
-            <div id="error-message" class="hidden bg-red-50 border-l-4 border-red-500 p-4 mb-6 rounded">
+            <div id="error-message" class="hidden bg-red-900/30 border-l-4 border-red-500 p-4 mb-6 rounded">
             <div class="flex">
                 <div class="flex-shrink-0">
                 <i class="fas fa-exclamation-circle text-red-500"></i>
                 </div>
                 <div class="ml-3">
-                <p class="text-red-800">Please correct the errors below.</p>
+                <p class="text-red-300">Please correct the errors below.</p>
                 </div>
             </div>
             </div>
@@ -46,48 +46,48 @@
             {% csrf_token %}
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                <label for="id_first_name" class="block text-sm font-medium text-gray-700 mb-1">First Name*</label>
+                <label for="id_first_name" class="block text-sm font-medium text-gray-200 mb-1">First Name*</label>
                 <input type="text" name="first_name" id="id_first_name" required 
-                        class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 funky-input transition">
+                        class="w-full px-4 py-3 bg-brand-dark border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 funky-input transition text-white">
                 </div>
                 
                 <div>
-                <label for="id_last_name" class="block text-sm font-medium text-gray-700 mb-1">Last Name*</label>
+                <label for="id_last_name" class="block text-sm font-medium text-gray-200 mb-1">Last Name*</label>
                 <input type="text" name="last_name" id="id_last_name" required 
-                        class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 funky-input transition">
+                        class="w-full px-4 py-3 bg-brand-dark border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 funky-input transition text-white">
                 </div>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                <label for="id_email" class="block text-sm font-medium text-gray-700 mb-1">Email*</label>
+                <label for="id_email" class="block text-sm font-medium text-gray-200 mb-1">Email*</label>
                 <input type="email" name="email" id="id_email" required 
-                        class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 funky-input transition">
+                        class="w-full px-4 py-3 bg-brand-dark border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 funky-input transition text-white">
                 </div>
                 
                 <div>
-                <label for="id_phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number*</label>
+                <label for="id_phone" class="block text-sm font-medium text-gray-200 mb-1">Phone Number*</label>
                 <input type="tel" name="phone" id="id_phone" required 
-                        class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 funky-input transition">
+                        class="w-full px-4 py-3 bg-brand-dark border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 funky-input transition text-white">
                 </div>
             </div>
             
             <div>
-                <label for="id_subject" class="block text-sm font-medium text-gray-700 mb-1">Subject*</label>
+                <label for="id_subject" class="block text-sm font-medium text-gray-200 mb-1">Subject*</label>
                 <input type="text" name="subject" id="id_subject" required 
-                    class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 funky-input transition">
+                    class="w-full px-4 py-3 bg-brand-dark border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 funky-input transition text-white">
             </div>
             
             <div>
-                <label for="id_message" class="block text-sm font-medium text-gray-700 mb-1">Message*</label>
+                <label for="id_message" class="block text-sm font-medium text-gray-200 mb-1">Message*</label>
                 <textarea name="message" id="id_message" rows="5" required 
-                        class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 funky-input transition"></textarea>
+                        class="w-full px-4 py-3 bg-brand-dark border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 funky-input transition text-white"></textarea>
             </div>
             
             <div class="flex items-center">
                 <input type="checkbox" name="booking" id="id_booking" 
                     class="w-5 h-5 rounded border-gray-300 text-purple-600 focus:ring-purple-500">
-                <label for="id_booking" class="ml-2 block text-sm text-gray-700">I'd like to book a treatment</label>
+                <label for="id_booking" class="ml-2 block text-sm text-gray-200">I'd like to book a treatment</label>
             </div>
             
             <div>
@@ -107,7 +107,7 @@
         <div class="lg:col-span-5">
         <div class="space-y-6">
             <!-- Visit Us -->
-            <div class="bg-white p-6 rounded-3xl shadow-xl backdrop-blur-md bg-opacity-90 transform transition hover:scale-105 hover:rotate-1">
+            <div class="bg-brand-card p-6 rounded-3xl shadow-xl backdrop-blur-md bg-opacity-90 transform transition hover:scale-105 hover:rotate-1">
             <h3 class="text-2xl font-bold mb-4 funky-gradient flex items-center">
                 <i class="fas fa-map-marker-alt mr-3 text-purple-600"></i>
                 Visit Us
@@ -120,7 +120,7 @@
             </div>
             
             <!-- Opening Hours -->
-            <div class="bg-white p-6 rounded-3xl shadow-xl backdrop-blur-md bg-opacity-90 transform transition hover:scale-105 hover:-rotate-1">
+            <div class="bg-brand-card p-6 rounded-3xl shadow-xl backdrop-blur-md bg-opacity-90 transform transition hover:scale-105 hover:-rotate-1">
             <h3 class="text-2xl font-bold mb-4 funky-gradient flex items-center">
                 <i class="fas fa-clock mr-3 text-purple-600"></i>
                 Opening Hours
@@ -142,7 +142,7 @@
             </div>
             
             <!-- Contact Information -->
-            <div class="bg-white p-6 rounded-3xl shadow-xl backdrop-blur-md bg-opacity-90 transform transition hover:scale-105 hover:rotate-1">
+            <div class="bg-brand-card p-6 rounded-3xl shadow-xl backdrop-blur-md bg-opacity-90 transform transition hover:scale-105 hover:rotate-1">
             <h3 class="text-2xl font-bold mb-4 funky-gradient flex items-center">
                 <i class="fas fa-address-card mr-3 text-purple-600"></i>
                 Contact Information
@@ -160,7 +160,7 @@
             </div>
             
             <!-- Social Media -->
-            <div class="bg-white p-6 rounded-3xl shadow-xl backdrop-blur-md bg-opacity-90 transform transition hover:scale-105 hover:-rotate-1">
+            <div class="bg-brand-card p-6 rounded-3xl shadow-xl backdrop-blur-md bg-opacity-90 transform transition hover:scale-105 hover:-rotate-1">
             <h3 class="text-2xl font-bold mb-4 funky-gradient flex items-center">
                 <i class="fas fa-share-alt mr-3 text-purple-600"></i>
                 Follow Us

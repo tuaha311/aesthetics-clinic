@@ -25,13 +25,13 @@
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
                 <div class="lg:col-span-2">
                     <div>
-                        <h2 class="text-3xl font-semibold mb-6">Treatment Overview</h2>
-                        <div class="prose max-w-none">
+                        <h2 class="text-3xl font-semibold mb-6 text-gray-200">Treatment Overview</h2>
+                        <div class="prose max-w-none text-gray-400">
                             {{ treatment.description|linebreaks }}
                         </div>
 
-                        <h2 class="text-3xl font-semibold mt-10 mb-6">What to Expect</h2>
-                        <div class="prose max-w-none">
+                        <h2 class="text-3xl font-semibold mt-10 mb-6 text-gray-200">What to Expect</h2>
+                        <div class="prose max-w-none text-gray-400">
                             {{ treatment.what_to_expect|linebreaks }}
                         </div>
                     </div>
@@ -60,29 +60,58 @@
                     </div>
                     {% endif %}
 
-                    {% if faqs %}
+                   {% if faqs %}
                     <!-- FAQs -->
                     <div class="mt-12">
-                        <h2 class="text-3xl font-semibold mb-6">Frequently Asked Questions</h2>
+                        <h2 class="text-3xl font-semibold mb-6 text-gray-200">Frequently Asked Questions</h2>
                         <div id="faqAccordion">
                             {% for faq in faqs %}
-                            <div class="mb-4 border rounded">
-                                <button class="w-full text-left px-6 py-4 font-medium bg-secondary text-white" type="button" data-collapse-toggle="faq{{ faq.id }}">
+                            <div class="mb-4 border rounded bg-brand-card">
+                                <button 
+                                    class="w-full text-left px-6 py-4 font-medium bg-secondary text-white flex justify-between items-center"
+                                    type="button"
+                                    data-faq-toggle="faq{{ faq.id }}"
+                                    aria-expanded="false"
+                                    aria-controls="faq{{ faq.id }}"
+                                >
                                     {{ faq.question }}
+                                    <svg class="w-5 h-5 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                    </svg>
                                 </button>
-                                <div id="faq{{ faq.id }}" class="px-6 py-4 bg-white hidden">
+                                <div id="faq{{ faq.id }}" class="px-6 py-4 bg-white hidden transition-all duration-300 ease-in-out">
                                     {{ faq.answer|linebreaks }}
                                 </div>
                             </div>
                             {% endfor %}
                         </div>
                     </div>
+
+                    <script>
+                        document.querySelectorAll('[data-faq-toggle]').forEach(button => {
+                            button.addEventListener('click', () => {
+                                const contentId = button.getAttribute('data-faq-toggle');
+                                const content = document.getElementById(contentId);
+                                const icon = button.querySelector('svg');
+
+                                // Toggle visibility
+                                const isExpanded = content.classList.contains('hidden');
+                                content.classList.toggle('hidden');
+                                button.setAttribute('aria-expanded', isExpanded);
+
+                                // Rotate arrow
+                                if (icon) {
+                                    icon.classList.toggle('rotate-180', isExpanded);
+                                }
+                            });
+                        });
+                    </script>
                     {% endif %}
 
                     {% if testimonials %}
                     <!-- Testimonials -->
                     <div class="mt-12">
-                        <h2 class="text-3xl font-semibold mb-6">Client Testimonials</h2>
+                        <h2 class="text-3xl font-semibold mb-6 text-gray-200">Client Testimonials</h2>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             {% for testimonial in testimonials %}
                             <div class="bg-white p-6 shadow relative">
@@ -106,22 +135,22 @@
                 </div>
 
                 <div>
-                    <div class="bg-white p-6 shadow mb-8">
-                        <h3 class="text-xl font-semibold mb-2">Book This Treatment</h3>
-                        <p class="mb-4">Ready to experience the benefits of {{ treatment.name }}? Book your consultation today.</p>
-                        <a href="/contact/?booking=true&treatment={{ treatment.name }}" class="btn btn-primary w-full">Book Now</a>
+                    <div class="bg-brand-card p-6 shadow mb-8">
+                        <h3 class="text-xl text-gray-300 font-semibold mb-2">Book This Treatment</h3>
+                        <p class="mb-4 text-gray-400">Ready to experience the benefits of {{ treatment.name }}? Book your consultation today.</p>
+                        <a href="/contact/?booking=true&treatment={{ treatment.name }}" class="btn btn-primary w-full text-gray-600">Book Now</a>
                     </div>
 
                     {% if related_treatments %}
-                    <div class="bg-white p-6 shadow mb-8">
-                        <h3 class="text-xl font-semibold mb-4">Related Treatments</h3>
+                    <div class="bg-brand-card p-6 shadow mb-8">
+                        <h3 class="text-xl text-gray-300 font-semibold mb-4">Related Treatments</h3>
                         <ul>
                             {% for related in related_treatments %}
                             <li class="flex items-center mb-4">
                                 <img src="{{ related.image.url }}" alt="{{ related.name }}" class="w-20 h-20 object-cover mr-4">
                                 <div>
-                                    <a href="{% url 'treatment_detail' related.slug %}" class="font-medium hover:text-primary">{{ related.name }}</a>
-                                    <p class="text-sm">{{ related.price_range }}</p>
+                                    <a href="{% url 'treatment_detail' related.slug %}" class="font-medium hover:text-primary text-gray-400">{{ related.name }}</a>
+                                    <p class="text-sm text-gray-600">{{ related.price_range }}</p>
                                 </div>
                             </li>
                             {% endfor %}
@@ -129,11 +158,11 @@
                     </div>
                     {% endif %}
 
-                    <div class="bg-white p-6 shadow">
-                        <h3 class="text-xl font-semibold mb-2">Have Questions?</h3>
-                        <p class="mb-4">Our experts are here to help you find the right treatment for your needs.</p>
-                        <p class="mb-2"><i class="fas fa-phone mr-2"></i> +123 456 7890</p>
-                        <p class="mb-4"><i class="fas fa-envelope mr-2"></i> info@aestheticsclinic.com</p>
+                    <div class="bg-brand-card p-6 shadow">
+                        <h3 class="text-xl text-gray-300 font-semibold mb-2">Have Questions?</h3>
+                        <p class="mb-4 text-gray-600">Our experts are here to help you find the right treatment for your needs.</p>
+                        <p class="mb-2 text-gray-600"><i class="fas fa-phone mr-2"></i> +123 456 7890</p>
+                        <p class="mb-4 text-gray-600"><i class="fas fa-envelope mr-2"></i> info@aestheticsclinic.com</p>
                         <a href="/contact/" class="btn btn-outline-primary w-full">Contact Us</a>
                     </div>
                 </div>
