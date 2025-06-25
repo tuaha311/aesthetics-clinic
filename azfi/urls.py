@@ -5,6 +5,7 @@ from . import views
 
 urlpatterns = [
     path('', views.HomeView.as_view(), name='home'),
+    path('defaultsite', views.HomeView.as_view(), name='home_page'), #monkey patch for ionos default site to homepage
     
     # Treatments
     path('treatments/', views.TreatmentListView.as_view(), name='treatment_list'),
