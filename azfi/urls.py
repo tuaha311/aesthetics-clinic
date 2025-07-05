@@ -34,5 +34,12 @@ urlpatterns = [
     
     # Newsletter Signup
     path('newsletter-signup/', views.newsletter_signup, name='newsletter_signup'),
-] 
+    
+    # Privacy Policy
+    path('privacy-policy/', views.PrivacyPolicyView.as_view(), name='privacy_policy'),
+    path('terms-and-conditions/', views.TermsAndConditionsView.as_view(), name='terms_and_conditions'),
+    
+    # Marketing Resources
+    path('marketing-resources/', views.MarketingResourcesView.as_view(), name='marketing_resources'),
+]
 

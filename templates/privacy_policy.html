@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load custom_tags %}
+
+{% block title %}Privacy Policy - Azfi Medical Aesthetics{% endblock %}
+
+{% block content %}
+{% hero "Privacy Policy" "Learn about how we handle and protect your data" %}
+
+<div class="py-16 bg-brand-dark">
+    <div class="container mx-auto px-4 md:px-6 lg:px-8 max-w-4xl">
+        <div class="prose prose-lg prose-invert mx-auto">
+            <div class="mb-8">
+                <h2 class="text-2xl font-semibold text-white mb-2">Azfi Medical Aesthetics</h2>
+                <p class="text-gray-400">Effective Date: 02/06/2025</p>
+            </div>
+
+            <!-- Introduction -->
+            <section class="mb-8">
+                <h2 class="text-xl font-semibold text-white mb-4">1. Introduction</h2>
+                <p class="text-gray-300">1.1 Azfi Medical Aesthetics ("we", "us", "our") is committed to protecting your privacy and ensuring compliance with the UK General Data Protection Regulation (UK GDPR) and Data Protection Act 2018.</p>
+                <p class="text-gray-300">1.2 This Privacy Policy outlines how we collect, use, store, share, and protect your personal data, as well as your rights concerning that data.</p>
+            </section>
+
+            <!-- Definitions -->
+            <section class="mb-8">
+                <h2 class="text-xl font-semibold text-white mb-4">2. Definitions</h2>
+                <ul class="list-disc pl-6 text-gray-300 space-y-2">
+                    <li>"Data Subject" means the individual whose personal data is processed by the Clinic (i.e., the Patient).</li>
+                    <li>"Personal Data" means any information relating to an identified or identifiable natural person.</li>
+                    <li>"Processing" means any operation performed on Personal Data, including collection, storage, transmission, or deletion.</li>
+                    <li>"Data Controller" means the system or entity (Azfi Medical Aesthetics) that determines the purposes and means of Processing Personal Data.</li>
+                    <li>"Data Processor" means any third party that processes Personal Data on behalf of the Data Controller.</li>
+                </ul>
+            </section>
+
+            <!-- Information We Collect -->
+            <section class="mb-8">
+                <h2 class="text-xl font-semibold text-white mb-4">3. Information We Collect</h2>
+                <ul class="list-disc pl-6 text-gray-300 space-y-2">
+                    <li>3.1 Identifiers: Full name, date of birth, gender, contact details (address, email, phone number).</li>
+                    <li>3.2 Medical and Health Information: Medical history, allergies, medications, previous treatments, PRP results, DOPS outcomes, and clinical photographs.</li>
+                    <li>3.3 Financial Information: Payment and billing details (processed by secure third-party providers; not stored on our servers).</li>
+                    <li>3.4 Device and Usage Data: IP addresses, device identifiers, browser type, operating system, pages visited on our website, appointment scheduling data.</li>
+                    <li>3.5 Marketing Preferences: Consent status for receiving promotional communications and details of any marketing interactions.</li>
+                    <li>3.6 Communication Data: Notes and recordings (where consented) from consultations, emails, telephone calls, and chat logs.</li>
+                </ul>
+            </section>
+
+            <!-- Continue with all other sections similarly -->
+            <!-- Lawful Basis for Processing -->
+            <section class="mb-8">
+                <h2 class="text-xl font-semibold text-white mb-4">4. Lawful Basis for Processing</h2>
+                <p class="text-gray-300">4.1 We rely on the following lawful bases under UK GDPR:</p>
+                <ul class="list-disc pl-6 text-gray-300 space-y-2">
+                    <li>Consent: For marketing communications and non-essential data processing where explicit consent is obtained.</li>
+                    <li>Contractual Necessity: To provide Services to Patients, including consultations, Treatments, and follow-up care.</li>
+                    <li>Legal Obligation: To comply with healthcare regulations, reporting requirements, and record-keeping obligations.</li>
+                    <li>Vital Interests: To protect the health and wellbeing of the Patient or others in emergencies.</li>
+                    <li>Legitimate Interests: To improve our services, ensure patient safety, manage clinical governance, and prevent fraud.</li>
+                </ul>
+            </section>
+
+            <!-- Continue with remaining sections -->
+            <!-- Contact Information -->
+            <section class="mb-8">
+                <h2 class="text-xl font-semibold text-white mb-4">15. Contact Information</h2>
+                <p class="text-gray-300">If you have any questions, concerns, or wish to exercise any of your data protection rights, please contact:</p>
+                <div class="bg-brand-card p-6 rounded-lg mt-4">
+                    <p class="text-white font-semibold">Data Protection Officer</p>
+                    <p class="text-gray-300">Azfi Medical Aesthetics</p>
+                    <p class="text-gray-300">Email: info@azfiaestheticsclinic.co.uk</p>
+                    <p class="text-gray-300">Address: MooreWays Sports Village and Water Park</p>
+                </div>
+                <p class="text-gray-300 mt-4">You also have the right to lodge a complaint with the Information Commissioner's Office (ICO) at <a href="https://ico.org.uk/concerns" class="text-purple-400 hover:text-purple-300">https://ico.org.uk/concerns</a> if you believe your rights have been violated.</p>
+            </section>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -142,6 +142,15 @@ class ContactView(CreateView):
 class ContactSuccessView(TemplateView):
     template_name = 'contact_success.html'
 
+class PrivacyPolicyView(TemplateView):
+    template_name = 'privacy_policy.html'
+
+class TermsAndConditionsView(TemplateView):
+    template_name = 'terms_and_conditions.html'
+
+class MarketingResourcesView(TemplateView):
+    template_name = 'marketing_resources.html'
+
 def search_view(request):
     query = request.GET.get('q', '')
     
@@ -150,7 +159,7 @@ def search_view(request):
     ) if query else []
     
     posts = BlogPost.objects.filter(
-        Q(title__icontains=query) | Q(content__icontains(query))
+        Q(title__icontains=query) | Q(content__icontains=query)
     ) if query else []
     
     context = {
