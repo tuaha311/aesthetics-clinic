@@ -212,6 +212,7 @@
     position: relative;
     padding-bottom: 4px;
     transition: all 0.3s ease;
+    white-space: nowrap;
     }
     
     .nav-link::after {
@@ -331,15 +332,38 @@
                             </ul>
                         </div>
                         </div>
-                        <a href="/about/" class="nav-link text-lg hover:text-purple-600 font-medium">About Us</a>
-                        <a href="/gallery/" class="nav-link text-lg hover:text-purple-600 font-medium">Gallery</a>
+                        <a href="/pricing/" class="nav-link text-lg hover:text-purple-600 font-medium">Pricing</a>
+                        <div class="relative group">
+                        <button class="nav-link text-lg flex items-center hover:text-purple-600 font-medium">
+                            Links
+                            <i class="fas fa-chevron-down ml-2 text-xs group-hover:rotate-180 transition-transform duration-300"></i>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-60 rounded-2xl shadow-lg bg-white ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 overflow-hidden">
+                            <div class="h-1 funky-bg"></div>
+                            <ul class="py-3">
+                            <li><a class="block px-6 py-2 hover:bg-purple-50 hover:text-purple-600 transition-colors" href="https://linktr.ee/azfiaestheticsclinic.co.uk">Link Tree</a></li>
+                            <li><a class="block px-6 py-2 hover:bg-purple-50 hover:text-purple-600 transition-colors" href="https://azfiaestheticsclinic.aesthetidocs.app">Book Now</a></li>
+                            <li><a class="block px-6 py-2 hover:bg-purple-50 hover:text-purple-600 transition-colors" href="mailto:info@azfiaestheticsclinic.co.uk">Email</a></li>
+                            <li><a class="block px-6 py-2 hover:bg-purple-50 hover:text-purple-600 transition-colors" href="tel:+447907663339">Phone</a></li>
+                            <li><a class="block px-6 py-2 hover:bg-purple-50 hover:text-purple-600 transition-colors" href="https://www.instagram.com/azfi.medical.aesthetics/">Instagram</a></li>
+                            <li><a class="block px-6 py-2 hover:bg-purple-50 hover:text-purple-600 transition-colors" href="https://www.facebook.com/share/1BPcwu1SEv">Facebook</a></li>
+                            <li><a class="block px-6 py-2 hover:bg-purple-50 hover:text-purple-600 transition-colors" href="https://www.tiktok.com/@azfi.medical.aesthetics">TikTok</a></li>
+                            <li><a class="block px-6 py-2 hover:bg-purple-50 hover:text-purple-600 transition-colors" href="https://www.youtube.com/@Dr.AzfarAlam">Youtube</a></li>
+                            <li><a class="block px-6 py-2 hover:bg-purple-50 hover:text-purple-600 transition-colors" href="https://maps.app.goo.gl/YQocZBFrdmAdLpc46?g_st=com.google.maps.preview.copy">Google Maps</a></li>
+                            </ul>
+                        </div>
+                        </div>
+                        {% comment %} <a href="/about/" class="nav-link text-lg hover:text-purple-600 font-medium">About Us</a> {% endcomment %}
+                        {% comment %} <a href="/gallery/" class="nav-link text-lg hover:text-purple-600 font-medium">Gallery</a> {% endcomment %}
                         <a href="/blog/" class="nav-link text-lg hover:text-purple-600 font-medium">Blog</a>
                         <a href="/contact/" class="nav-link text-lg hover:text-purple-600 font-medium">Contact</a>
+                        <a href="/about/" class="nav-link text-lg hover:text-purple-600 font-medium">Meet The Team</a>
+                        <a href="/career/" class="nav-link text-lg hover:text-purple-600 font-medium">Career Opportunities </a>
                     </div>
                     
                     <a href="/contact/?booking=true" 
                         class="hidden lg:inline-flex items-center px-8 py-3 funky-bg text-white rounded-full hover:opacity-90 transition-colors transform hover:-translate-y-1 transition-transform duration-300 neon-effect">
-                        <span class="mr-2">Book Consultation</span>
+                        <span class="mr-2" style="white-space: nowrap;">Book Consultation</span>
                         <i class="fas fa-calendar-check"></i>
                     </a>
                 </div>
