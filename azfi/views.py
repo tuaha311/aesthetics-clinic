@@ -151,6 +151,9 @@ class TermsAndConditionsView(TemplateView):
 class MarketingResourcesView(TemplateView):
     template_name = 'marketing_resources.html'
 
+class CareerView(TemplateView):
+    template_name = 'career.html'
+
 def search_view(request):
     query = request.GET.get('q', '')
     

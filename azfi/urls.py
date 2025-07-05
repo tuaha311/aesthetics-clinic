@@ -41,5 +41,7 @@ urlpatterns = [
     
     # Marketing Resources
     path('marketing-resources/', views.MarketingResourcesView.as_view(), name='marketing_resources'),
+
+    path('career/', views.CareerView.as_view(), name='career'),
 ]
 
